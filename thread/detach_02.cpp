@@ -1,10 +1,13 @@
-//foo işlevi içindeki yerel değişken ival'in ömrü bitmesine karşılık oluşturulan thread'in çalışması devam ediyor olabilir
+//foo işlevi içindeki yerel değişken ival'in ömrü bitmesine karşılık 
+// oluşturulan thread'in çalışması devam ediyor olabilir
+
+#include <thread>
 
 void f(int);
 
 class Functor {
 public:
-	Functor(int &r) :mr(r) {}
+	Functor(int& r) :mr(r) {}
 	void operator()()
 	{
 		for (int i = 0; i < 100000; ++i) {
