@@ -3,6 +3,6 @@
 
 int main()
 {
-    std::cout << "desteklenen donanim thread sayisi : " <<
+    std::cout << "hardware supported number of threads is : " <<
         std::thread::hardware_concurrency() << '\n';
 }
