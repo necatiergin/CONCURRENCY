@@ -5,7 +5,7 @@
 
 int main()
 {
-	auto fn{ [] { std::cout << "hello, is it me you're looking for?\n"; } };
+	auto fn{ [] { std::cout << "hello\n"; } };
 	std::thread t{ fn };
 	t.join();
 }
