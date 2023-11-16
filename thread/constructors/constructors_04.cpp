@@ -1,6 +1,4 @@
-/*
-	we can move an object to the function that our thread will run.
-*/
+//	we can move an object to the function that our thread will run.
 
 #include <vector>
 #include <iostream>
@@ -15,10 +13,8 @@ void func(std::vector<int>&& vec)
 
 int main()
 {
-	using namespace std;
-
-	vector<int> ivec{ 1, 2, 3, 4, 5, 6, 7 };
-	thread tx{ func, move(ivec) }; //moving
+	std::vector ivec{ 1, 2, 3, 4, 5, 6, 7 };
+	std::thread tx{ func, move(ivec) }; //moving
 	tx.join();
-	cout << "ivec.size() = " << ivec.size() << '\n';
+	std::cout << "ivec.size() = " << ivec.size() << '\n';
 }
