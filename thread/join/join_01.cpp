@@ -1,15 +1,23 @@
-//eğer thread nesnesinin detsructor'u çağrıldığında thread joinable durumda ise terminate işlevi çağrılır.
+//eğer std::thread nesnesinin destructor'u çağrıldığında thread joinable durumda ise std::terminate işlevi çağrılır.
 
 #include <iostream>
 #include <thread>
 
-void hello()
+void func()
 {
-	std::cout << "Hello World!\n";
+	std::cout << "hello from func!\n";
+}
+
+void myterminate()
+{
+	std::cout << "myterminate\n";
+	(void)getchar();
+	std::abort();
 }
 
 int main()
 {
-	std::thread t(hello);
-	t.join();
+	set_terminate(myterminate);
+	std::thread t(func);
+	//t.join();
 }
