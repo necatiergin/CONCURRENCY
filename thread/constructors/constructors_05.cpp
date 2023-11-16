@@ -4,7 +4,7 @@
 class Nec
 {
 public:
-    void func(int x)
+    void func(int x)const
     {
         std::cout << x << '\n';
     }
