@@ -3,32 +3,30 @@
 
 void foo()
 {
-	for (int i = 0; i < 1'000'000; ++i) {
+	for (int i{}; i < 1'000'000; ++i) {
 		std::cout << '*';
 	}
 }
 
 void bar()
 {
-	for (int i = 0; i < 1'000'000; ++i) {
+	for (int i{}; i < 1'000'000; ++i) {
 		std::cout << '?';
 	}
 }
 
 void baz()
 {
-	for (int i = 0; i < 1'000'000; ++i)	{
+	for (int i{}; i < 1'000'000; ++i) {
 		std::cout << '-';
 	}
 }
 
 int main()
 {
-	using namespace std;
-
-	thread t1{ foo };
-	thread t2{ bar};
-	thread t3{ baz};
+	std::thread t1{ foo };
+	std::thread t2{ bar };
+	std::thread t3{ baz };
 
 	for (int i = 0; i < 1'000'000; ++i) {
 		std::cout << '.';
