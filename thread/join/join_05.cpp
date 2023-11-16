@@ -8,9 +8,7 @@ void foo()
 
 int main()
 {
-	using namespace std;
-
-	thread tx{ foo };
+	std::thread tx{ foo };
 	tx.join();
 
 	try {
