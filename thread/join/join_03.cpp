@@ -3,18 +3,18 @@
 
 void func()
 {
-	for (int i{}; i < 1'000'000; ++i) {
+	for (int i{}; i < 10'000; ++i) {
 		std::cout << '*';
 	}
 }
 
 int main()
 {
-	std::thread t1{func};
+	std::thread t{func};
 
-	for (int i{}; i < 1'000'000; ++i) {
+	for (int i{}; i < 10'000; ++i) {
 		std::cout << '.';
 	}
 	
-	t1.join();
+	t.join();
 }
