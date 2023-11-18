@@ -6,25 +6,24 @@
 
 thread_local std::string name("Necati");
 
-void func(std::string const& surname) {
+void func(const std::string & surname) {
 
 	name += surname;
-	std::osyncstream ocout{std::cout };
+	std::osyncstream ocout{ std::cout };
 	ocout << name << " &name: " << &name << std::endl;
 }
 
-int main() 
+int main()
 {
 	const char* const pa[] = { "Ergin", "Ozkan", "Ersoy", "Toptan", "Erdogan", "Demirkapi" };
 
 	std::vector<std::thread> tvec;
 
-	for (auto p : pa) {
-		tvec.emplace_back(func, p);
+	for (auto psurname : pa) {
+		tvec.emplace_back(func, psurname);
 	}
 
-
-	for (auto &t : tvec) {
+	for (auto& t : tvec) {
 		t.join();
 	}
 }
