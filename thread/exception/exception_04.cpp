@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 
 void func()
 {
@@ -15,13 +16,6 @@ void func()
 
 int main()
 {
-	try {
-		std::thread t{ func };  // Hata yakalandı
-
-		t.join();
-	}
-	catch (const std::exception& ex)
-	{
-		std::cout << ex.what() << '\n';
-	}
+	std::thread t{ func };  // Hata yakalandı
+	t.join();
 }
