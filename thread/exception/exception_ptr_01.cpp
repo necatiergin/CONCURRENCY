@@ -16,20 +16,22 @@ void func(int x)
 	catch (...) {
 		exptr = std::current_exception();
 	}
-	std::cout << "func(int x) sona erdi x = " << x << '\n';
+	std::cout << "func(int x) sona erdi\n";
 }
 
 
 int main()
 {
 	std::thread t{ func, 10 };
+
 	t.join();
+	
 	try {
 		if (exptr) {
 			std::rethrow_exception(exptr);
 		}
 	}
-	catch (const std::exception &ex) {
+	catch (const std::exception& ex) {
 		std::cout << "exception caught : " << ex.what() << '\n';
 	}
 }
