@@ -1,10 +1,12 @@
+#include <mutex>
+
 std::mutex mtx;
 
 void func()
 {
-  mtx.lock();
+	mtx.lock();
 
 	// critical section
 
-  mtx.unlock();
+	mtx.unlock();
 }
