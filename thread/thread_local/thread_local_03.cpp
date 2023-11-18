@@ -13,8 +13,8 @@ void func(int id)
 	++z;
 	std::lock_guard guard(mtx);
 	++y;
-	std::cout << "thread id : " << id << " x (automatic storage)     = " << x << "\n";
-	std::cout << "thread id : " << id << " y (static storage)        = " << y << "\n";
+	std::cout << "thread id : " << id << " x (automatic storage)     = " << x << '\n';
+	std::cout << "thread id : " << id << " y (static storage)        = " << y << '\n';
 	std::cout << "thread id : " << id << " z (thread local storage)  = " << z << "\n\n";
 }
 
