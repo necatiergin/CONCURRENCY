@@ -28,5 +28,5 @@ int main()
 	t1.join();
 	t2.join();
 
-	std::cout << "gcounter = " << gcounter << "\n";
+	std::cout << "gcounter = " << gcounter << '\n';
 }
