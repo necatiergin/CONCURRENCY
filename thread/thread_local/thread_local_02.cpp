@@ -3,18 +3,19 @@
 
 thread_local int ival = 0;
 
-void thread_func(int* p) 
+void thread_func(int* p)
 {
     *p = 42;
-    std::cout << "ival = " << ival << "\n";
+    std::cout << "*p   = " << *p << '\n';
+    std::cout << "ival = " << ival << '\n';
 }
 
-int main() 
+int main()
 {
-    std::cout << "ival = " << ival << "\n";
+    std::cout << "ival = " << ival << '\n';
     ival = 9;
-    std::cout << "ival = " << ival << "\n";
+    std::cout << "ival = " << ival << '\n';
     std::thread t(thread_func, &ival);
     t.join();
-    std::cout << "ival = " << ival << "\n";
+    std::cout << "ival = " << ival << '\n';
 }
