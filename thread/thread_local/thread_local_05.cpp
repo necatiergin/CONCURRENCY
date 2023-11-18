@@ -3,8 +3,12 @@
 
 struct Myclass {
 	Myclass(int x)
-	{ 
+	{
 		std::osyncstream{ std::cout } << "Myclass ctor x = " << x << " this = " << this << std::endl;
+	}
+	~Myclass()
+	{
+		std::osyncstream{ std::cout } << "Myclass destructor this = " << this << std::endl;
 	}
 };
 
@@ -33,4 +37,6 @@ int main()
 	t2.join();
 	t3.join();
 	t4.join();
+
+	std::cout << "main devam ediyor...\n";
 }
