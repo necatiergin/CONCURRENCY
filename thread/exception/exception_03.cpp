@@ -4,11 +4,19 @@
 void func()
 {
 	std::cout << "func is called\n";
-	throw std::runtime_error{ "error from func\n" }; //terminate is called if func is called not from main thread
+	throw std::runtime_error{ "error from func\n" }; 
+	//terminates
+}
+
+void myterminate()
+{
+	std::cout << "myterminate called!\n";
+	abort();
 }
 
 int main()
 {
+	set_terminate(myterminate);
 	try {
 		std::thread t{ func };
 	}
