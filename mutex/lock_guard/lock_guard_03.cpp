@@ -2,25 +2,32 @@
 
 class DatabaseAccess {
 public:
-	void createTable()
+	void create_table()
 	{
 		std::lock_guard<std::mutex> lg{ db_mutex };
 		//...
 	}
 
-	void insertData()
+	void insert_data()
 	{
 		std::lock_guard<std::mutex> lg{ db_mutex };
 		//..
 	}
 
-	void createTableAndInsertData()
+	void create_table_and_insert_data()
 	{
 		std::lock_guard<std::mutex> lg{ db_mutex };
-		createTable();
+		create_table();
 		//...
 	}
 private:
 	std::mutex db_mutex;
 	//...
 };
+
+int main()
+{
+	DatabaseAccess dx;
+
+	dx.create_table_and_insert_data(); //deadlock
+}
