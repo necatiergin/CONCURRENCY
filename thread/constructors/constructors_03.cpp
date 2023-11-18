@@ -7,12 +7,12 @@ public:
 	{
 		for (int i = first; i < last; ++i)
 			std::cout << i << ' ';
-		
+
 		std::cout << '\n';
 	}
 };
 
-class Myclass {
+class Nec {
 public:
 	static void sprintn(int first, int last)
 	{
@@ -50,12 +50,13 @@ int main()
 			std::cout << i << ' ';
 		std::cout << '\n';
 	}, 30, 40 };
+
 	t3.join();
 
-	std::thread t4{ Myclass::sprintn, 40, 50 };
+	std::thread t4{ Nec::sprintn, 40, 50 };
 	t4.join();
 
-	Myclass m;
-	std::thread t5{ &Myclass::printn, m, 50, 60 };
+	Nec mynec;
+	std::thread t5{ &Nec::printn, mynec, 50, 60 };
 	t5.join();
 }
