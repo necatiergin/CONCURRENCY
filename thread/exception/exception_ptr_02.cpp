@@ -1,5 +1,5 @@
 #include <vector>
-#include <exception>
+#include <stdexcept>
 #include <mutex>
 #include <iostream>
 
@@ -8,14 +8,14 @@ std::mutex g_mutex;
 
 void f1()
 {
-	throw std::exception{ "exception from f1" };
+	throw std::runtime_error{ "runtime_error from f1" };
 }
 
 //----------------------------------------------------------------------------------------------------
 
 void f2()
 {
-	throw std::exception{ "exception from f2" };
+	throw std::out_of_range{ "out_of_range error from f2" };
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ void th_func1()
 		f1();
 	}
 	catch (...) {
-		std::lock_guard<std::mutex> guard{ g_mutex };
+		std::lock_guard guard{ g_mutex };
 		g_ex_vec.push_back(std::current_exception());
 	}
 }
@@ -39,7 +39,7 @@ void th_func2()
 		f2();
 	}
 	catch (...) {
-		std::lock_guard<std::mutex> guard{ g_mutex };
+		std::lock_guard  guard{ g_mutex };
 		g_ex_vec.push_back(std::current_exception());
 	}
 }
