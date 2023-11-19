@@ -53,7 +53,8 @@ while (!mtx.try_lock()) {
 	// burada başka kodlar olabilir
 	std::this_thread::sleep(20ms);
 }
+// kritik bölgeye girdi.
 ```
 
-// kritik bölgeye girdi.
+
 
