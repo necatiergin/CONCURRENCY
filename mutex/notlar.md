@@ -21,3 +21,16 @@ X, Y, Z thread'lerinin kritik bölgeye girmek istediğini düşünelim.<br>
 - Artık Y ya da Z _mutex_'i kilitleyebilir ve kritik bölgeye girebilir.
 
 Bir _mutex_'in açılması (_mutex_ kilitli iken) yaplan değişikliklerin diğer threadler tarafından erişilebilir olması anlamına gelir.
+
+Bir mutex'in açılması (mutex kilitli iken) yaplan değişikliklerin diğer thread'ler tarafından erişilebilir olması anlamına gelir. <br>
+
+Bir thread bir mutex'i kilitleyerek kritik bölgeye yalnızca kendisinin erişimini sağlar (acquire)<br>
+Bir thread bir mutex'i açar: <br>
+	- kritik bölgeye erişimi  yalnızca bir başka thread'in erişimine açar. (release)
+	- yaptığı değişiklikleri diğer thread'lere sunmuş olur
+	- bir başka thread mutex'i kilitler ve değişiklikleri (sonuçları) edinir (aquire).
+
+acquire-release sementiği thradlerin sıralanmasını sağlar.
+- data race olmaz.
+- paylaşılan veri her zaman tutarlı (consistent) durumdadır.
+
