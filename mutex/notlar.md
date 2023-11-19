@@ -10,4 +10,4 @@
 
 - Bir _thread_ kritik bölgeye girdiğinde _mutex_'i kilitler kritik bölgeden çıktığında _kilidi_ açar.
 - _mutex_ yalnızca bir kez kilitlenebilir. (bkz. _recursive mutex_)
-
+- Belirli bir anda kritik bölgede yalnızca tek bir _thread_'in bulunması sağlanır.
