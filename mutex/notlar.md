@@ -18,4 +18,6 @@ X, Y, Z thread'lerinin kritik bölgeye girmek istediğini düşünelim.<br>
 - Y ve Z mutex'i kilitleyecekleri zamana kadar beklerler.
 - X kritik bölgeyi terkeder. 
 - X kilidi açar. 
-- Artık Y ya da Z mutexî kilitleyebilir ve kritik bölgeye girebilir.
+- Artık Y ya da Z _mutex_'i kilitleyebilir ve kritik bölgeye girebilir.
+
+Bir _mutex_'in açılması (_mutex_ kilitli iken) yaplan değişikliklerin diğer threadler tarafından erişilebilir olması anlamına gelir.
