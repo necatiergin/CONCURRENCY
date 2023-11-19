@@ -13,9 +13,9 @@
 - Belirli bir anda kritik bölgede yalnızca tek bir _thread_'in bulunması sağlanır.
 
 X, Y, Z thread'lerinin kritik bölgeye girmek istediğini düşünelim.<br>
-X mutex'i kilitler. <br>
-X kritik bölgeye girer. <br>
-Y ve Z mutex'i kilitleyecekleri zamana kadar beklerler.<br>
-X kritik bölgeyi terkeder. <br>
-X kilidi açar. <br>
-artık Y ya da Z mutexî kilitleyebilir ve kritik bölgeye girebilir.
+- X mutex'i kilitler. 
+- X kritik bölgeye girer. 
+- Y ve Z mutex'i kilitleyecekleri zamana kadar beklerler.
+- X kritik bölgeyi terkeder. 
+- X kilidi açar. 
+- Artık Y ya da Z mutexî kilitleyebilir ve kritik bölgeye girebilir.
