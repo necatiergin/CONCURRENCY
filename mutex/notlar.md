@@ -34,3 +34,16 @@ acquire-release sementiği thradlerin sıralanmasını sağlar.
 - data race olmaz.
 - paylaşılan veri her zaman tutarlı (consistent) durumdadır.
 
+mutex nesnesi bütün iş yükü (task) fonksiyonlarına görünür olmalıdır.
+- global olabilir
+- sınıfın veri elemanı olabilir
+- fonksiyonlar referans semantiği ile edinebilirler. örneğin lambda ifadeleri ile capture edilebilirler.
+
+mutex sade bir arayğüze sahiptir. <br>
+- lock() <br> 
+thread mutex'i ya kilitler ya da kilitleyene kadar bekler (bloke olur)
+- unlock() <br>
+thread mutex'i açar
+- try_lock<br>
+thread mutex'i kilitlemeyi dener. Başarmazsa bloke olmaz.
+
