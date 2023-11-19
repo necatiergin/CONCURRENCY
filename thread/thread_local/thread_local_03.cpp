@@ -18,20 +18,13 @@ void func(int id)
 	std::cout << "thread id : " << id << " z (thread local storage)  = " << z << "\n\n";
 }
 
-void foo(int id)
-{
-	func(id);
-	func(id);
-	func(id);
-}
-
 int main()
 {
 	using namespace std;
 
-	thread tx{ foo, 0 };
-	thread ty{ foo, 1 };
-	thread tz{ foo, 2 };
+	thread tx{ func, 0 };
+	thread ty{ func, 1 };
+	thread tz{ func, 2 };
 
 	tx.join();
 	ty.join();
