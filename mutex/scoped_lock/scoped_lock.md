@@ -3,19 +3,18 @@ _deadlock_ önleyici bir mekanizma ile aynı zamanda birden fazla _mutex_'i kili
 - Birden fazla mutex'i std::lock_guard ile edinmek daha karmaşık
 Yalnızca tek bir muteksi kilitlerken bile her zaman std::scoped_lock kullanmak, performansı azaltıcı bir etki yapmaz.
 
-+ std::scoped_lock birden fazla mutex'i tmplate argümanı olarak alabilecek bir template paraemre paketine sahjip
++ _std::scoped_lock_ birden fazla _mutex_'i tmplate argümanı olarak alabilecek bir template parametre paketine sahip.
 
 + Sınıfın bildirimi şu sekilde
 ```cpp
 template <class... Mtx> 
 class scoped_lock;
 ```
-+ parameter pack Mtx specifies types of mutexes to be locked.
-+ can be used with any mutex types providing necessary locking interface (e.g., std::mutex and std::recursive_mutex)
++ paramere paketi edinilecek _mutex_'lerin türlerini alacak.
++ Kilitleme ve açma arayüzüne sahip herhangi bir _mutex_ sınıfı template argümanı olarak kullanılabilir. 
 + Sınıfın kurucu işlevi bir ya da birden fazla mutex'i argüman olarak alabilir.
-+ Sınıfın kurucu işlevi ile edinilen mutex sınıfın destructor'ı ile bırakılır.
-+ scoped_lock nesneleri kopyalanamaz ve taşınamaz (non-copyable / non-moveable)
-+ using scoped_lock avoids problem of inadvertently failing to release mutexes (e.g., due to exception or forgetting unlock calls)
-+ in multiple mutex case, employs deadlock avoidance algorithm from std::lock (discussed later) when acquiring mutexes
-+ advisable to use scoped_lock instead of calling lock and unlock explicitly
-+ scoped_lock effectively replaces (and extends) lock_guard
++ Sınıfın kurucu işlevi ile edinilen _mutex_'ler sınıfın _destructor_'ı ile bırakılır.
++ _scoped_lock_ nesneleri kopyalanamaz ve taşınamaz_ (non-copyable / non-moveable)_
++ _mutex_'lerin serbest bırakılmasının ihmal edilmesi ya da gönderilen bir _exception_ nedeniyle atlanması riskini ortadan kaldırır.  
++ Birden fazla _mutex_ edinirken _std::lock_ işlevinin kullandığı _deadlock_'tan kaçınma algoritmasını kullanır.
++ scoped_lock etkin bir şekilde std::lock_guard sınıfının yerine geçer
