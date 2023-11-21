@@ -41,10 +41,10 @@ _reader thread_ kilidi edindiğinde
 - diğer tüm _reader thread_'ler de kilidi edinebilir. _(shared lock)_
 - _data race_ oluşacak bir senaryo söz konusu değildir
 - _reader_ ve _writer_ _thread_'ler bir arada kritik bölgede olamazlar.
-- bu da bir _thread_ değişiklik yaptığında diğer _thread_'lerin kritik bölgede olamayacağı anlamına gelir
+- bu da bir _thread_ değişiklik yaptığında diğer _thread_'lerin kritik bölgede olamayacağı anlamına gelir.
 
 _std::shared_mutex_ _std::mutex_'e göre daha fazla bellek alanı kullanır.
-- std::mutex'e göre daha yavaştır.
+- _std::mutex_'e göre daha yavaştır.
 - _reader thread_'lerin sayısının _write thread_'lerden çok daha fazla olması durumunda ya da okuma işlemlerinin çok fazla zaman alması durumunda tercih edilebilir.
 
 
