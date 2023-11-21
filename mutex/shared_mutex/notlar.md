@@ -22,31 +22,27 @@ paylaşımlı olarak kilidi edinebilmek için kilidin exclusive olarak sahibi ol
 exlucive sahip kilidi serbest bırakana kadar beklemek zorund<a
 
 
-writer thread'in eclusive lock alabilmesiiçin diğer bütün threadlerin kilidi relaase etmiş olması gerekir.
-Bu durum diğer tüm thread'lerin kritik bölgeyi terk etmiş olduğu anlamına gelir
+_writer thread_'in exclusive olarak kilidi edinebilmesi için diğer bütün _thread_'lerin kilidi serbest bırakmış olması gerekir.
+Bu durum diğer tüm _thread_'lerin kritik bölgeyi terk etmiş olduğu anlamına gelir.<br>
 
-bir write thread kilidi edindiğinde
+bir _exclusive thread_ kilidi edindiğinde
 - kritik bölgeye girmiş olur.
-- reader thread'ler kritik bölgeye giremez
-- writer threadler kilidi elde edemz
-- bunların olabilmesi için kilidi almış olan write thread'in kilidi serbest bırakması gerekir
+- _reader thread_'ler kritik bölgeye giremez.
+- _writer thread_'ler kilidi elde edemez.
+- bunların olabilmesi için kilidi almış olan _writer thread_'in kilidi serbest bırakması gerekir.
+- _writer thread_'in kilidi bırakmış olması kritik bölgeyi terk etmiş olduğu anlamına gelir.
 
 
-writer threadin kilidi bırakmış olması kritik bölgeyi terk etmiş olduğu anlamına gelir
+#### reader thread
 
+- kilidi elde bulunduran bir _exclusive thread_ kilidi bırakana kadar kilidi edinemez.
+- bir _reader thread_ kilidi edinmişse _exclusive thread_ kritik bölgeyi terk etmiş demektir.
 
-reader thread
-
-kilidi elde bulunduruan birwrite thread kilidi bırakana kadar kilidi edineme<
-bir reader thread kilidi edinmişse write threadkrtiik bölgeyi terk etmiş demektir.
-
-reader thread kilidi edindiğinde 
-kritik bölgeye girer.
-diğer reader thread'ler de kilidi edinebilir. (shared lock)
-
-Data race oluşacak bir senaryok söz konusu değildir
-
-readrt ve writer threadler bir arada kritik bölgede olamazlar
+_reader thread_ kilidi edindiğinde 
+- kritik bölgeye girer.
+- diğer tüm _reader thread_'ler de kilidi edinebilir. (shared lock)
+- _data race_ oluşacak bir senaryo söz konusu değildir
+- _reader_ ve _writer_ _thread_'ler bir arada kritik bölgede olamazlar.
 
 bu da bir thread değişiklik yaptığında diğer threadleri n kritik bölgede olaayaxağı anlamına gelir
 
