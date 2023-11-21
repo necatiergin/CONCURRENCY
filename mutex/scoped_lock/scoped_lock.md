@@ -1,11 +1,12 @@
 _std::scoped_lock_ _std::lock_guard_ ile aynı işlevselliğe sahiptir ancak daha _generic_ hale getirilmiştir. 
 _deadlock_ önleyici bir mekanizma ile aynı zamanda birden fazla _mutex_'i kilitleyebilir.
-The equivalent code to perform simultaneous locking with std::lock_guard is significantly more complex.
-Therefore, it is simpler to use std::scoped_lock all the time, even when locking only one mutex (there will be no performance impact).
+- Birden fazla mutex'i std::lock_guard ile edinmek daha karmaşık
+Yalnızca tek bir muteksi kilitlerken bile her zaman std::scoped_lock kullanmak, performansı azaltıcı bir etki yapmaz.
 
-+ std::scoped_lock is RAII class for mutexes
-+ declaration:
-```
++ std::scoped_lock birden fazla mutex'i tmplate argümanı olarak alabilecek bir template paraemre paketine sahjip
+
++ Sınıfın bildirimi şu sekilde
+```cpp
 template <class... Mtx> 
 class scoped_lock;
 ```
