@@ -43,9 +43,10 @@ _reader thread_ kilidi edindiğinde
 - _reader_ ve _writer_ _thread_'ler bir arada kritik bölgede olamazlar.
 - bu da bir _thread_ değişiklik yaptığında diğer _thread_'lerin kritik bölgede olamayacağı anlamına gelir.
 
+#### ne zaman kullanılmalı?
 _std::shared_mutex_ _std::mutex_'e göre daha fazla bellek alanı kullanır.
 - _std::mutex_'e göre daha yavaştır.
-- _reader thread_'lerin sayısının _write thread_'lerden çok daha fazla olması durumunda ya da okuma işlemlerinin çok fazla zaman alması durumunda tercih edilebilir.
+- _reader thread_'lerin sayısının _writer thread_'lerden çok daha fazla olması durumunda ya da okuma işlemlerinin çok fazla zaman alması durumunda tercih edilebilir.
 
 
 
