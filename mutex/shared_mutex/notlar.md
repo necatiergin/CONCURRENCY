@@ -1,24 +1,21 @@
 - _<shared_mutex>_ başlık dosyasında tanımlanmıştır.
 - iki ayrı şekilde kilitlenebilir: <br>
 exclusive<br>
- - yalnızca tek bir thread kilidi edinebilir.
- - yalnızca tek bir thread kritik bölgeye girebilie.
+ - yalnızca tek bir _thread_ kilidi edinebilir.
+ - yalnızca tek bir _thread_ kritik bölgeye girebilir.
 paylaşımlı <br>
-- birden fazla thread kilidi edinebilir.
- - birdenfazla thread kritik bölgeye girebilir.
-
-_mutex_'i exclusive olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterli.
+birden fazla _thread_ kilidi edinebilir. <br>
+birden fazla _thread_ kritik bölgeye girebilir.  <br>
+_mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterli.
 
 ```cpp
 std::lock_guard<std::shared_mutex>
 std::lock_guard<std::shared_mutex>
 ```
+Bu durumda sadece _mutex_'i edinen _thread_ kritik bölgeye girebilir. Diğer _thread_'ler _mutex_ serbest bırakılıncaya kadar beklemek zorunda. <br>
 
-Bu durumda sadece mutex'i edinen thread kritik bölgeye girebilir.
-Diğer thread'ler mutex serbest bırakılıncaya kadar beklemek zorunda.
-
-mutexin exclusive olarak edinilebilmesi için mutex'in kilitli olmaması gerekir.
-eğer başka bir shared paylaşımlı ya da paylaşımsız olarak kilidi edinmişse diğer bütün threadler kilidi serbest bırakana kadar beklemek zorunda.
+- _mutex_'in _exclusive_ olarak edinilebilmesi için _mutex_'in kilitli olmaması gerekir.
+- eğer başka bir _thread_ paylaşımlı ya da paylaşımsız olarak kilidi edinmişse diğer bütün _exclusive _thread_'ler kilidi edinen _mutex_ kilidi serbest bırakana kadar beklemek zorunda.
 mutexin paylaşımlı olarak edinilebilmesi için bir shared_lock nesnesi oluşturmamız gerekiyor.
 bir shared_lock nenseine sahip bir threadf kritik bölgeye girebilri
 paylaşımlı olarak kilidi edinebilmek için kilidin exclusive olarak sahibi olan bir thread olmamalı
