@@ -34,7 +34,8 @@ bir _exclusive thread_ kilidi edindiğinde
 #### reader thread
 
 - kilidi elde bulunduran bir _exclusive thread_ kilidi bırakana kadar kilidi edinemez.
-- bir _reader thread_ kilidi edinmişse _exclusive thread_ kritik bölgeyi terk etmiş demektir.
+- bir _reader thread_ kilidi paylaşımlı olarak edinmişse _exclusive thread_ kritik bölgeyi terk etmiş demektir.
+- bir _reader thread_ kilidi paylaşımlı olarak edinmişse diğer _reader thread_'ler de paylaşımlı aynı kilidi edinebilir.
 
 _reader thread_ kilidi edindiğinde 
 - kritik bölgeye girer.
@@ -47,6 +48,18 @@ _reader thread_ kilidi edindiğinde
 _std::shared_mutex_ _std::mutex_'e göre daha fazla bellek alanı kullanır.
 - _std::mutex_'e göre daha yavaştır.
 - _reader thread_'lerin sayısının _writer thread_'lerden çok daha fazla olması durumunda ya da okuma işlemlerinin çok fazla zaman alması durumunda tercih edilebilir.
+
+#### interface
+
+```
+std::shared_mutex::lock();
+std::shared_mutex::try_lock();
+std::shared_mutex::unlock();
+
+std::shared_mutex::lock_shared();
+std::shared_mutex::try_lock_shared();
+std::shared_mutex::unlock_shared();
+```
 
 
 
