@@ -1,0 +1,3 @@
+- _recursive mutex_'ler _std::recursive_mutex_ ve _std::recursive_timed_mutex_ sınıfları tarafından sunulur.
+- _recursive_mutex_ sınıfı _std::mutex_ sınıfına benzer ancak yeniden kilitlemeye izin verir.
+- izin verilen kilitleme sayısı derleyiciye bağlıdır.
