@@ -7,3 +7,5 @@ class scoped_lock {
     //...
 }
 ```
+- parametre oaketi olan Ts edinilecek mutex'lerin türleribi belirliyor.
+- gerekli olan kilitleme ve kildi açma arayüzüne sahip tüm _mutex_ türleri ile kullanılabilir.
