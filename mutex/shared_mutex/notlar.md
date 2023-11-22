@@ -1,6 +1,6 @@
 - _<shared_mutex>_ başlık dosyasında tanımlanmıştır.
 iki ayrı şekilde kilitlenebilir: <br>
-- exclusive<br>
+- exclusive (write)<br>
   - yalnızca tek bir _thread_ kilidi edinebilir.<br>
   - yalnızca tek bir _thread_ kritik bölgeye girebilir.<br>
 - paylaşımlı <br>
