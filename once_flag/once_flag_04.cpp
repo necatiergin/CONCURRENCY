@@ -7,15 +7,15 @@
 class Singleton {
 public:
 	Singleton(const Singleton&) = delete;
-	Singleton & operator=(const Singleton&) = delete;
-	
-	static Singleton* get_instance() 
+	Singleton& operator=(const Singleton&) = delete;
+
+	static Singleton* get_instance()
 	{
 		call_once(m_init_flag, Singleton::init);
 
 		return m_instance;
 	}
-	
+
 	static void init()
 	{
 		m_instance = new Singleton();
@@ -32,10 +32,10 @@ std::once_flag Singleton::m_init_flag;
 
 void func()
 {
-	std::osyncstream{std::cout} << Singleton::get_instance() << '\n';
+	std::osyncstream{ std::cout } << Singleton::get_instance() << '\n';
 }
 
-int main() 
+int main()
 {
 	std::vector<std::thread> tvec;
 	for (int i = 0; i < 100; ++i) {
