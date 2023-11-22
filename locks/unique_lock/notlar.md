@@ -31,6 +31,8 @@ Sınıfın _mutex_'i edinmek ve serbest bırakmak için sunduğu üye fonksiyonl
 - ::try_lock()
 - ::try_lock_for()
 - ::try_lock_until()
-- ::unlock() 
+- ::unlock()
+
+- Sınıfın _::mutex_type_ içsel türü template argümanı olan _mutex_ türüne eş isim.
 
 
