@@ -5,7 +5,7 @@ Birden fazla kilit edinilmesi gerekiyorsa, kilitlerin her zaman aynı sırada ed
 Örneğin, bazı işlemleri gerçekleştirmeden önce iki_ mutex_'in edinilmesi gereken bir durum olsun. Eğer iki _mutex_ tutarlı bir sırayla edinilmezse, aşağıdaki gibi bir durum ortaya çıkabilir:
 
 - _thread_ 1, _mutex1_'i edinir.
-- _thread_ 2, _mutex2'_yi edinir.
+- _thread_ 2, _mutex2_' yi edinir.
 - _thread_ 1, _mutex 2_'yi elde etmeye çalışır ve _thread_ 2'nin bu _mutex_'i serbest bırakmasını beklerken bloke olur.
 - _thread_ 2, _muteks 1_'i elde etmeye çalışır ve _thread_ 1'in bu _mutex_'i serbest bırakmasını beklerken bloke olur.
 bu durum _deadlock_'a neden olur. <br>
