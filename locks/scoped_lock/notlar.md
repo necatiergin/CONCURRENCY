@@ -13,3 +13,5 @@ class scoped_lock {
 - _mutex_'ler sınıfın kurucu işlevi tarafından ediniliyor sınıfın _destructor_'ı tarafından serbest bırakılıyor.
 - _std::scoped_lock_ nesneleri kopyalanamz ve taşınamaz.
 - _mutex_'lerin serbest bırakılmasının ihmal edilmesi ya da bir _exception_ gönderilmesi nedeniyle _mutex_'in serbest bırakılmaması riskini ortadan kaldırıyor.
+- birden fazla _mutex_'in edinilmesi durumunda _deadlock_'tan kaçınan bir algoritma kullanılıyor. Yani _mutex_'lerin hangi _thread_'de hangi sırayla edinildiğinin bir önemi yok.
+- _mutex_ sınıf nesnesinin _lock_ ve _unlock_ fonksiyonlarının çağrılması yerine _scoped_lock_ sınıfı kullanılmalı.
