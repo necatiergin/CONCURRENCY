@@ -51,3 +51,18 @@ int main()
 	func(12, 7);
 	func(12, 0);
 }
+
+/*
+template <class E>
+std::exception_ptr make_exception_ptr( E e ) noexcept;
+
+Creates an std::exception_ptr that holds a reference to a copy of e. 
+This is done as if executing the following code:
+
+try {
+    throw e;
+} catch(...) {
+    return std::current_exception();
+}
+
+*/
