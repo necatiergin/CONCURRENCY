@@ -28,3 +28,19 @@ fonksiyonları kullanılır.
 + _wait, wait_for, and wait_until_ fonksiyonları _mutex_'i atomik olarak serbest bırakırlar ve bloke olurlar.
 + _notify_one_ ve _notify_all_ fonksiyonları atomiktir.
 
+#### üye fonksiyonlar
+
+notify_one <br>
+notify one waiting thread <br>
+notify_all <br>
+notify all waiting threads <br>
+wait <br>
+blocks current thread until notified<br>
+wait_for <br>
+blocks current thread until notified or specified duration passed<br>
+wait_until <br>
+blocks current thread until notified or specified time point reached<br>
+native_handle<br>
+get native handle associated with condition variable<br>
+
+
