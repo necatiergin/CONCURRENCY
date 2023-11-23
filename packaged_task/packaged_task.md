@@ -38,4 +38,18 @@ ptask(10, 20);
 ftr.get();
 ```
 
+#### sınıfın üye fonksiyonları
+- ::valid <br>
+check if task object currently associated with shared state<br>
+- ::swap<br>
+swap two task objects<br>
+- ::get_future<br>
+get future associated with promised result<br>
+- ::operator()<br>
+invoke function<br>
+- ::make_ready_at_thread_exit<br>
+invoke function ensuring result ready only once current thread exits<br>
+- ::reset <br>
+reset shared state, abandoning any previously stored result<br>
+
 
