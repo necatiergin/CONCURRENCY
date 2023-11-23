@@ -5,8 +5,6 @@
 
 #include <iostream>
 #include <future>
-#include <thread>
-#include <chrono>
 
 int main()
 {
