@@ -63,4 +63,24 @@ Geçersiz bir _future_ nesnesi için sadece
 
 işlevleri çağrılabilir. Başka bir işlevin çağrılması tanımsız davranıştır.
 
+#### promise sınıfının üye fonksiyonları
+::swap  <br>
+iki promise nesnesini takas eder.
+
+::get_future <br>
+hazırlanacak sonuçla ilişkilendirilen future nesnesini döndürür.<br>
+
+::set_value <br>
+sonuc olan değeri set eder. <br>
+
+set_value_at_thread_exit <br>
+set result to specified value while delivering notification only at thread exit<br>
+
+set_exception <br>
+sonucu bir exception olarak belirler. <br>
+
+set_exception_at_thread_exit <br>
+set result to specified exception while delivering notification only at thread exit <br>
+
+
 
