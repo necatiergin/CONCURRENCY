@@ -10,6 +10,8 @@
 template <class R, class... Args>
 class packaged_task<R(Args...)>;
 ```
++ template parametreleri olan _R_ and _Args_ sarmalanacak _callable_'ın geri dönüş türünü ve parametrelerinin türünü temsil eder.
++ _std::packaged_task_, _std::function_ sınıfına benzer. Ancak _std::packaged_task_ sarmalanan _callable_'ın geri dönüş değerini bir _future_ nesnesi ile iletebilir.
 
 +  _std::packaged_task_ sınıfı çoğunlukla aşağıdaki gibi kullanılır:
 + İş yükü olan _callable_ bir _std::packaged_task_ nesnesi ile sarmalanır:
