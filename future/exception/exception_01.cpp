@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <utility>
+#include <string>
 
 struct Div {
 	void operator()(std::promise<int>&& prom, int a, int b)const
@@ -23,18 +24,15 @@ struct Div {
 void func(int x, int y)
 {
 	std::promise<int> prom;
-	std::future<int> ftr = prom.get_future();
-	std::thread th(Div{}, std::move(prom), x, y);
+	auto ftr = prom.get_future();
+	std::jthread th(Div{}, std::move(prom), x, y);
 	try {
 		std::cout << x << " / " << y << " = " << ftr.get() << '\n';
 	}
 	catch (const std::exception& ex) {
 		std::cout << "exception caught: " << ex.what() << '\n';
 	}
-
-	th.join();
 }
-
 
 int main()
 {
