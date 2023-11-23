@@ -3,6 +3,7 @@
 #include <condition_variable>
 #include <thread>
 #include <iostream>
+#include <fstream>
 
 class IStack {
 public:
@@ -12,43 +13,48 @@ public:
 
 	int pop()
 	{
-		std::unique_lock lock(m_);
+		std::unique_lock lock(mtx);
 		m_cv.wait(lock, [this]() {return !m_vec.empty(); });
 		int val = m_vec.back();
 		m_vec.pop_back();
 		return val;
 	}
+
 	void push(int x)
 	{
-		std::scoped_lock lock(m_);
-		m_vec.push_back(x);	
-		m_cv.notify_one(); 
+		std::scoped_lock lock(mtx);
+		m_vec.push_back(x);
+		m_cv.notify_one();
 	}
 private:
 	std::vector<int> m_vec;
-	mutable std::mutex m_;
+	mutable std::mutex mtx;
 	mutable std::condition_variable m_cv;
 };
 
-constexpr int n = 1000;
-IStack s;
+constexpr int n{ 1'000 };
+IStack gstack;
 
 void producer()
 {
 	for (int i = 0; i < n; ++i)
-		s.push(2 * i + 1);
+		gstack.push(2 * i + 1);
 }
 
-void consumer()
+void consumer(std::ofstream& ofs)
 {
 	for (int i = 0; i < n; ++i)
-		std::cout << s.pop() << '\n';
+		ofs << gstack.pop() << '\n';
 }
 
 int main()
 {
-	std::thread th1(producer);
-	std::thread th2(consumer);
-	th1.join();
-	th2.join();
+	std::ofstream ofs{ "log.txt" };
+	if (!ofs) {
+		std::cerr << "cannot create log.txt\n";
+		exit(EXIT_FAILURE);
+	}
+	
+	std::jthread th1(producer);
+	std::jthread th2(consumer, std::ref(ofs));
 }
