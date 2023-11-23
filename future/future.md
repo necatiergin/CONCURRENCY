@@ -28,6 +28,21 @@ class future<void>; //void türü için explicit specialization
 
 ```
 
+_std::promise_ sınıfının bildirimi şöyledir: <br>
+
+```
+template <class T>
+class promise;
+```
+- _T, promise_ nesnesi tarafından set edilecek  sonucun türüdür. _T_ _void_ türü de olabilir.
+- _std::promise_ sınıf nesneleri kopyalanamaz ama taşınabilir.
+- sınıfın _set_value_ fonksiyonu üretilecek değeri set eder.
+- sınıfın _set_exception_ sonuç nesnesini _exception_ bilgisiyle set eder.
+- sonuç sadece bir kez yazılabilir (set edilebilir)
+- sınıfın _get_future_ üye fonksiyonu _promise_ ile ilişkilendirilen _future_ nesnesini döndürür.
+- _get_future_ fonksiyonu yalnızca bir kez çağrılabilir.
+- _promise_ nesnesi ilişkili sonuç belirlenmeden önce yok edilirse ve ilgili _future_ nesnesinden sonuç alınmaya çalışılırsa _std::future_error_ türündne bir hata nesnesi gönderilir.
+
 Sonuç bir _shared state_ içinde tutuluyor. Bu _shared state_ 
 + std::async fonksiyonu tarafından
 + std::packaged_task tarafından
