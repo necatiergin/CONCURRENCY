@@ -5,19 +5,31 @@
 #include <utility>
 #include <string>
 
+//struct Div {
+//	void operator()(std::promise<int>&& prom, int a, int b)const
+//	{
+//		try {
+//			if (b == 0) {
+//				auto err_str = "divide by zero error " + std::to_string(a) + " / " + std::to_string(b);
+//				throw std::runtime_error(err_str);
+//			}
+//			prom.set_value(a / b);
+//		}
+//		catch (...) {
+//			prom.set_exception(std::current_exception());
+//		}
+//	}
+//};
+
 struct Div {
 	void operator()(std::promise<int>&& prom, int a, int b)const
 	{
-		try {
-			if (b == 0) {
-				auto err_str = "divide by zero error " + std::to_string(a) + " / " + std::to_string(b);
-				throw std::runtime_error(err_str);
-			}
-			prom.set_value(a / b);
+		if (b == 0) {
+			auto err_str = "divide by zero error " + std::to_string(a) + " / " + std::to_string(b);
+			prom.set_exception(std::make_exception_ptr(std::runtime_error(err_str)));
+			return;
 		}
-		catch (...) {
-			prom.set_exception(std::current_exception());
-		}
+		prom.set_value(a / b);
 	}
 };
 
