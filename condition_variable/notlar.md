@@ -1,0 +1,1 @@
++ Eşzamanlı programlarda, genellikle bir thread'in belirli bir olay gerçekleşene kadar beklemesi gerekir (örneğin, bir giriş çıkış işlemi tamamlanana kadar ya da bir veri kullanılabilir duruma gelene kadar).
