@@ -39,7 +39,7 @@ ftr.get();
 
 #### sınıfın üye fonksiyonları
 - ::valid <br>
-check if task object currently associated with shared state<br>
+_packaged_task_ nesnenin bir _"shared_state"_ ile ilişkilendirilmiş durumda olup olmadığını sınar. 
 - ::swap<br>
 swap two task objects<br>
 - ::get_future<br>
