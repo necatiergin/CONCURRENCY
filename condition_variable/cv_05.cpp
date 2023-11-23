@@ -2,46 +2,46 @@
 #include <condition_variable>
 #include <thread>
 #include <chrono>
+#include <string>
+#include <syncstream>
 
 std::condition_variable cv;
-std::mutex cv_m;
+std::mutex mtx;
+int gval = 0;
 
+using namespace std::literals;
 
-int i = 0;
-
-void waits()
+void waits(const std::string& id)
 {
-	std::unique_lock<std::mutex> lk(cv_m);
-	std::cerr << "Waiting...\n";
-	cv.wait(lk, [] {return i == 1; });
-									
-	std::cerr << "...finished waiting. i == 1\n";
+	std::unique_lock<std::mutex> lk(mtx);
+	std::osyncstream{ std::cout } << id << " is waiting\n";
+	cv.wait(lk, [] {return gval == 1; });
+
+	std::osyncstream{ std::cout } << id << " finished waiting. gval == 1\n";
 }
 
-void signals()
+void signals(const std::string& id)
 {
-	std::this_thread::sleep_for(std::chrono::seconds(1)); 
+	std::this_thread::sleep_for(1s);
 
-	{
-		std::lock_guard<std::mutex> lk(cv_m);
-		std::cerr << "Notifying...\n";
-	}
+	std::osyncstream{ std::cout } << id << " notifying\n";
+	
 	cv.notify_all();
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+	std::this_thread::sleep_for(std::chrono::seconds(1s));
 	{
-		std::lock_guard<std::mutex> lk(cv_m);
-		i = 1;
-		std::cerr << "Notifying again...\n";
+		std::lock_guard<std::mutex> lk(mtx);
+		gval = 1;
+		std::osyncstream{ std::cout } << id << " notifying again\n";
 	}
 	cv.notify_all();
 }
 
 int main()
 {
-	std::thread t1(waits), t2(waits), t3(waits), t4(signals), t5(signals);
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
-	t5.join();
+	std::jthread 
+	t1(waits, "t1"), 
+	t2(waits, "t2"), 
+	t3(waits, "t3"), 
+	t4(signals, "t4"), 
+	t5(signals, "t5");
 }
