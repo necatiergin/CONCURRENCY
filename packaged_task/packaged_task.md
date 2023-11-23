@@ -12,7 +12,10 @@ class packaged_task<R(Args...)>;
 ```
 + template parametreleri olan _R_ and _Args_ sarmalanacak _callable_'ın geri dönüş türünü ve parametrelerinin türünü temsil eder.
 + _std::packaged_task_, _std::function_ sınıfına benzer. Ancak _std::packaged_task_ sarmalanan _callable_'ın geri dönüş değerini bir _future_ nesnesi ile iletebilir.
-
++ _packaged_task_ çoğunlukla _thread_ fonksiyonu olarak kullanılır.
++ packaged_task sınıf nesneleri taşınabilir ama kopyalanamaz.
++ _get_future_ fonksiyonu ile _packaged_task_ ile ilişkilendirilen _std::future_ nesnesi elde edilir.
++ _get_future_ fonksiyonu yalnızca bir kez çağrılabilir.
 +  _std::packaged_task_ sınıfı çoğunlukla aşağıdaki gibi kullanılır:
 + İş yükü olan _callable_ bir _std::packaged_task_ nesnesi ile sarmalanır:
 	
@@ -34,3 +37,5 @@ ptask(10, 20);
 ```
 ftr.get();
 ```
+
+
