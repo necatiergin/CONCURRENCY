@@ -20,8 +20,6 @@ struct Div {
 	}
 };
 
-//consumer code here is the main function
-
 int main()
 {
 	int x{ 90 }, y{ 15 };
@@ -34,7 +32,7 @@ int main()
 	auto fp_sumsquare = sum_square_prom.get_future();
 	auto fp_div = div_prom.get_future();
 
-	// we launch the threads
+	// we launch the threads producing the results
 	std::jthread tss(sum_square, std::move(sum_square_prom), x, y);
 	std::jthread tdd(Div{}, std::move(div_prom), x, y);
 	
