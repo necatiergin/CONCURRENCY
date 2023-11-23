@@ -6,3 +6,25 @@
 + Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi gerçekleştirir.
 + Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinde bir sinyal işlemi gerçekleştirir.
 + Bununla birlikte, sinyal verilen thread çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir thread koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
+
+#### _std::condition_variable_ sınıfı
++ _std::condition_variable_ sınıfı _condition variable_ sağlar.
++ _std::condition_variable_ sınıf nesneleri kopyalanamaz ve taşınamaz.
++ Gerekli koşulun sağlanmasını beklemek için sınıfın
+  - wait
+  - wait_for
+  - wait_until 
+fonksiyonlarından biri çağrılır.
+
++ koşulun oluşmasını bekleyen _thread_ ya da _thread_'lere haber vermek için sınıfın
+  - notify_one
+  - notify_all 
+fonksiyonları kullanılır.
+
++ _thread_ uyandığında uyanan _thread_'in koşulun gerçekleşip gerçekleşmediğini tekrar kontrol etmesi gerekir, çünkü
+  - sahte _(spurious)_ uyanışlara izin verilir
+  - uyanacak _thread_'e sinyal gönderildiği zaman ile uyandığı ve _mutex_'i kilitlediği zaman arasında, başka bir iş parçacığı durumun değişmesine neden olabilir.
++ _notify_one, notify_all, wait, wait_for, wait_until_ fonksiyonları eş zamanlı olarak çağrılabilir
++ _wait, wait_for, and wait_until_ fonksiyonları _mutex_'i atomik olarak serbest bırakırlar ve bloke olurlar.
++ _notify_one_ ve _notify_all_ fonksiyonları atomiktir.
+
