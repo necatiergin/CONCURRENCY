@@ -18,7 +18,7 @@ int main()
 {
 	std::promise<double> prms;
 	auto ftr = prms.get_future();
-	//consumer thread
+	//we launch the produce thread
 	std::jthread producer(produce, std::move(prms), 4.5);
 	std::cout << ftr.get() << '\n';
 }
