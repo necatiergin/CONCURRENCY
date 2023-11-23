@@ -7,7 +7,14 @@ _promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya d
 - _promise_     : Üretilecek sonucu hazırlayacak üretici nesne
 - _future_      : sonucun iletilmesinde kulanılacak nesne
 - _shared state_: _future_ nesnesi tarafından erişilecek söz verilen değeri tutar. _promise_ ve _future_ nesneleri tatafından birlikte kullanılır.
-- sonucu üreten kod _promise_ nesnesini kullanarak sonucu _shared state_'te tutar. Tüketici kod shared state'te tutulan sonucu future nesnesini kullanarak alır.
+- sonucu üreten kod _promise_ nesnesini kullanarak sonucu _shared state_'te tutar. Tüketici kod _shared state_'te tutulan sonucu _future_ nesnesini kullanarak alır.
+
+_çok thread_'li programlar, genellikle bazı hesaplamaları _asenkron_ olarakgerçekleştirir. Bu durumda sonuç bir_ thread_ tarafından hazırlanı ve diğer _thread_'in bu sonuca erişmesi gerekir. 
+- bu da sonucu üreten ve tüketen _thread_'ler arasında bir senkronizasyon gerektirir.
+- sonucu tüketen _thread_ sonuç hazırlanıp kullanılabilir olana kadar beklemelidir.
+- _thread_'ler arasında iletilecek sonucu tutan paylaşımlı olarak kullanılacak değişkenlere erişirken "data race"ten kaçınmalıdır.
+- Böyle bir senkronizasyon _promise_ ve _future_ nesneleri ile gerçekleştirilebilir.
+
 
 ```
 template <class T> 
