@@ -13,8 +13,8 @@ void func(std::promise<int> x)
 int main()
 {
 	std::promise<int> prom;
-	std::future<int> ftr = prom.get_future();
-	std::thread tx{ func,std::move(prom) };
+	auto ftr = prom.get_future();
+	std::jthread tx{ func,std::move(prom) };
 	std::future_status status{};
 
 	do {
@@ -28,5 +28,4 @@ int main()
 	} while (status != std::future_status::ready);
 
 	std::cout << "value is : " << ftr.get() << '\n';
-	tx.join();
 }
