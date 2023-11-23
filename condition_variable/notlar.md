@@ -30,17 +30,11 @@ fonksiyonları kullanılır.
 
 #### üye fonksiyonlar
 
-notify_one <br>
-notify one waiting thread <br>
-notify_all <br>
-notify all waiting threads <br>
-wait <br>
-blocks current thread until notified<br>
-wait_for <br>
-blocks current thread until notified or specified duration passed<br>
-wait_until <br>
-blocks current thread until notified or specified time point reached<br>
-native_handle<br>
-get native handle associated with condition variable<br>
+_notify_one_ : bekleyen bir _thread_'e sinyal gönderir. <br>
+_notify_all_ : bekleyen bütün thread'lere sinyal gönderir. <br>
+_wait_ : thread'i sinyal gelene kadar bloke eder <br>
+_wait_for_ : blocks current thread until notified or specified duration passed<br>
+_wait_until_ : blocks current thread until notified or specified time point reached<br>
+_native_handle_: get native handle associated with condition variable<br>
 
 
