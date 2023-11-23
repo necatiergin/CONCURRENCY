@@ -2,6 +2,13 @@ _std::future_ ve _std::promise_ sınıfları (sınıf şablonları) standart kü
 _std:future_, standart _\<future>_ başlık dosyasında tanımlanmış bir sınıf şablonu. (C++11)
 Bir operasyonun sonucunu _(outcome)_ temsil ediyor. (Ya çalıştırılacak bir fonksiyonun geri dönüş değeri ya da çalıştırılacak fonksiyondan gönderilecek _exception_. Ama ikisi birden değil)
 
+_promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya da bir exception) iletmek üzere bir kez kullanılacak bir iletişim kanalı oluştururlar:<br>
+
+- _promise_     : Üretilecek sonucu hazırlayacak üretici nesne
+- _future_      : sonucun iletilmesinde kulanılacak nesne
+- _shared state_: _future_ nesnesi tarafından erişilecek söz verilen değeri tutar. _promise_ ve _future_ nesneleri tatafından birlikte kullanılır.
+- sonucu üreten kod _promise_ nesnesini kullanarak sonucu _shared state_'te tutar. Tüketici kod shared state'te tutulan sonucu future nesnesini kullanarak alır.
+
 ```
 template <class T> 
 class future; 
