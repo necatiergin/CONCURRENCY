@@ -16,5 +16,5 @@ enum class future_status {
 Bu değerlerin anlamları şöyledir:
 
 - **deferred** : fonksiyon henüz çalışmaya başlamamıştır.
-- **ready**    : sonuç hazır durumdadır. (yani fonksiyon çalıştırılmış değer elde edilmiş ve _promise_ nesnesi set edilmiştir. Yani future nesnesinin get işleviyle bu değer hemen alınabilir.  
+- **ready**    : sonuç hazır durumdadır. (yani fonksiyon çalıştırılmış değer elde edilmiş ve _promise_ nesnesi set edilmiştir. Yani _future_ nesnesinin _get_ işleviyle bu değer hemen alınabilir.  
 - **timeout**  : verilen süre dolmuştur.
