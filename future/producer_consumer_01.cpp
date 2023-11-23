@@ -3,7 +3,7 @@
 #include <thread>
 #include <utility>
 
-//producer code receives promise object by reference
+//producer code receives promise object by R value reference
 void sum_square(std::promise<int>&& prom, int x, int y)
 {
 	//calls set_value member function to set the shared state
@@ -12,7 +12,7 @@ void sum_square(std::promise<int>&& prom, int x, int y)
 }
 
 struct Div {
-	//producer code receives promise object by reference
+	//producer code receives promise object by R value reference
 	void operator() (std::promise<int>&& prom, int x, int y) const
 	{
 		//calls set_value member function to set the shared state
