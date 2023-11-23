@@ -3,7 +3,7 @@
 #include <thread>
 #include <condition_variable>
 
-int data;
+int gdata;
 bool ready_flag{};
 std::mutex mtx;
 std::condition_variable cv;
@@ -11,8 +11,8 @@ std::condition_variable cv;
 void producer()
 {
 	{
-		std::lock_guard lg{mtx};
-		data = 2345;
+		std::lock_guard lg{ mtx };
+		gdata = 2345;
 		ready_flag = true;
 	}
 	cv.notify_one();
@@ -25,13 +25,11 @@ void consumer()
 		cv.wait(lock, [] {return ready_flag; });
 	}
 
-	std::cout << "data : " << data;
+	std::cout << "gdata : " << gdata;
 }
 
 int main()
 {
-	std::thread t1(producer);
-	std::thread t2(consumer);
-
-	t1.join(); t2.join();
+	std::jthread t1(producer);
+	std::jthread t2(consumer);
 }
