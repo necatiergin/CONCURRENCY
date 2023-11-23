@@ -3,7 +3,6 @@
 #include <chrono>
 #include "nutility.h"
 
-
 constexpr int x = 50;
 
 long long fib(int n)
