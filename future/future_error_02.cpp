@@ -11,14 +11,14 @@
 int main()
 {
 	std::promise<double> dprom;
-	auto ft = dprom.get_future();
+	auto ftr = dprom.get_future();
 	dprom.set_value(1.5);
 
-	auto val = ft.get();
+	auto val = ftr.get();
 	std::cout << "val = " << val << "\n";
 
 	try {
-		auto x = ft.get();
+		auto x = ftr.get();
 	}
 	//catch (const std::exception& ex) {
 	catch (const std::future_error& ex) {
