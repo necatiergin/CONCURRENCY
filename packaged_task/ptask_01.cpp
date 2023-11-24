@@ -1,3 +1,5 @@
+// synchronous usage of std::package_task
+
 #include <future>
 #include <iostream>
 
