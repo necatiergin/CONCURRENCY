@@ -1,9 +1,9 @@
 - _<shared_mutex>_ başlık dosyasında tanımlanmıştır.
 iki ayrı şekilde kilitlenebilir: <br>
-- exclusive (write)<br>
+- _exclusive (write)_<br>
   - yalnızca tek bir _thread_ kilidi edinebilir.<br>
   - yalnızca tek bir _thread_ kritik bölgeye girebilir.<br>
-- paylaşımlı <br>
+- _paylaşımlı_ <br>
   - birden fazla _thread_ kilidi edinebilir. <br>
   - birden fazla _thread_ kritik bölgeye girebilir.  <br>
 _mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterli.
