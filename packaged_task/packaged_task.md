@@ -15,7 +15,7 @@ class packaged_task<R(Args...)>;
 + _packaged_task_ sınıf nesneleri taşınabilir ama kopyalanamaz.
 + _get_future_ fonksiyonu ile _packaged_task_ ile ilişkilendirilen _std::future_ nesnesi elde edilir.
 + _get_future_ fonksiyonu yalnızca bir kez çağrılabilir.
-#### _std::packaged_task_ sınıfı çoğunlukla aşağıdaki gibi kullanılır:
+#### _std::packaged_task_ sınıfı senkron olarak kullanılabilir:
 + İş yükü olan _callable_ bir _std::packaged_task_ nesnesi ile sarmalanır:
 	
 ```
@@ -36,6 +36,14 @@ ptask(10, 20);
 ```
 ftr.get();
 ```
+Oluşturulan _task_ bir _thread_'e iş yükü olarak da verilebilir:
+
+```
+	std::packaged_task<int(int, int)> ptask([](int a, int b)
+					{ return a * a + b * b; });
+        std::jthread th{ptask, 4, 7};
+```
+
 
 #### sınıfın üye fonksiyonları
 - ::valid <br>
