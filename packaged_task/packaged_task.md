@@ -41,22 +41,16 @@ Oluşturulan _task_ bir _thread_'e iş yükü olarak da verilebilir:
 ```
 	std::packaged_task<int(int, int)> ptask([](int a, int b)
 					{ return a * a + b * b; });
-        std::jthread th{ptask, 4, 7};
+        std::jthread th{std::move(ptask), 4, 7};
 ```
 
 
 #### sınıfın üye fonksiyonları
-- ::valid <br>
-_packaged_task_ nesnenin bir _"shared_state"_ ile ilişkilendirilmiş durumda olup olmadığını sınar. 
-- ::swap<br>
-swap two task objects<br>
-- ::get_future<br>
-get future associated with promised result<br>
-- ::operator()<br>
-invoke function<br>
-- ::make_ready_at_thread_exit<br>
-invoke function ensuring result ready only once current thread exits<br>
-- ::reset <br>
-reset shared state, abandoning any previously stored result<br>
+- **::valid**  : _packaged_task_ nesnenin bir _"shared_state"_ ile ilişkilendirilmiş durumda olup olmadığını sınar. 
+- **::swap**   : iki nesneyi takas eder.
+- **::get_future** : get future associated with promised result<
+- **::operator()** : invoke function
+- **::make_ready_at_thread_exit** : invoke function ensuring result ready only once current thread exits<br>
+- **::reset** : paylaşılan durumu reset eder., abandoning any previously stored result<br>
 
 
