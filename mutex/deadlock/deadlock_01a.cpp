@@ -39,14 +39,10 @@ void bar()
 	std::osyncstream{ std::cout } << td::get_id() << " is trying to lock b_mtx\n";
 	b_mtx.lock();
 	std::osyncstream{ std::cout } << td::get_id() << " has locked b_mtx\n";
-
 	std::this_thread::sleep_for(500ms);
 	std::osyncstream{ std::cout } << td::get_id() << " is trying to lock a_mtx\n";
-
 	a_mtx.lock();
 	std::osyncstream{ std::cout } << td::get_id() << " has locked a_mtx\n";
-
-	std::cout << "bar()" << std::endl;
 	b_mtx.unlock();
 	std::osyncstream{ std::cout } << td::get_id() << " has unlocked b_mtx\n";
 	a_mtx.unlock();
