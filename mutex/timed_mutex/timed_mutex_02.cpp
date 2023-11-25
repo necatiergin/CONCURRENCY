@@ -8,17 +8,18 @@
 
 std::timed_mutex mtx;
 
-void task(int id, st) 
+void task(int id)
 {
 	using namespace std::literals;
 	int cnt{};
 
 	for (int i{}; i < 10'000; ++i) {
-		std::unique_lock lock(mtx, std::defer_lock);
-		if (lock.try_lock_for(1us)) {
-			++cnt;
-		}
 		
+		if (mtx.try_lock_for(1us)) {
+			++cnt;
+			mtx.unlock();
+		}
+
 	}
 	std::osyncstream{ std::cout } << id << "  " << ++cnt << '\n';
 }
