@@ -5,7 +5,7 @@
 + Bir koşul değişkeni, ilgilenilen bazı olaylara karşılık gelir.
 + Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi gerçekleştirir.
 + Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinde bir sinyal işlemi gerçekleştirir.
-+ Bununla birlikte, sinyal verilen thread çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir thread koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
++ Bununla birlikte, sinyal verilen _thread_ çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir _thread_ koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
 
 #### _std::condition_variable_ sınıfı
 + _std::condition_variable_ sınıfı _condition variable_ sağlar.
