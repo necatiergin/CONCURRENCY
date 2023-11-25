@@ -1,7 +1,6 @@
 #include <iostream>
 #include <future>
 #include <chrono>
-#include "nutility.h"
 
 constexpr int x = 50;
 
