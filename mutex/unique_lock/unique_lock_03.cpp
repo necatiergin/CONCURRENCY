@@ -5,7 +5,7 @@
 unsigned long gcount{};
 std::mutex mtx;
 
-void foo() 
+void foo()
 {
 	for (unsigned long i{}; i < 1'000'000ul; ++i) {
 		std::unique_lock lock(mtx, std::defer_lock);
@@ -21,12 +21,13 @@ void foo()
 	}
 }
 
-int main() 
+int main()
 {
-	std::jthread t1(foo);
-	std::jthread t2(foo);
-	t1.join();
-	t2.join();
+	{
+		std::jthread t1(foo);
+		std::jthread t2(foo);
+	}
+	
 	std::cout << gcount << '\n'; //4000000
 
 }
