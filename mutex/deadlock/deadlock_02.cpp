@@ -5,15 +5,14 @@
 
 class Buffer {
 public:
-	static constexpr long size() 
+	static constexpr auto size() 
 	{
-		return 16 * 1024L * 1024L;
+		return 16u * 1024u * 1024u;
 	}
 
 	Buffer() : m_data(size()) {}
 	
-	Buffer & operator=(const Buffer&) = delete;
-	
+	Buffer(const Buffer&) = delete;
 	Buffer & operator=(Buffer&&) = delete;
 	
 	void swap(Buffer & other) 
@@ -21,8 +20,8 @@ public:
 		if (this == &other) 
 			return;
 
-		std::scoped_lock lock1(mtx);
-		std::scoped_lock lock2(other.mtx);
+		std::lock_guard lock1(mtx);
+		std::lock_guard lock2(other.mtx);
 		std::swap(m_data, other.m_data);
 	}
 // ...
