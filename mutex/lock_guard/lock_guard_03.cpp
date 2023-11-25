@@ -22,11 +22,8 @@ void print(int x)
 
 int main()
 {
-	std::vector<std::thread> tvec;
+	std::vector<std::jthread> tvec(20);
 
 	for (int i = 0; i < 20; ++i)
-		tvec.emplace_back(std::thread{ print, i });
-
-	for (auto& t : tvec)
-		t.join();
+		tvec[i] = std::jthread{ print, i };
 }
