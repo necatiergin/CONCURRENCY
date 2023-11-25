@@ -8,20 +8,22 @@ std::mutex print_mutex;
 void print(const std::string& s)
 {
 	std::lock_guard<std::mutex> guard(print_mutex);
-	
+
 	for (char c : s) {
 		std::cout.put(c);
 	}
-	
-	std::cout << std::endl;
+
+	std::cout << '\n';
 }
 
 
 int main()
 {
-	auto ft1 = std::async(std::launch::async, print, "Necati Ergin");
-	auto ft2 = std::async(std::launch::async, print, "Ahmet Aksoy");
-	auto ft3 = std::async(std::launch::async, print, "Dogukan Yigit Polat");
-	
+	{
+		std::jthread t1{ print, "necati ergin" };
+		std::jthread t2{ print, "kaan aslan" };
+		std::jthread t3{ print, "oguz karan" };
+	}
+
 	print("main thread");
 }
