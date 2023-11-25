@@ -1,5 +1,6 @@
 #include<mutex>
 #include <iostream>
+#include <syncstream>
 
 std::mutex a_mtx;
 std::mutex b_mtx;
@@ -7,11 +8,11 @@ std::mutex b_mtx;
 void foo()
 {
 	using namespace std::literals;
-	std::lock(a_mtx, b_mtx);	
-	std::lock_guard guard1{ a_mtx, std::adopt_lock };  
-	std::lock_guard guard2{ b_mtx, std::adopt_lock };  
+	std::lock(a_mtx, b_mtx);
+	std::lock_guard guard1{ a_mtx, std::adopt_lock };
+	std::lock_guard guard2{ b_mtx, std::adopt_lock };
 	std::this_thread::sleep_for(100ms);
-	std::cout << "foo()" << std::endl;
+	std::osyncstream{ std::cout } << "foo ends" << '\n';
 }
 
 void bar()
@@ -21,14 +22,11 @@ void bar()
 	std::lock_guard guard1{ a_mtx, std::adopt_lock };
 	std::lock_guard guard2{ b_mtx, std::adopt_lock };
 	std::this_thread::sleep_for(100ms);
-	std::cout << "bar()" << std::endl;
+	std::osyncstream{ std::cout } << "bar ends" << '\n';
 }
 
 int main()
 {
-	std::thread t1{ foo };
-	std::thread t2{ bar };
-
-	t1.join();
-	t2.join();
+	std::jthread t1{ foo };
+	std::jthread t2{ bar };
 }
