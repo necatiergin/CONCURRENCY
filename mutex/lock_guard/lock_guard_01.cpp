@@ -3,33 +3,30 @@
 #include <iostream>
 #include <syncstream>
 
+using namespace std;
 using namespace std::literals;
 
 std::mutex gmtx;
 
-void func(int n, char c)
-{
-	for (int i = 0; i < n; ++i) {
-		try {
-			//gmtx.lock();
-			std::lock_guard lg{ gmtx };
-			std::osyncstream{ std::cout } << c << '\n';
-			if (i % 3 == 0)
-				throw std::runtime_error{ "error in loop!\n" };
-			std::this_thread::sleep_for(50ms);
-			//gmtx.unlock();
-		}
-		catch (const std::exception& ex) {
-			std::osyncstream{ std::cout } << "\nexception caught: " << ex.what() << '\n';
-		}
-	}
-	std::cout << '\n';
 
+void func(int x)
+{
+	gmtx.lock();
+	try {
+		osyncstream{ std::cout } << this_thread::get_id() << " " << "locked the mutex\n";
+		osyncstream{ std::cout } << "x = " << x << '\n';
+		if (x % 2 == 0)
+			throw invalid_argument{ "no even number" };
+		gmtx.unlock();
+		osyncstream{ std::cout } << this_thread::get_id() << " " << "unocked the mutex\n";
+	}
+	catch (const exception& ex) {
+		osyncstream{ std::cout } << this_thread::get_id() << " exception caught : " << ex.what() << '\n';
+	}
 }
 
 int main()
 {
-	std::jthread t1{ func, 3, 'A' };
-	std::jthread t2{ func, 3, 'B' };
-	std::jthread t3{ func, 3, 'C' };
+	jthread t1{ func, 4 };
+	jthread t2{ func, 5 };
 }
