@@ -15,3 +15,7 @@ _std::thread_'e göre daha yüksek seviyeli bir soyutlama sağlıyor.
 _thread_ ya da _thread_'leri kendisi oluşturuyor.
 - _thread_'ler arası iletişimi kendi oluşturuyor.
 - paylaşılan veri _(shared variables)_ kullanmak gerekmiyor.
+
+dezavantajlar<br>
+- _detach_ etme olanağı yok.
+
