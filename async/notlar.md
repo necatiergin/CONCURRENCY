@@ -26,5 +26,7 @@ async(launch policy, Func&& f, Args&&... args);
 + asenkron çalıştırma durumunda arka planda bir _promise_ ve bir _future_ nesnesi oluşturulmaktadır.
 + _asynch_ tarafından oluşturulan _future_ nesnesi diğer yollarla oluşturulan _future_ nesnelerinden daha farklı davranır.
 
-eğer _future_ nesnesi async işlevi tarafından oluşturulmuş ise: ve _future_ nesnesi _"shared state"_e başvuran son _future_ nesnesiyse, _future_ nesnesi için çağrılan _destructor_ _future_ nesnesi ile ilişkili sonuç hazır olana kadar _thread_'i bloke eder.
+eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _future_ nesnesi _"shared state"_e başvuran son _future_ nesnesi ise, _future_ nesnesi için çağrılan _destructor_ _future_ nesnesi ile ilişkili sonuç hazır olana kadar _thread_'i bloke eder.
+
++ Aslında _std::async_ başlatma ilkesiyle, _future::get()_ işlevini çağırmamız gerekmez. Fonksiyonun döndürmüş olduğu _std::future_ nesnesinin hayatı bittiğinde, program iş yükünün bitmesini bekleyecektir. Bu nedenle, _std::future_ nesnesinin get() işlevini çağırmazsanız, future nesnesinin kapsamının sonunda arka plan görevinin sona ermesini bekleyecektir. Yine de, program sona ermeden önce _get()_ işlevini çağırmak davranışı daha net hale getirir.
 
