@@ -1,8 +1,8 @@
-+ std::async fonksiyon şablonu bir "callable"ı asenkron olarak çalıştırmak için kullanılır.
++ std::async fonksiyon şablonu bir "_callable_"ı asenkron olarak çalıştırmak için kullanılır.
 
-İki ayrı yükleme (overload) var
+İki ayrı yükleme _(overload)_ var:
 
-+ varsayılan çalıştırma stratejisi
++ varsayılan çalıştırma stratejisi _(default launch policy)_
 
 ```
 template <class Func, class... Args>
@@ -10,7 +10,7 @@ future<typename result_of<typename decay<Func>::type(typename decay<Args>::type.
 async(Func&& f, Args&&... args);
 ```
 
-çalıştırma stratejisi isteyen
++ çalıştırma stratejisi _(launch policy)_ isteyen :
 
 ```
 template <class Func, class... Args>
