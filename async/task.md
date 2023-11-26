@@ -19,3 +19,20 @@ _thread_ ya da _thread_'leri kendisi oluşturuyor.
 dezavantajlar<br>
 - _detach_ etme olanağı yok.
 
+
+#### std::packaged_task avantajları
+
++ task'i bir nesne olarak temsil etmenin en kolay yolu.
++ std::async'e göre daha düşük seviyeli bir soyutlama.
+	- task'in ne zaman yürütüleceğini kendimiz belirleyebiliyoruz;
+	- task'in hangi thread tarafından yürütüleceğini kendimiz belirleyebiliyoruz
+
+#### std::thread
+
++ std::thread sınıfı türünde nesne oluşturmak.
++ standart kütüphanenin sunduğu en düşük seviyeli soyutlama.
++ diğer seçeneklere göre çok daha esnek.
++ işletim sisteminin öğelerine erişim olanağı sağlıyor.
++ Standard C++ tarafından sunulmayan olanakları kullanabiliyoruz.
++ thread detach edilebiliyor.
+
