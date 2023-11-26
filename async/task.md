@@ -1,17 +1,17 @@
 #### Bir task'in çalıştırılması için farklı seçeneklerimiz var:
 
-+ bir thread nesnesi oluşturmak.
-+ bir packaged_task nesnesi oluşturmak.
-+ std::sync fonksiyonunu çağırmak.
++ bir _std::thread_ nesnesi oluşturmak.
++ bir _std::packaged_task_ nesnesi oluşturmak.
++ _std::async_ fonksiyonunu çağırmak.
 
-farklı avantajları ve dezavantajları var:
+bu seçeneklerin farklı avantajları ve dezavantajları var:
 
-#### std::async
+#### _std::async_
 - fonksiyondan geri dönüş değeri almak çok kolay.
-- task'dan gönderilen exception kolayca yakalanıyor.
-- task'i senkron ya da asenkron çalıştırma olanağı var.
+- _task_'dan gönderilen _exception_ kolayca yakalanıyor.
+- _task_'i senkron ya da asenkron çalıştırma olanağı var.
 
-std::thread'e göre daha yüksek seviyeli vbir soyutlama sağlıyor.
-thread ya da theadleri kendisi oluşturuyor.
-thread'ler arası iletişimi kendi oluşturuyor.
-paylaşılan veri kullanmak gerekmiyor.
+_std::thread_'e göre daha yüksek seviyeli bir soyutlama sağlıyor.
+_thread_ ya da _thread_'leri kendisi oluşturuyor.
+- _thread_'ler arası iletişimi kendi oluşturuyor.
+- paylaşılan veri _(shared variables)_ kullanmak gerekmiyor.
