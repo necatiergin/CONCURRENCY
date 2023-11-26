@@ -27,7 +27,8 @@ int main()
 	else
 	{
 		std::cout << "future is invalid, get function cannot be called\n";
-	}									  
+	}
+	
 	try {
 		auto i = ftr.get();
 	}
@@ -36,10 +37,3 @@ int main()
 		std::cout << "exception caught : " << ex.what() << '\n';
 	}
 }
-
-Output
-------
-future is valid, get function can be called
-ival = 1
-future is invalid, get function cannot be called
-exception caught : no state
