@@ -30,3 +30,5 @@ eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _futur
 
 + Aslında _std::async_ başlatma ilkesiyle, _future::get()_ işlevini çağırmamız gerekmez. Fonksiyonun döndürmüş olduğu _std::future_ nesnesinin hayatı bittiğinde, program iş yükünün bitmesini bekleyecektir. Bu nedenle, _std::future_ nesnesinin get() işlevini çağırmazsanız, future nesnesinin kapsamının sonunda arka plan görevinin sona ermesini bekleyecektir. Yine de, program sona ermeden önce _get()_ işlevini çağırmak davranışı daha net hale getirir.
 
++ _std::async_ işlevinin asenkron çalıştırıp işlevin geri dönüş değerini bir değişkene atamadığımızı düşünelim. Bu durumda çağrıyı yapan _thread_ çağrılan işlevin çalışması bitene kadar bloke olur. Bu da fonksiyonun senkron olarak çalıştırıldığı anlamına gelir.
+
