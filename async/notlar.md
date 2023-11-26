@@ -48,7 +48,7 @@ eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _futur
 **future::wait<br>**
 geri dönüş değeri yok<br>
 **future_wait_for ve future::wait_until <br>**
-std::future_status_ready : sonuç hazır demektir <br>
-std::future_status_timeout : verilen süre geçti, sonuç henüz yok<br>
-std::future_status_deferred : sonuç tembel olarak elde edilecek<br>
+_std::future_status_ready_ : sonuç hazır.<br>
+_std::future_status_timeout_ : verilen süre geçti, sonuç henüz yok<br>
+_std::future_status_deferred_ : sonuç tembel olarak elde edilecek<br>
 
