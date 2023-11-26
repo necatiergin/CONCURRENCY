@@ -32,11 +32,15 @@ eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _futur
 
 + _std::async_ işlevinin asenkron çalıştırıp işlevin geri dönüş değerini bir değişkene atamadığımızı düşünelim. Bu durumda çağrıyı yapan _thread_ çağrılan işlevin çalışması bitene kadar bloke olur. Bu da fonksiyonun senkron olarak çalıştırıldığı anlamına gelir.
 
-#### hangi durumlarda launch::async seçilmeli:
+#### hangi durumlarda _launch::async_ seçilmeli:
 + _task_'in ayrı bir _thread_ olarak çalıştırılması gerekiyor ise.
 + _task_'in hemen başlatılması gerekiyor ise (yani _get_ çağrıldığında değil hemen)
 + _task_'in _thread_local_ değişkenleri kullanması gerekiyor ise
 + _get_ fonksiyonu çağrılmasa dahi _task_'in yürütülmesi gerekiyor ise
 + _future_ nenesini alan _thread_,  _future_ nesnesinin _wait_for_ ya da _wait_until_ fonksiyonlarını çağıracak ise
 
+#### hangi durumlarda _launch::deferred_ seçilmeli:
++ _task_'in _future::get()_ işlevini çağıracak _thread_'de çalışıtırlması gerekiyor ise.
++ bir _thread_ oluşturulamasa dahi _task_'in çalıştırılması gerekiyor ise
++ _task_'in tembel olarak çalıştırılması isteniyor ise (ne zaman _future::get_ çağrılırsa o zaman _task_ çalıştırılacak)
 
