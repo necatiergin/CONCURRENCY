@@ -1,3 +1,8 @@
+#include <future>
+#include <iostream>
+#include <syncstream>
+
+
 struct SumSquare {
 	void operator()(std::promise<int>&& prom, int a, int b)const
 	{
@@ -18,11 +23,12 @@ int main()
 	std::future<int> ftr = prom.get_future();
 	std::cout << "ftr is " << (ftr.valid() ? "valid" : "invalid") << '\n'; //valid
 
-	std::thread th(SumSquare{}, std::move(prom), 5, 9);
+	std::jthread th(SumSquare{}, std::move(prom), 5, 9);
 	std::cout << "ftr is " << (ftr.valid() ? "valid" : "invalid") << '\n'; //valid
 
 	std::shared_future<int> s_ftr = ftr.share();
 	std::cout << "ftr is " << (ftr.valid() ? "valid" : "invalid") << '\n'; // invalid
+	
 	(void)getchar();
 
 	std::jthread t1(func, s_ftr);
@@ -31,4 +37,3 @@ int main()
 	std::jthread t4(func, s_ftr);
 	std::jthread t5(func, s_ftr);
 }
-
