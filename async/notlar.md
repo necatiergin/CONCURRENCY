@@ -27,3 +27,4 @@ async(launch policy, Func&& f, Args&&... args);
 + _asynch_ tarafından oluşturulan _future_ nesnesi diğer yollarla oluşturulan _future_ nesnelerinden daha farklı davranır.
 
 eğer _future_ nesnesi async işlevi tarafından oluşturulmuş ise: ve _future_ nesnesi _"shared state"_e başvuran son _future_ nesnesiyse, _future_ nesnesi için çağrılan _destructor_ _future_ nesnesi ile ilişkili sonuç hazır olana kadar _thread_'i bloke eder.
+
