@@ -34,9 +34,9 @@ eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _futur
 
 #### hangi durumlarda launch::async seçilmeli:
 + _task_'in ayrı bir _thread_ olarak çalıştırılması gerekiyor ise.
-+ _task_'in hemen başlatılması gerekiyor ise (yani get çağrıldığında değil hemen)
++ _task_'in hemen başlatılması gerekiyor ise (yani _get_ çağrıldığında değil hemen)
 + _task_'in _thread_local_ değişkenleri kullanması gerekiyor ise
-+ get fonksiyonu çağrılmasa dahi _task_'in yürütülmesi gerekiyor ise
++ _get_ fonksiyonu çağrılmasa dahi _task_'in yürütülmesi gerekiyor ise
 + _future_ nenesini alan _thread_,  _future_ nesnesinin _wait_for_ ya da _wait_until_ fonksiyonlarını çağıracak ise
 
 
