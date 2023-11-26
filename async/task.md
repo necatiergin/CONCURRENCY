@@ -21,18 +21,16 @@ dezavantajlar<br>
 
 
 #### std::packaged_task avantajları
-
-+ task'i bir nesne olarak temsil etmenin en kolay yolu.
-+ std::async'e göre daha düşük seviyeli bir soyutlama.
-	- task'in ne zaman yürütüleceğini kendimiz belirleyebiliyoruz;
-	- task'in hangi thread tarafından yürütüleceğini kendimiz belirleyebiliyoruz
++ _task_'i bir nesne olarak temsil etmenin en kolay yolu.
++ _std::async_'e göre daha düşük seviyeli bir soyutlama.
+	- _task_'in ne zaman yürütüleceğini kendimiz belirleyebiliyoruz;
+	- _task_'in hangi _thread_ tarafından yürütüleceğini kendimiz belirleyebiliyoruz.
 
 #### std::thread
-
-+ std::thread sınıfı türünde nesne oluşturmak.
++ _std::thread_ sınıfı türünden nesne oluşturmak.
 + standart kütüphanenin sunduğu en düşük seviyeli soyutlama.
 + diğer seçeneklere göre çok daha esnek.
 + işletim sisteminin öğelerine erişim olanağı sağlıyor.
 + Standard C++ tarafından sunulmayan olanakları kullanabiliyoruz.
-+ thread detach edilebiliyor.
++ _thread detach_ edilebiliyor.
 
