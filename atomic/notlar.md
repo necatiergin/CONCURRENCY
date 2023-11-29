@@ -48,11 +48,11 @@ _std::atomic_ bir sınıf şablonudur. Bu sınıf şablonundan elde edilen türl
 template <typename T>
 struct atomic;
 ```
-- tam sayı türleri ve _pointer_ türleri için bu sınıfın _"partial specialization"_ları var.
+- tam sayı türleri ve _pointer_ türleri için bu sınıfın _partial specialization_'ları var.
 
-- T türünden bir nesne için atomik operasyonlar sağlıyor.
-- Tüm temel türler _(fundamental types)_ için standart kütüphane tarafından _"full specialization"_ sağlanmış durumdda.
-- Template argümanı olarak kullanılacak türün _"trivially copyable"_ ve _"bitwise equality comparable"_ olması gerekiyor.
+- _T_ türünden bir nesne için atomik operasyonlar sağlıyor.
+- tüm temel türler _(fundamental types)_ için standart kütüphane tarafından _"full specialization"_ sağlanmış durumda.
+- template argümanı olarak kullanılacak türün _"trivially copyable"_ ve _"bitwise equality comparable"_ olması gerekiyor.
 - Kilit sistemi kullanılmama _(lock-free)_ olma garantisi verilmiyor. Ancak platformların çoğunda temel türler olan template argümanları söz konusu olduğunda bir kilit sistemi kullanılmadan _(lock-free)_ gerçekleştiriliyor.
 - Kopyalama ya da taşıma yoluyla nesne oluşturulamıyor. _(not copy-constructible - not move constructible)_
 - Atama yapılabilir _(assignable)_ bir tür. Ancak atama operatörü referans değil değer döndürüyor.
