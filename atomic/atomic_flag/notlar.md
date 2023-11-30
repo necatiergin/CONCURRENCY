@@ -7,17 +7,13 @@
 	+ _test_and_set_: _state_'i _true_ değere çeker ve önceki _state_'i döndürür.
 	+ _clear_: _state_'i _false_ değere çeker.
 
-+ Sınıfın default ctor'ı belirlenmemiş bir değer ile başlatır.
-+ atomic_flag nesneleri kopyalanaaz ve taşınamaz
++ sınıfın _default ctor_'ı nesneyi hayata belirlenmemiş bir değer ile başlatır.
++ _atomic_flag_ nesneleri kopyalanamaz ve taşınamaz.
 
-
-ATOMIC_FLAG_INIT makrosu derleyiciey bağlıdır.
-
-Aşağıdaki şekilde kullanılır:
-+ static ya da otomatik ömürlü std::atomic_flag değişkenini "false" değeriyle başlatmak için aşağıdaki şekilde kullanılır.
++ _ATOMIC_FLAG_INIT_ makrosu derleyiciye bağlıdır. _static_ ya da otomatik ömürlü _std::atomic_flag_ değişkenini _"false"_ değerle başlatmak için aşağıdaki şekilde kullanılır.
 ```cpp
 std::atomic_flag f = ATOMIC_FLAG_INIT;
 ```
 
-+ lock-free olma garantisi vardır
-+ spinlock mutex gibi daha üst düzey senkronizasyon ilkelleri için yapı taşı olarak kullanılmak üzere tasarlanmıştır.
++ _lock-free_ olma garantisi vardır
++ _spinlock mutex_ gibi daha üst düzey senkronizasyon ilkelleri için yapı taşı olarak kullanılmak üzere tasarlanmıştır.
