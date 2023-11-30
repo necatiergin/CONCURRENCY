@@ -12,7 +12,7 @@ _promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya d
 _çok thread_'li programlar, genellikle bazı hesaplamaları _asenkron_ olarakgerçekleştirir. Bu durumda sonuç bir_ thread_ tarafından hazırlanı ve diğer _thread_'in bu sonuca erişmesi gerekir. 
 - bu da sonucu üreten ve tüketen _thread_'ler arasında bir senkronizasyon gerektirir.
 - sonucu tüketen _thread_ sonuç hazırlanıp kullanılabilir olana kadar beklemelidir.
-- _thread_'ler arasında iletilecek sonucu tutan paylaşımlı olarak kullanılacak değişkenlere erişirken "data race"ten kaçınmalıdır.
+- _thread_'ler arasında iletilecek sonucu tutan paylaşımlı olarak kullanılacak değişkenlere erişirken _"data race"_'ten kaçınmalıdır.
 - Böyle bir senkronizasyon _promise_ ve _future_ nesneleri ile gerçekleştirilebilir.
 
 
