@@ -1,11 +1,11 @@
-std::atomic_flag temel atomik işlemler ile gerçekleşitirlen bir flag sağlar.
-bayrak (std::atomic_flag nesnesi) iki durumda olabilir:
-set (yani true)
-clear (yani false)
++ _std::atomic_flag_ temel atomik işlemler ile gerçekleşitirlen bir bayrak _(flag)_ sunar.
++ bayrak (_std::atomic_flag_ nesnesi) iki durumda _(state)_ olabilir:
+	+ _set (yani true)_
+	+ _clear (yani false)_
 
-+ atomic_flag sadece iki fonksiyona sahiptir:
-	+ test_and_set: state'i true değere çeker ve önceki state'i döndürür.
-	+ clear: state'i false değere çeker.
++ _std::atomic_flag_ sadece iki fonksiyona sahiptir:
+	+ _test_and_set_: _state_'i _true_ değere çeker ve önceki _state_'i döndürür.
+	+ _clear_: _state_'i _false_ değere çeker.
 
 + Sınıfın default ctor'ı belirlenmemiş bir değer ile başlatır.
 + atomic_flag nesneleri kopyalanaaz ve taşınamaz
