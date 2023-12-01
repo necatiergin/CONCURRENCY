@@ -5,7 +5,6 @@
 #include <string>
 #include <format>
 
-
 using namespace std;
 using namespace literals;
 
@@ -22,8 +21,7 @@ void receive_data()
 		cout << "receive data thread is waiting for data..." << '\n';
 		this_thread::sleep_for(1s);
 
-		lock_guard shared_data_lock(data_mutex);
-		//shared_data += "Chunk" + to_string(i + 1) + ' ';
+		scoped_lock shared_data_lock(data_mutex);
 		shared_data += format("chunk{:<2} ", i);
 		cout << shared_data << '\n';
 		update_flag = true;
@@ -38,8 +36,8 @@ void receive_data()
 void display_progress()
 {
 	while (true) {
-		cout << "Progress bar thread waiting for data...\n" ;
-		
+		cout << "display progress thread waiting for data...\n";
+
 		unique_lock shared_data_lock(data_mutex);
 		while (!update_flag) {
 			shared_data_lock.unlock();
@@ -50,9 +48,9 @@ void display_progress()
 		update_flag = false;
 		shared_data_lock.unlock();
 
-		cout << "Received " << shared_data.length() << " bytes so far\n";
+		cout << "received " << shared_data.length() << " bytes so far\n";
 
-		lock_guard<mutex> completed_lock(completed_mutex);
+		lock_guard completed_lock(completed_mutex);
 		if (completed_flag) {
 			cout << "display_progress thread has ended\n";
 			break;
@@ -62,9 +60,9 @@ void display_progress()
 
 void process_data()
 {
-	cout << "Processing thread waiting for data...\n";
+	cout << "process data thread waiting for data...\n";
 
-	unique_lock<mutex> completed_lock(completed_mutex);
+	unique_lock completed_lock(completed_mutex);
 
 	while (!completed_flag) {
 		completed_lock.unlock();
@@ -75,7 +73,7 @@ void process_data()
 	completed_lock.unlock();
 
 	lock_guard shared_data_lock(data_mutex);
-	cout << "Processing shared_data: " << shared_data << '\n';
+	cout << "processing shared_data: " << shared_data << '\n';
 	// ...	
 }
 
@@ -84,5 +82,4 @@ int main()
 	jthread receiver(receive_data);
 	jthread progress(display_progress);
 	jthread processor(process_data);
-
 }
