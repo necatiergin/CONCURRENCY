@@ -27,6 +27,8 @@ fonksiyonları kullanılır.
 + _notify_one, notify_all, wait, wait_for, wait_until_ fonksiyonları eş zamanlı olarak çağrılabilir
 + _wait, wait_for, and wait_until_ fonksiyonları _mutex_'i atomik olarak serbest bırakırlar ve bloke olurlar.
 + _notify_one_ ve _notify_all_ fonksiyonları atomiktir.
++ Bir condition_variable nesnesi oluşturulamıyor ise,sınıfın kurucu işlevi _std::system_error_exception_ türünden bir hata nesnesini _resource_unavailable_try_again_ hata kodu ile gönderir.
+
 
 #### üye fonksiyonlar
 
