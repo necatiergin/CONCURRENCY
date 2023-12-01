@@ -14,13 +14,11 @@ bool	completed_flag{ false };
 mutex	data_mutex;
 mutex	completed_mutex;
 
-
 void receive_data()
 {
 	for (int i = 0; i < 10; ++i) {
-		cout << "receive data thread is waiting for data..." << '\n';
+		cout << "receive data thread is waiting for data...\n";
 		this_thread::sleep_for(1s);
-
 		scoped_lock shared_data_lock(data_mutex);
 		shared_data += format("chunk{:<2} ", i);
 		cout << shared_data << '\n';
@@ -83,3 +81,4 @@ int main()
 	jthread progress(display_progress);
 	jthread processor(process_data);
 }
+
