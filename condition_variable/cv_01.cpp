@@ -1,3 +1,10 @@
+/*
+    aşağıdaki kodda func işlevi bir başka thread'in oluşturduğu sonbucun hazır olup olmadığını sınamak için sürekli 
+    go_flag değişkenini test ediyor. Bu verimli bir yöntem değil.
+    Derste bu konuyu ayrıntılı anlatıyorum.
+*/
+
+
 #include <mutex>
 #include <chrono>
 
