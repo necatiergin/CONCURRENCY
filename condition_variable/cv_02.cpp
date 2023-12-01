@@ -6,7 +6,6 @@
 #include <fstream>
 #include <syncstream>
 
-
 class IStack {
 public:
 	IStack() {};
