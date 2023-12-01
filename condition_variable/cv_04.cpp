@@ -4,6 +4,8 @@
 #include <thread>
 #include <iostream>
 #include <fstream>
+#include <syncstream>
+
 
 class IStack {
 public:
@@ -35,16 +37,19 @@ private:
 constexpr int n{ 1'000 };
 IStack gstack;
 
-void producer()
+void producer(std::ofstream& ofs)
 {
-	for (int i = 0; i < n; ++i)
+	for (int i = 0; i < n; ++i) {
 		gstack.push(2 * i + 1);
+		std::osyncstream{ ofs} << 2 * i + 1 << " pushed\n";
+	}
 }
 
 void consumer(std::ofstream& ofs)
 {
-	for (int i = 0; i < n; ++i)
-		ofs << gstack.pop() << '\n';
+	for (int i = 0; i < n; ++i) {
+		std::osyncstream{ ofs } << gstack.pop() << " popped\n";
+	}
 }
 
 int main()
@@ -54,7 +59,7 @@ int main()
 		std::cerr << "cannot create log.txt\n";
 		exit(EXIT_FAILURE);
 	}
-	
-	std::jthread th1(producer);
+
+	std::jthread th1(producer, std::ref(ofs));
 	std::jthread th2(consumer, std::ref(ofs));
 }
