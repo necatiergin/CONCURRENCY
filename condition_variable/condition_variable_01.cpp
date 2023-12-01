@@ -3,6 +3,8 @@
 #include <thread>
 #include <chrono>
 #include <string>
+#include <format>
+
 
 using namespace std;
 using namespace literals;
@@ -21,8 +23,9 @@ void receive_data()
 		this_thread::sleep_for(1s);
 
 		lock_guard shared_data_lock(data_mutex);
-		shared_data += "Block" + to_string(i + 1) + ' ';
-		cout << "shared_data: " << shared_data << '\n';
+		//shared_data += "Chunk" + to_string(i + 1) + ' ';
+		shared_data += format("chunk{:<2} ", i);
+		cout << shared_data << '\n';
 		update_flag = true;
 	}
 
