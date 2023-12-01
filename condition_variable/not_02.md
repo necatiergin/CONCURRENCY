@@ -34,7 +34,9 @@ böyle bir sorgulama iyi bir çözüm olmayabilir:
 	std::unique_lock<std::mutex> ul(readyMutex);
 	readyCondVar.wait(ul, []{ return readyFlag; });
 } // release lock
-
+```
+kod karşılığı derleyicinin aşağıdaki gibi bir kod ürettiğini düşünebiliriz.
+```
 {
 	std::unique_lock<std::mutex> ul(readyMutex);
 	while (!readyFlag) {
