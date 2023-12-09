@@ -10,7 +10,7 @@ using namespace chrono;
 
 string				shared_data;
 mutex				mtx;
-condition_variable	cv;
+condition_variable	        cv;
 bool				cflag{ false };
 
 void reader()
@@ -23,7 +23,7 @@ void reader()
 
 	cv.wait(ulock, [] {return cflag; });
 
-	cout << "READEER thread wakes up\n";
+	cout << "READER thread wakes up\n";
 
 	cout << quoted(shared_data) << '\n';
 	cout << "Reader thread unlocks the mutex\n";
