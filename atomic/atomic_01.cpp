@@ -24,6 +24,6 @@ int main()
 	auto b = flag_1.exchange(true);
 	cout << "b = " << b << '\n';
 	cout << "flag_1 = " << flag_1 << '\n';  // operator T
-	cout << "flag_1.load() = " << flag_1.load() << "\n";
-	cout << "flag_2.load() = " << flag_2.load() << "\n";
+	cout << "flag_1.load() = " << flag_1.load() << '\0';
+	cout << "flag_2.load() = " << flag_2.load() << '\0';
 }
