@@ -3,11 +3,11 @@
 	+ _set (yani true)_
 	+ _clear (yani false)_
 
-+ _std::atomic_flag_ sadece iki fonksiyona sahiptir (C++20 ilw yEni fonksiyonlar eklendi)
++ _std::atomic_flag_ sadece iki fonksiyona sahiptir (C++20 ile yeni fonksiyonlar eklendi)
 	+ _test_and_set_: _state_'i _true_ değere çeker ve önceki _state_'i döndürür.
 	+ _clear_: _state_'i _false_ değere çeker.
 
-+ sınıfın _default ctor_'ı nesneyi hayata belirlenmemiş bir değer ile başlatır. (C++20 standardı ile bu değiştirildi. Artık default ctor'ın nesneyi false değer ile başlatma garantisi geldi.)
++ sınıfın _default ctor_'ı nesneyi hayata belirlenmemiş bir değer ile başlatır. (C++20 standardı ile bu değiştirildi. Artık _default cto_r'ın nesneyi _false_ değer ile başlatma garantisi geldi.)
 
 + _atomic_flag_ nesneleri kopyalanamaz ve taşınamaz.
 
