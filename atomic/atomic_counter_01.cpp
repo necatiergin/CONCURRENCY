@@ -5,7 +5,7 @@
 class AtomicCounter {
 public:
 	AtomicCounter() : m_c(0) {}
-	AtomicCounter(int val) : m_c{val}{}
+	AtomicCounter(int val) : m_c{ val } {}
 	int operator++() { return ++m_c; }
 	int operator++(int) { return m_c++; }
 	int operator--() { return --m_c; }
@@ -28,13 +28,10 @@ void foo()
 
 int main()
 {
-	std::thread ta[10];
+	std::jthread ta[10];
 
 	for (auto& th : ta)
-		th = std::thread{ foo };
-	
-	for (auto& th : ta)
-		th.join();
+		th = std::jthread{ foo };
 
 	std::cout << "cnt = " << cnt.get() << '\n';
 	std::cout << "cnt = " << cnt << '\n';
