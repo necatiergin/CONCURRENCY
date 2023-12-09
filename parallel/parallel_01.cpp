@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <random>
 #include <iostream>
+#include <chrono>
 
 using uint64 = unsigned long long;
 
@@ -31,14 +32,18 @@ int main()
 	using namespace std;
 	using namespace chrono;
 
-	vector<uint64> uvec(1'000'000u);
+	vector<uint64> uvec(50'000'000u);
 	mt19937 eng;
-	uniform_int_distribution dist{ 0ull, 100ull};
+	uniform_int_distribution dist{ 0ull, 100ull };
 
 	generate(uvec.begin(), uvec.end(), [&] {return dist(eng); });
 
-	//auto sum = accumulate(uvec.begin(), uvec.end(), 0ull);
-	auto sum = acc_parrallel(uvec);
+	auto tp_start = steady_clock::now();
+	auto sum = accumulate(uvec.begin(), uvec.end(), 0ull);
+	//auto sum = acc_parrallel(uvec);
+	auto tp_end = steady_clock::now();
+
+	cout << duration<double>(tp_end - tp_start) << '\n';
 
 	cout << "sum = " << sum << '\n';
 }
