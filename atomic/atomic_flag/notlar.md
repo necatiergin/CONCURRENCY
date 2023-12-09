@@ -3,7 +3,7 @@
 	+ _set (yani true)_
 	+ _clear (yani false)_
 
-+ _std::atomic_flag_ sadece iki fonksiyona sahiptir (C++20 ilw ywni fonksiyonlar eklendi)
++ _std::atomic_flag_ sadece iki fonksiyona sahiptir (C++20 ilw yEni fonksiyonlar eklendi)
 	+ _test_and_set_: _state_'i _true_ değere çeker ve önceki _state_'i döndürür.
 	+ _clear_: _state_'i _false_ değere çeker.
 
