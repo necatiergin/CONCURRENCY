@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <random>
 #include <iostream>
+#include <chrono>
 
 using uint64 = unsigned long long;
 
@@ -28,7 +29,7 @@ uint64 acc_parrallel(const std::vector<uint64>& vec)
 	auto ft2 = task2.get_future();
 	auto ft3 = task3.get_future();
 	auto ft4 = task4.get_future();
-	
+
 	std::jthread t1(std::move(task1), data, data + size / 4);
 	std::jthread t2(std::move(task2), data + size / 4, data + 2 * (size / 4));
 	std::jthread t3(std::move(task3), data + 2 * (size / 4), data + 3 * (size / 4));
@@ -43,14 +44,16 @@ int main()
 	using namespace std;
 	using namespace chrono;
 
-	vector<uint64> uvec(1'000'000u);
+	vector<uint64> uvec(25'000'000u);
 	mt19937 eng;
-	uniform_int_distribution dist{ 0ull, 100ull};
+	uniform_int_distribution dist{ 0ull, 100ull };
 
 	generate(uvec.begin(), uvec.end(), [&] {return dist(eng); });
-
+	auto tp_start = steady_clock::now();
 	//auto sum = accumulate(uvec.begin(), uvec.end(), 0ull);
 	auto sum = acc_parrallel(uvec);
+	auto tp_end = steady_clock::now();
 
+	cout << duration<double>(tp_end - tp_start) << '\n';
 	cout << "sum = " << sum << '\n';
 }
