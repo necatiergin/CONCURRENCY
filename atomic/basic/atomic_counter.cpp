@@ -28,10 +28,12 @@ void foo()
 
 int main()
 {
-	std::jthread ta[10];
+	{
+		std::jthread ta[10];
 
-	for (auto& th : ta)
-		th = std::jthread{ foo };
+		for (auto& th : ta)
+			th = std::jthread{ foo };
+	}
 
 	std::cout << "cnt = " << cnt.get() << '\n';
 	std::cout << "cnt = " << cnt << '\n';
