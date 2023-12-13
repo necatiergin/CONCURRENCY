@@ -10,8 +10,8 @@ int main()
 	atomic<bool> flag_2; //indetermined value before before C++20. false value since C++20
 	cout << flag_1 << '\n';
 	cout << flag_2 << '\n';
-	///atomic<bool> flag_3{flag_2}; //gecersiz
-	//flag_1 = flag_2; //geçersiz
+	//atomic<bool> flag_3{flag_2}; //invalid
+	//flag_1 = flag_2; //invalid
 
 	flag_1 = true;
 	flag_2 = false;
@@ -24,6 +24,6 @@ int main()
 	auto b = flag_1.exchange(true);
 	cout << "b = " << b << '\n';
 	cout << "flag_1 = " << flag_1 << '\n';  // operator T
-	cout << "flag_1.load() = " << flag_1.load() << '\0';
-	cout << "flag_2.load() = " << flag_2.load() << '\0';
+	cout << "flag_1.load() = " << flag_1.load() << '\n';
+	cout << "flag_2.load() = " << flag_2.load() << '\n';
 }
