@@ -5,17 +5,23 @@
 #include <execution>
 
 namespace ex = std::execution;
+
 int main()
 {
 	using namespace std;
 
-	vector<int> src_vec(100);
-	iota(src_vec.begin(), src_vec.end(), 0);
-	copy(src_vec.begin(), src_vec.end(), ostream_iterator<int>{cout, " "});
-	cout << "\n\n";
-	vector<int> dest_vec(src_vec.size());
-
-	exclusive_scan(ex::par, src_vec.begin(), src_vec.end(), dest_vec.begin(), -1);
-	copy(dest_vec.begin(), dest_vec.end(), ostream_iterator<int>{cout, " "});
-	cout << "\n\n";
+	const auto print = [] (const auto& c){
+		copy(c.begin(), c.end(), ostream_iterator<int>{cout, " "});
+		cout << '\n';
+		};
+	
+	vector<int> svec(20);
+	iota(svec.begin(), svec.end(), 0);
+	print(svec);
+	vector<int> dvec1(svec.size());
+	vector<int> dvec2(svec.size());
+	inclusive_scan(ex::par, svec.begin(), svec.end(), dvec1.begin());
+	print(dvec1);
+	exclusive_scan(ex::par, svec.begin(), svec.end(), dvec2.begin(), 1000);
+	print(dvec2);
 }
