@@ -1,3 +1,5 @@
+// adapted from the book "concurrency with mordern C++ by Reiner Grimm"
+
 #include <iostream>
 #include <mutex>
 #include <shared_mutex>
@@ -11,17 +13,17 @@ public:
 
 class StrategizedLocking {
 public:
-	StrategizedLocking(ILock &lock) : mlock(lock) 
+	StrategizedLocking(ILock& lock) : mlock(lock)
 	{
 		mlock.lock();
 	}
 
-	~StrategizedLocking() 
+	~StrategizedLocking()
 	{
 		mlock.unlock();
 	}
 private:
-	ILock &mlock;
+	ILock& mlock;
 };
 
 struct NullObjectMutex {
@@ -29,28 +31,28 @@ struct NullObjectMutex {
 	static void unlock() {}
 };
 
-class NoLock : public ILock {
-	void lock() const override 
+class NoLocker : public ILock {
+	void lock() const override
 	{
-		std::cout << "NoLock::lock()\n";
+		std::cout << "NoLocker::lock()\n";
 		NullObjectMutex::lock();
 	}
-	
-	void unlock() const override 
+
+	void unlock() const override
 	{
-		std::cout << "NoLock::unlock()\n";
+		std::cout << "NoLocker::unlock()\n";
 		NullObjectMutex::unlock();
 	}
 };
 
 class ExclusiveLock : public ILock {
-	void lock() const override 
+	void lock() const override
 	{
 		std::cout << " ExclusiveLock::mlock()\n";
 		mtx.lock();
 	}
 
-	void unlock() const override 
+	void unlock() const override
 	{
 		std::cout << " ExclusiveLock::unlock()\n";
 		mtx.unlock();
@@ -61,13 +63,13 @@ class ExclusiveLock : public ILock {
 
 class SharedLock : public ILock {
 
-	void lock() const override 
+	void lock() const override
 	{
 		std::cout << " SharedLock::lock_shared()\n";
 		ms_mtx.lock_shared();
 	}
 
-	void unlock() const override 
+	void unlock() const override
 	{
 		std::cout << " SharedLock::unlock_shared()\n";
 		ms_mtx.unlock_shared();
@@ -77,13 +79,13 @@ class SharedLock : public ILock {
 };
 
 
-int main() 
+int main()
 {
-	NoLock no_lock;
+	NoLocker no_lock;
 	StrategizedLocking st_lock1{ no_lock };
 	{
 		ExclusiveLock elock;
-		StrategizedLocking st_lock2{elock};
+		StrategizedLocking st_lock2{ elock };
 		{
 			SharedLock shared_lock;
 			StrategizedLocking st_lock3{ shared_lock };
