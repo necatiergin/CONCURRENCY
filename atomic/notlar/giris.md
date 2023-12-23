@@ -13,7 +13,7 @@
 Atomik bir tür aşağıdaki garantileri sağlar:
 - _atomicity_ (atomiklik - bölünmezlik)
 - _ordering_ (bellek işlemlerinin sıralanması - önceliği sonralığı)
-- _visibility_ (bellek işlemlerinin sonuçlarının diğer thread'lerden görülmesi)
+- _visibility_ (bellek işlemlerinin sonuçlarının diğer _thread_'lerden görülmesi)
 Sıralı işlem garantisi bellek işlemlerinin diğer _thread_'lerde ne şekilde görülebileceği garantisidir. 
 Atomik türler birbirinden bellek işlemlerinin sıralanması konusunda farklı garantiler sunarlar. 
 Varsayılan düzen _"sequentially consistency_"'dir. (daha sonra değineceğim)
@@ -21,7 +21,7 @@ Varsayılan düzen _"sequentially consistency_"'dir. (daha sonra değineceğim)
 + _atomic_  değişkenlerle yapılan işlemler atomik olma garantisini taşırlar. Yani bu işlemler tamamlanıncaya kadar bir başka _thread_ aynı değişken üzerinde işlem yapamaz.
 + _atomic_ bir değişkenin değerinin _(atomik olarak)_ bir arttırıldığını _(increment)_ düşünelim. 
 Bu işlem aslında 3 farklı işleme karşılık gelir: oku - değiştir - yaz _(read - modify - write)_. 
-Eğer değişkenimizin atomik olma garantisi yok ise bu işlemlerin arasına başka thread'lerin işlemleri girebilir. 
+Eğer değişkenimizin atomik olma garantisi yok ise bu işlemlerin arasına başka _thread_'lerin işlemleri girebilir. 
 Değişkenimiz atomik ise diğer _thread_'ler değişkenimizi ya değiştirilmeden önceki değeri ile ya da değiştirildikten sonraki değeriyle görebilirler, ara bir değerde göremezler. Bir başka deyişle atomik değişkenler için _torn-read_ ya da _torn-write_ olamaz. 
 
 
