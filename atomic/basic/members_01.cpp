@@ -5,14 +5,16 @@
 
 std::atomic<int> x{ 0 };
 
-void foo() 
+void foo()
 {
 	for (int i = 0; i < 10000; ++i) {
 		// ++x;			//1
 		// x++;			//2
 		//x = x + 1;    //3
-		//x += 2;		//4
-		x.fetch_add(2); //5
+		//x += 1;		//4
+		//x.fetch_add(1); //5
+		//x.exchange(x + 1); // 6
+		int expected = x; while (!x.compare_exchange_weak(expected, x + 1)); // 7
 	}
 }
 
@@ -23,7 +25,7 @@ int main()
 	{
 		vector<jthread> tvec;
 
-		for (int i = 0; i < 20; ++i) 
+		for (int i = 0; i < 20; ++i)
 			tvec.emplace_back(foo);
 	}
 
