@@ -1,4 +1,4 @@
-//moving of threads
+//moving of thread objects
 
 #include <thread>
 #include <iostream>
