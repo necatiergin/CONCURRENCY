@@ -7,7 +7,6 @@
 void sum_square(std::promise<int>&& prom, int x, int y)
 {
 	//calls set_value member function to set the shared state
-	//calls set_value member function to set the shared state
 	prom.set_value(x * x + y * y);
 }
 
