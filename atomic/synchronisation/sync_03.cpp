@@ -17,16 +17,13 @@ void consumer()
 
 void producer()
 {
-	std::this_thread::sleep_for(std::chrono::milliseconds{200});
+	std::this_thread::sleep_for(std::chrono::milliseconds{ 200 });
 	svar = 38764;
-	ready_flag = true;	
+	ready_flag = true;
 }
 
 int main()
 {
-	std::thread th_c{ consumer };
-	std::thread th_p{ producer};
-
-	th_c.join();
-	th_p.join();
+	std::jthread th_c{ consumer };
+	std::jthread th_p{ producer };
 }
