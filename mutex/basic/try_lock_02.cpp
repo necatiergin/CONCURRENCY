@@ -1,40 +1,37 @@
-// Example of calling try_lock() in a loop until the mutex is locked
 #include <iostream>
 #include <thread>
 #include <mutex>
 #include <chrono>
 
-using namespace std::literals;
+using namespace std;
+using namespace literals;
 
-std::mutex the_mutex;
+std::mutex mtx;
 
-void task1()
+void foo()
 {
-	std::cout << "Task1 trying to lock the mutex" << std::endl;
-	the_mutex.lock();
-	std::cout << "Task1 has locked the mutex" << std::endl;
-	std::this_thread::sleep_for(500ms);
-	std::cout << "Task1 unlocking the mutex" << std::endl;
-	the_mutex.unlock();
+	cout << "foo is trying to lock the mutex\n";
+	mtx.lock();
+	std::cout << "foo has locked the mutex\n";
+	this_thread::sleep_for(800ms);
+	cout << "foo is unlocking the mutex\n";
+	mtx.unlock();
 }
 
-void task2()
+void bar()
 {
-	std::this_thread::sleep_for(100ms);
-	std::cout << "Task2 trying to lock the mutex" << std::endl;
-	while (!the_mutex.try_lock()) {
-		std::cout << "Task2 could not lock the mutex" << std::endl;
-		std::this_thread::sleep_for(100ms);
+	this_thread::sleep_for(100ms);
+	cout << "bar trying to lock the mutex\n";
+	while (!mtx.try_lock()) {
+		cout << "bar could not lock the mutex\n";
+		this_thread::sleep_for(100ms);
 	}
-	std::cout << "Task2 has locked the mutex" << std::endl;
-	the_mutex.unlock();
+	cout << "bar has locked the mutex\n";
+	mtx.unlock();
 }
 
 int main()
 {
-	std::thread thr1(task1);
-	std::thread thr2(task2);
-	
-	thr1.join();
-	thr2.join();
+	std::jthread thr1(foo);
+	std::jthread thr2(bar);
 }
