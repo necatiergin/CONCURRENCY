@@ -35,8 +35,7 @@ int main() {
 
     smping.release();           
     
-    {
-        std::jthread t1(ping);
-        std::jthread t2(pong);
-    }
+    std::jthread t1(ping);
+    std::jthread t2(pong);
+    
 }
