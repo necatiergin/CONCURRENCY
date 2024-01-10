@@ -10,7 +10,7 @@ _mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_l
 
 ```cpp
 std::lock_guard<std::shared_mutex>
-std::lock_guard<std::shared_mutex>
+std::unique_lock<std::shared_mutex>
 ```
 Bu durumda sadece _mutex_'i edinen _thread_ kritik bölgeye girebilir. Diğer _thread_'ler _mutex_ serbest bırakılıncaya kadar beklemek zorunda. <br>
 
