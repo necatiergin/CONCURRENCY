@@ -2,11 +2,13 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 std::once_flag gflag;
 
 void func(int id)
 {
+	std::this_thread::sleep_for(std::chrono::milliseconds{ 500 });
 	std::call_once(gflag, [id]() {
 		// This function will be invoked only once.
 		std::cout << "first: " << id << '\n';
