@@ -16,6 +16,6 @@ int main()
 	}
 	else
 	{
-		std::cout << "future nesnesi invalid\n";
+		std::cout << "future nesnesi invalid durumda\n";
 	}
 }
