@@ -24,6 +24,5 @@ int main()
 {
 	using namespace std::literals;
 	foo();
-
 	std::this_thread::sleep_for(2s);
 }
