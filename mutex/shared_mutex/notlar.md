@@ -15,7 +15,7 @@ std::unique_lock<std::shared_mutex>
 Bu durumda sadece _mutex_'i edinen _thread_ kritik bölgeye girebilir. Diğer _thread_'ler _mutex_ serbest bırakılıncaya kadar beklemek zorunda. <br>
 
 - _mutex_'in _exclusive_ olarak edinilebilmesi için _mutex_'in kilitli olmaması gerekir.
-- eğer başka bir _thread_ paylaşımlı ya da paylaşımsız olarak kilidi edinmişse diğer bütün _exclusive _thread_'ler kilidi edinen _mutex_ kilidi serbest bırakana kadar beklemek zorunda.
+- eğer başka bir _thread_ paylaşımlı ya da paylaşımsız olarak kilidi edinmişse diğer bütün _exclusive_thread_'ler kilidi edinen _mutex_ kilidi serbest bırakana kadar beklemek zorunda.
 - _mutex_'in paylaşımlı olarak edinilebilmesi için bir _shared_lock_ nesnesi oluşturmamız gerekiyor.
 - bir _shared_lock_ nesnesine sahip bir _thread_ kritik bölgeye girebilir.
 - paylaşımlı olarak kilidi edinebilmek için kilidin _exclusive_ olarak sahibi olan bir _thread_ olmamalı
