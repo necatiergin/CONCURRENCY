@@ -3,6 +3,7 @@
 #include <stdexcept>
 
 //we can call set_value  function only once
+
 int main()
 {
 	std::promise<int> prom;
