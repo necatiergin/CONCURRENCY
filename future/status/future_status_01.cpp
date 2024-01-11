@@ -5,7 +5,7 @@ using namespace std::literals;
 
 void func(std::promise<int> x)
 {
-	std::this_thread::sleep_for(5s);
+	std::this_thread::sleep_for(3s);
 	x.set_value(25);
 }
 
