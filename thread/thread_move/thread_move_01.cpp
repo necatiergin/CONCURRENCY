@@ -1,4 +1,5 @@
-//moving of thread objects
+// moving of thread objects
+// std::thread is non copyable but moveable
 
 #include <thread>
 #include <iostream>
