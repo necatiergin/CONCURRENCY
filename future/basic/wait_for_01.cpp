@@ -20,7 +20,7 @@ int main()
 
     do
     {
-        switch (status = future.wait_for(1s); status)
+        switch (status = future.wait_for(500ms); status)
         {
         case std::future_status::deferred:
             std::cout << "deferred\n";
