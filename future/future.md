@@ -44,13 +44,12 @@ class promise;
 - _promise_ nesnesi ilişkili sonuç belirlenmeden önce yok edilirse ve ilgili _future_ nesnesinden sonuç alınmaya çalışılırsa _std::future_error_ türündne bir hata nesnesi gönderilir.
 
 Sonuç bir _shared state_ içinde tutuluyor. Bu _shared state_ 
-+ std::async fonksiyonu tarafından
-+ std::packaged_task tarafından
-+ std::promise tarafından
++ _std::async_ fonksiyonu tarafından
++ _std::packaged_task_ sınıfı tarafından
++ _std::promise_ sınıfı tarafından
   
 oluşturulmuş olabilir. 
-_std::future_ nesnesi oluşturulduğunda onun tutacağı sonuç henüz hazır olmayabilir. 
-Gelecekte oluşacak bir sonucu tutmak için olanaklara sahip.
+_std::future_ nesnesi oluşturulduğunda onun tutacağı sonuç henüz hazır olmayabilir. _future_ nesnesi gelecekte oluşacak bir sonucu tutmak için olanaklara sahip.
   
   
 Sonuç _std::future_ nesnesi tarafından sadece bir kez _get_ edilebilir. 
