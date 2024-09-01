@@ -1,15 +1,15 @@
-_std::future_ ve _std::promise_ sınıfları (sınıf şablonları) standart kütüphaneye _C++11_ standartları ile eklendi.;
-_std:future_, standart _\<future>_ başlık dosyasında tanımlanmış bir sınıf şablonu. (C++11)
-Bir operasyonun sonucunu _(outcome)_ temsil ediyor. (Ya çalıştırılacak bir fonksiyonun geri dönüş değeri ya da çalıştırılacak fonksiyondan gönderilecek _exception_. Ama ikisi birden değil)
+- _std::future_ ve _std::promise_ sınıfları (sınıf şablonları) standart kütüphaneye _C++11_ standartları ile eklendi.
+- _std:future_, standart _\<future>_ başlık dosyasında tanımlanmış bir sınıf şablonu. (C++11)
+- _std::future_ bir operasyonun sonucunu _(outcome)_ temsil eder. (Ya çalıştırılacak bir fonksiyonun geri dönüş değeri ya da çalıştırılacak fonksiyondan gönderilecek _exception_. Ama ikisi birden değil)
 
-_promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya da bir _exception_) iletmek üzere bir kez kullanılacak bir iletişim kanalı oluştururlar:<br>
+_promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya da bir _exception_) iletmek üzere bir kez kullanılacak bir iletişim kanalı oluşturur:<br>
 
 - _promise_     : Üretilecek sonucu hazırlayacak üretici nesne
 - _future_      : sonucun iletilmesinde kulanılacak nesne
 - _shared state_: _future_ nesnesi tarafından erişilecek söz verilen değeri tutar. _promise_ ve _future_ nesneleri tatafından birlikte kullanılır.
 - sonucu üreten kod _promise_ nesnesini kullanarak sonucu _shared state_'te tutar. Tüketici kod _shared state_'te tutulan sonucu _future_ nesnesini kullanarak alır.
 
-_çok thread_'li programlar, genellikle bazı hesaplamaları _asenkron_ olarak gerçekleştirir. Bu durumda sonucun bir_ thread_ tarafından hazırlanıp diğer _thread_'in bu sonuca erişmesi gerekir. 
+_çok thread_'li programlar, genellikle bazı hesaplamaları _asenkron_ olarak gerçekleştirir. Bu durumda sonucun bir _thread_ tarafından hazırlanıp diğer _thread_'in bu sonuca erişmesi gerekir. 
 - bu da sonucu üreten ve tüketen _thread_'ler arasında bir senkronizasyon gerektirir.
 - sonucu tüketen _thread_ sonuç hazırlanıp kullanılabilir olana kadar beklemelidir.
 - _thread_'ler arasında iletilecek sonucu tutan paylaşımlı olarak kullanılacak değişkenlere erişirken _"data race"_'ten kaçınmalıdır.
