@@ -1,3 +1,5 @@
+//future<T>::wait_for
+
 //from cppreference.com
 
 #include <chrono>
