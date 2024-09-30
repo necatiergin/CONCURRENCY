@@ -41,7 +41,7 @@ class promise;
 - sonuç sadece bir kez yazılabilir (set edilebilir)
 - sınıfın _get_future_ üye fonksiyonu _promise_ ile ilişkilendirilen _future_ nesnesini döndürür.
 - _get_future_ fonksiyonu yalnızca bir kez çağrılabilir.
-- _promise_ nesnesi ilişkili sonuç belirlenmeden önce yok edilirse ve ilgili _future_ nesnesinden sonuç alınmaya çalışılırsa _std::future_error_ türündne bir hata nesnesi gönderilir.
+- _promise_ nesnesi ilişkili sonuç belirlenmeden önce yok edilirse ve ilgili _future_ nesnesinden sonuç alınmaya çalışılırsa _std::future_error_ türünden bir hata nesnesi gönderilir.
 
 Sonuç bir _shared state_ içinde tutuluyor. Bu _shared state_ 
 + _std::async_ fonksiyonu tarafından
