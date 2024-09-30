@@ -2,6 +2,7 @@
 #include <iostream>
 
 //we can call get fucntion of the future object only once
+
 int main()
 {
 	std::promise<int> prom;
