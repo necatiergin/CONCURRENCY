@@ -2,7 +2,6 @@
 #include <iostream>
 #include <syncstream>
 
-
 struct SumSquare {
 	void operator()(std::promise<int>&& prom, int a, int b)const
 	{
