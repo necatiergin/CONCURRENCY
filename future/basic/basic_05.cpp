@@ -1,3 +1,5 @@
+// std::future::<T>::valid()
+
 #include <iostream>
 #include <future>
 
@@ -14,7 +16,7 @@ int main()
 	std::future<int> ftr = prom.get_future();
 
 	print_validity(ftr);
-	
+
 	prom.set_value(12);
 	auto val = ftr.get();
 	std::cout << "val = " << val << '\n';
