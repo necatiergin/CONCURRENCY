@@ -1,3 +1,5 @@
+// function promise parameter
+
 #include <future>
 #include <functional>
 #include <thread>
@@ -15,4 +17,6 @@ int main(void)
 	//std::thread t3(bar, pr); // error
 	std::thread t4(bar, std::ref(pr));	//valid
 	std::thread t5(baz, std::move(pr));	  //valid
+
+	//...
 }
