@@ -16,6 +16,6 @@ void func()
 
 int main()
 {
-	std::thread t{ func };  // Hata yakalandı
+	std::thread t{ func };  // exception caught
 	t.join();
 }
