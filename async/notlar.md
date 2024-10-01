@@ -40,7 +40,7 @@ eğer _future_ nesnesi _async_ işlevi tarafından oluşturulmuş ise: ve _futur
 + _future_ nenesini alan _thread_,  _future_ nesnesinin _wait_for_ ya da _wait_until_ fonksiyonlarını çağıracak ise
 
 #### hangi durumlarda _launch::deferred_ seçilmeli:
-+ _task_'in _future::get()_ işlevini çağıracak _thread_'de çalışıtırlması gerekiyor ise.
++ _task_'in _future::get()_ işlevini çağıracak _thread_'de çalıştırılması gerekiyor ise.
 + bir _thread_ oluşturulamasa dahi _task_'in çalıştırılması gerekiyor ise
 + _task_'in tembel olarak çalıştırılması isteniyor ise (ne zaman _future::get_ çağrılırsa o zaman _task_ çalıştırılacak)
 
