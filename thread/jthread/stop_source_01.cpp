@@ -2,7 +2,6 @@
 #include <thread>
 #include <iostream>
 
-
 int main()
 {
     using namespace std::literals::chrono_literals;
