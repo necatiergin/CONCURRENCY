@@ -1,9 +1,10 @@
+// internal synchronisation
+
 #include <mutex>
 #include <list>
 #include <syncstream>
 #include <iostream>
 #include <chrono>
-
 
 class List {
 public:
@@ -42,7 +43,6 @@ void foo(List& ls, int val)
 	}
 	ls.print();
 }
-
 
 int main()
 {
