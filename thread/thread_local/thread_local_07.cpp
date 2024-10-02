@@ -39,7 +39,6 @@ int main()
 }
 
 /*
-  thread_local değişken yerel değişken de olabilir.
-  böyle bir yerel değişkenin hayatı kapsamı sonunda bitmez.
-  threadîn yürütülmesi sonunda hayatı sona erer.
+ a local object may be thread-local.
+its life ends when the thread terminates
 */
