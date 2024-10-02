@@ -3,7 +3,6 @@
 #include <syncstream>
 #include <iostream>
 
-
 thread_local int tval{ 0 };
 
 void func(const std::string& thread_name)
