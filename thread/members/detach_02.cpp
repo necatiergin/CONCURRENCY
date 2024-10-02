@@ -12,7 +12,7 @@ void fworker(const std::vector<int>* vp)
 void thread_starter()
 {
 	std::vector<int> ivec(1'000'000, 5);
-	std::thread t{ fworker, &ivec}; //dikkat yerel nesne adresi
+	std::thread t{ fworker, &ivec }; //local object with automatic storage
 	t.detach();
 }
 
