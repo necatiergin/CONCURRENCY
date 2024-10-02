@@ -3,7 +3,6 @@
 #include <thread>
 #include <vector>
 
-
 thread_local int gt{};
 
 void func(char c)
