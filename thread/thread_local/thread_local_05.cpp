@@ -21,7 +21,7 @@ void foo(int x)
 
 void func(int x)
 {
-	std::osyncstream{ std::cout } << "func(int) cagrildi x = " << x << "\n";
+	std::osyncstream{ std::cout } << "func(int) cagrildi x = " << x << '\n';
 	foo(x);
 }
 
@@ -38,5 +38,5 @@ int main()
 	t3.join();
 	t4.join();
 
-	std::cout << "main devam ediyor...\n";
+	std::cout << "main is still running...\n";
 }
