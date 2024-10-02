@@ -1,4 +1,4 @@
-//eğer std::thread nesnesinin destructor'u çağrıldığında thread joinable durumda ise std::terminate işlevi çağrılır.
+//if the destructor of a std::thread object is called in a joinable state std::terminate is called
 
 #include <iostream>
 #include <thread>
