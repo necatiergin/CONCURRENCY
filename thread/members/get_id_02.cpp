@@ -8,5 +8,5 @@ int main()
 	cout <<
 		typeid(this_thread::get_id()).name();
 
-	// class std::thread::id;	
+	// sample output: class std::thread::id;	
 }
