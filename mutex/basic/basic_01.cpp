@@ -24,6 +24,6 @@ int main()
 	std::cout << counter << '\n';
 }
 
-Output
-------
+Sample output
+-------------
 1372864
