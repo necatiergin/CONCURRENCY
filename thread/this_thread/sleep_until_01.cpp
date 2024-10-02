@@ -1,4 +1,4 @@
-//örnek cppreference.com sitesinden alınmıştır
+//quoted from cppreference.com 
 
 #include <iostream>
 #include <chrono>
