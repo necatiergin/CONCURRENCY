@@ -7,12 +7,11 @@ void func()
 {
 	//func'ın hangi thread'den çağrıldığına bağlı olarak farklı işler yapılıyor
 	if (std::this_thread::get_id() == main_thread_id) {
-		std::cout << "cagri main thread'den yapildi\n";
+		std::cout << "call from the main thread\n";
 	}
 	else {
-		std::cout << "cagri ikincil threadlerden yapildi\n";
+		std::cout << "call from a child thread\n";
 	}
-
 }
 
 int main()
