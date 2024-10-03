@@ -17,15 +17,16 @@ private:
 int main()
 {
 	Nec mynec{ 15 };
-	mynec.print();
+	
+	mynec.print(); //(15)
 
 	std::thread th1{ &Nec::set, mynec, 42 };
 	th1.join();
-	mynec.print();
+	mynec.print(); //(15)
 	std::thread th2{ &Nec::set, &mynec, 42 };
 	th2.join();
-	mynec.print();
+	mynec.print();  // (42)
 	std::thread th3{ &Nec::set, std::ref(mynec), 99};
 	th3.join();
-	mynec.print();
+	mynec.print();	//(99)
 }
