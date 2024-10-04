@@ -5,7 +5,7 @@
 
 std::string get_data_from_db(const std::string& token)
 {
-	std::string sdata = "veri tabanindan alinan yazi :: " + token;
+	std::string sdata = "string got from the data base:: " + token;
 	return sdata;
 }
 
@@ -19,5 +19,5 @@ int main()
 
 	th.join();
 
-	std::cout << "data = " << result.get();
+	std::cout << result.get();
 }
