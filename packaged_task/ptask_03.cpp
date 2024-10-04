@@ -14,10 +14,10 @@ int main()
 	auto result = fib_task.get_future();
 	std::thread th(std::move(fib_task), 40);
 
-	std::cout << "task'in bitmesi bekleniyor...\n";
+	std::cout << "waiting for the task to finish ...\n";
 	std::cout << result.get() << '\n';
 
-	std::cout << "task tamamlandi\n";
+	std::cout << "task completed\n";
 	th.join();
 }
 
