@@ -9,12 +9,12 @@ class unique_lock;
 
 - template parametresi sarmalanacak _mutex_'in türü _(std::mutex, std::recursive_mutex)_. 
 - _std::scoped_lock_ ya da _std::lock_guard_'dan farklı olarak _std::unique_lock_ nesneni tüm hayatı boyunca _mutex_'i tutmak zorunda değil.
-- _mutex_'in sınıfın kurucu işlevi tarafından edinilip edinilmemesi konusunda farklı seçenekler sağlıyor.
+- _mutex_'in sınıfın kurucu işlevi tarafından edinilip edinilmemesi konusunda farklı seçenekler sağlar.
 - _std::unique_lock_ nesnesi sarmaladığı _mutex_'i (kendi hayatı boyunca) birden fazla kez edinip serbest bırakabilir.
 - sınıfın _destructor_'u çağrıldığında sarmalanan _mutex_ halen kilitli durumdaysa kilidi serbest bırakır.
 - _std::unix_lock_ nesneleri taşınabilir ama kopyalanamaz.
-- _mutex_ nesnesinin serbest bırakılmama ihtimalini ortadan kaldırıyor.
-- mülkiyeti aynı türden başka bir nesneye devredebiliyor.
+- _mutex_ nesnesinin serbest bırakılmama ihtimalini ortadan kaldırır..
+- mülkiyeti aynı türden başka bir nesneye devredebilir.
 - _std::unique_lock_ döndüren bir fabrika fonksiyonu yazılabilir.
 
 
