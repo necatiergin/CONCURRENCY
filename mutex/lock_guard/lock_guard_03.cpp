@@ -17,7 +17,7 @@ public:
 
 void print(int x)
 {
-	pcout{} << "print islevi x = " << x << "\n";
+	pcout{} << "print islevi x = " << x << '\n';
 }
 
 int main()
