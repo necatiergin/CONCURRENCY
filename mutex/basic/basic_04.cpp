@@ -27,6 +27,7 @@ public:
 		os << '\n';
 		mtx.unlock();
 	}
+	//...
 private:
 	mutable std::mutex mtx;
 	std::list<int> mlist;
