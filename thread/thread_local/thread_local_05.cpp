@@ -4,11 +4,11 @@
 struct Myclass {
 	Myclass(int x)
 	{
-		std::osyncstream{ std::cout } << "Myclass ctor x = " << x << " this = " << this << std::endl;
+		std::osyncstream{ std::cout } << "Myclass ctor x = " << x << " this = " << this << '\n';
 	}
 	~Myclass()
 	{
-		std::osyncstream{ std::cout } << "Myclass destructor this = " << this << std::endl;
+		std::osyncstream{ std::cout } << "Myclass destructor this = " << this << '\n';
 	}
 };
 
