@@ -27,7 +27,7 @@ void foo()
 void bar() 
 {
 	std::osyncstream ocout{ std::cout };
-	ocout << "Thread bar trying to lock mtx2 and mtx11...\n";
+	ocout << "Thread bar trying to lock mtx2 and mtx1...\n";
 	lock(mtx2, mtx1);
 	ocout << "Thread bar has locked mtx2 and mtx1\n";
 
