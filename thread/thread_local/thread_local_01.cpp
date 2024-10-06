@@ -8,7 +8,7 @@ thread_local int tval{ 0 };
 void func(const std::string& thread_name)
 {
     ++tval; //senkronizasyon gerekmiyor
-    std::osyncstream{ std::cout } << "tval in thread " << thread_name << " is " << tval << "\n";
+    std::osyncstream{ std::cout } << "tval in thread " << thread_name << " is " << tval << '\n';
 }
 
 int main()
