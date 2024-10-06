@@ -2,7 +2,13 @@
 #include <iostream>
 #include <thread>
 
-thread_local std::mt19937 eng{ 454255u };
+#define THREAD_LOCAL
+
+#ifdef THREAD_LOCAL
+thread_local 
+#endif
+
+std::mt19937 eng{ 454255u };
 
 void foo()
 {
