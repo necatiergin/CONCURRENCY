@@ -3,11 +3,9 @@
 
 int main()
 {
-	using namespace std;
-
 	int ar[5]{};
 
-	atomic ptr(ar);
+	std::atomic ptr(ar);
 	ptr++;
 	assert(ptr.load() == ar + 1);
 	ptr += 1;
