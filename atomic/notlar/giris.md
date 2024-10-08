@@ -22,7 +22,24 @@ Varsayılan düzen _"sequentially consistency_"'dir. (daha sonra değineceğim)
 + _atomic_ bir değişkenin değerinin _(atomik olarak)_ bir arttırıldığını _(increment)_ düşünelim. 
 Bu işlem aslında 3 farklı işleme karşılık gelir: oku - değiştir - yaz _(read - modify - write)_. 
 Eğer değişkenimizin atomik olma garantisi yok ise bu işlemlerin arasına başka _thread_'lerin işlemleri girebilir. 
-Değişkenimiz atomik ise diğer _thread_'ler değişkenimizi ya değiştirilmeden önceki değeri ile ya da değiştirildikten sonraki değeriyle görebilirler, ara bir değerde göremezler. Bir başka deyişle atomik değişkenler için _torn-read_ ya da _torn-write_ olamaz. 
+Değişkenimiz atomik ise diğer _thread_'ler değişkenimizi ya değiştirilmeden önceki değeri ile ya da değiştirildikten sonraki değeriyle görebilirler, ara bir değerde göremezler. Bir başka deyişle atomik değişkenler için _torn-read_ ya da _torn-write_ olamaz.
+
+#### std::atomic
+_std::atomic_ bir sınıf şablonudur. Bu sınıf şablonundan elde edilen türler atomik operasyonlar sunar.
+
+```
+template <typename T>
+struct atomic;
+```
+- tam sayı türleri ve _pointer_ türleri için bu sınıfın _partial specialization_'ları var.
+
+- _T_ türünden bir nesne için atomik operasyonlar sağlıyor.
+- tüm temel türler _(fundamental types)_ için standart kütüphane tarafından _"full specialization"_ sağlanmış durumda.
+- template argümanı olarak kullanılacak türün _"trivially copyable"_ ve _"bitwise equality comparable"_ olması gerekiyor.
+- Kilit sistemi kullanılmama _(lock-free)_ olma garantisi verilmiyor. Ancak platformların çoğunda temel türler olan template argümanları söz konusu olduğunda bir kilit sistemi kullanılmadan _(lock-free)_ gerçekleştiriliyor.
+- Kopyalama ya da taşıma yoluyla nesne oluşturulamıyor. _(not copy-constructible - not move constructible)_
+- Atama yapılabilir _(assignable)_ bir tür. Ancak atama operatörü referans değil değer döndürüyor.
+- varsayılan bellek düzeni _(memory order)_ _std::memory_order_seq_cst_.
 
 
 
