@@ -3,11 +3,10 @@
 
 int main()
 {
-	using namespace std;
-	atomic<int> x{};
+	std::atomic<int> x{};
 	x.store(98);
-	cout << x.load() << '\n';
-	atomic_store(&x, 30);
-	cout << atomic_load(&x) << '\n';
+	std::cout << x.load() << '\n';
+	std::atomic_store(&x, 30);
+	std::cout << atomic_load(&x) << '\n';
 	//
-}	
+}
