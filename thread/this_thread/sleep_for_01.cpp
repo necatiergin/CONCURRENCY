@@ -15,5 +15,5 @@ int main()
 	std::thread th{ tfunc, 2'000 };
 	std::cout << th.get_id() << '\n';
 	th.join();
-	std::cout << "programm ens\n";
+	std::cout << "programm ends\n";
 }
