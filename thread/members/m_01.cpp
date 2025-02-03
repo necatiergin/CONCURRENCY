@@ -1,3 +1,4 @@
+//thread::join
 //if the destructor of a std::thread object is called in a joinable state std::terminate is called
 
 #include <iostream>
