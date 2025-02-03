@@ -10,14 +10,11 @@ void print(const std::vector<int>& vec)
 	std::cout << '\n';
 }
 
-
 int main()
 {
-	using namespace std;
-
-	vector ivec{ 1, 2, 3, 4, 5, 6, 7 };
-	//thread tx{ print, ivec }; //wrong - call by value
+	std::vector ivec{ 1, 2, 3, 4, 5, 6, 7 };
+	//std::thread tx{ print, ivec }; //wrong - call by value
 	//tx.join();
-	thread ty{ print, ref(ivec) }; //call by reference
+	std::thread ty{ print, ref(ivec) }; //call by reference
 	ty.join();
 }
