@@ -9,9 +9,10 @@ void foo(int x)
 
 void bar(int x, int y, int z)
 {
-	std::osyncstream{ std::cout} << "in bar x = " << x << '\n';
-	std::osyncstream{ std::cout } << "in bar y = " << y << '\n';
-	std::osyncstream{ std::cout } << "in bar z = " << z << '\n';
+	std::osyncstream osout{ std::cout };
+	osout << "in bar x = " << x << '\n';
+	osout << "in bar y = " << y << '\n';
+	osout << "in bar z = " << z << '\n';
 }
 
 int main()
