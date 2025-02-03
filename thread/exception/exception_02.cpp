@@ -4,18 +4,20 @@
 
 void func(int x, char c)
 {
-	std::osyncstream(std::cout) << "func(int x) x = " << x << '\n';
+	std::osyncstream ocout{ std::cout };
+	
+	ocout << "func(int x) x = " << x << '\n';
 
 	try {
 		if (x % 2 == 0)
 			throw std::runtime_error("even number error!");
 	}
 	catch (const std::exception& ex) {
-		std::osyncstream(std::cout) << "\nexception caught: " << ex.what() << '\n';
+		ocout << "\nexception caught: " << ex.what() << '\n';
 	}
 	std::this_thread::sleep_for(std::chrono::duration<double>{2.});
 	for (int i = 0; i < x; ++i) {
-		std::cout.put(c);
+		ocout.put(c);
 	}
 }
 
