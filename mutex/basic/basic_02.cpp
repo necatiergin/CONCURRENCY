@@ -3,6 +3,7 @@
 #include <iostream>
 
 unsigned long long counter = 0;
+
 std::mutex mtx;
 
 void func()
@@ -16,14 +17,12 @@ void func()
 
 int main()
 {
-	std::thread t1(func);
-	std::thread t2(func);
-	std::thread t3(func);
-	std::thread t4(func);
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
+	{
+		std::jthread t1(func);
+		std::jthread t2(func);
+		std::jthread t3(func);
+		std::jthread t4(func);
+	}
+
 	std::cout << counter << '\n';
 }
-
