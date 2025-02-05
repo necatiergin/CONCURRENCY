@@ -21,13 +21,10 @@ public:
 		m_instance = new Singleton();
 	}
 private:
-	static std::once_flag m_init_flag;
-	static Singleton* m_instance;
+	inline static std::once_flag m_init_flag{};
+	inline static Singleton* m_instance{};
 	Singleton() = default;
 };
-
-Singleton* Singleton::m_instance{};
-std::once_flag Singleton::m_init_flag;
 
 
 void func()
@@ -37,11 +34,9 @@ void func()
 
 int main()
 {
-	std::vector<std::thread> tvec;
+	std::vector<std::jthread> tvec;
 	for (int i = 0; i < 100; ++i) {
 		tvec.emplace_back(func);
 	}
 
-	for (auto& th : tvec)
-		th.join();
 }
