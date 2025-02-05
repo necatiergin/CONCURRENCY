@@ -1,5 +1,5 @@
-- _mutex_, _thread_'leri kritik bölümden dışlamak için kullanılır. _(exclusion)_
-- _thread_'ler _mutex_'e ortak bir şekilde uyralar. _(mutual)_
+- _mutex_, _thread_'leri kritik bölümden _(critical section)_ dışlamak için kullanılır. _(exclusion)_
+- _thread_'ler _mutex_'e ortak bir şekilde uyarlar. _(mutual)_
 
 - Bir _mutex_ sadece 2 durumda olabilir
   - kilitli _(locked)_
@@ -26,11 +26,11 @@ Bir mutex'in açılması (mutex kilitli iken) yaplan değişikliklerin diğer _t
 
 Bir _thread_ bir _mutex_'i kilitleyerek kritik bölgeye yalnızca kendisinin erişimini sağlar _(acquire)_.<br>
 Bir _thread_ bir _mutex_'i açar: <br>
-	- kritik bölgeye erişimi  yalnızca bir başka thread'in erişimine açar. _(release)_
-	- yaptığı değişiklikleri diğer thread'lere sunmuş olur
+	- kritik bölgeye erişimi  yalnızca bir başka _thread_'in erişimine açar. _(release)_
+	- yaptığı değişiklikleri diğer _thread_'lere sunmuş olur
 	- bir başka thread mutex'i kilitler ve değişiklikleri (sonuçları) edinir _(aquire)_.
 
-_acquire-release_ semantiği _thrad_'lerin sıralanmasını sağlar.
+_acquire-release_ semantiği _thread_'lerin sıralanmasını sağlar.
 - _data race_ olmaz.
 - paylaşılan veri her zaman tutarlı _(consistent)_ durumdadır.
 
