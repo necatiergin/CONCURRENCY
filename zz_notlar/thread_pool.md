@@ -11,7 +11,7 @@ Yüksek CPU kullanımına ve bellek yüküne neden olabilecek aşırı _thread_ 
 - Daha iyi bir yük dengelenmesi sağlar _(load balancing)_
 Görevleri birden fazla iş parçacığı arasında verimli bir şekilde dağıtarak çok çekirdekli sistemlerde verimi artırır.
 
-- Sistemin sşırı yüklenmesini önler<br>
+- Sistemin aşırı yüklenmesini önler<br>
 Bir _thread havuzu_ olmadan, fazla sayıda _thread_ oluşturma _CPU_ açlığına ve kaynakların tükenmesine neden olabilir.
 
 - Thread yönetimini enkapsüle eder. <br>
