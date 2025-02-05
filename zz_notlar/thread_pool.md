@@ -3,16 +3,16 @@ _Thread Pool_, bir kuyruktaki görevleri yürüten önceden oluşturulmuş _thre
 
 #### Thread Pool Kullanmanın Faydaları
 - Geliştirilmiş performans ve daha düşük ek yük (overhead)<br>
-Dinamik olarak _thread_leri oluşturmak ve yok etmek maliyetlidir. _Thread_ havuzu, _thread_leri canlı tutarak pahalı oluşturma/yok etme döngülerinden kaçınır.
+Dinamik olarak _thread_'leri oluşturmak ve yok etmek maliyetlidir. _Thread_ havuzu, _thread_'leri canlı tutarak pahalı oluşturma/yok etme döngülerinden kaçınır.
 
 - Verimli Kaynak Kullanımı <br>
-Yüksek CPU kullanımına ve bellek yüküne neden olabilecek aşırı thread oluşturulmasını önler.
+Yüksek CPU kullanımına ve bellek yüküne neden olabilecek aşırı _thread_ oluşturulmasını önler.
 
 - Daha İyi Yük Dengeleme
 Görevleri birden fazla iş parçacığı arasında verimli bir şekilde dağıtarak çok çekirdekli sistemlerde verimi artırır.
 
 - Sistemin Aşırı Yüklenmesini Önler<br>
 Bir thread havuzu olmadan, fazla sayıda thread oluşturma CPU açlığına ve kaynakların tükenmesine neden olabilir.
-thread yönetimini enkapsüle eder.
 
-threadleri manuel olarak yönetmeden çok sayıda threadi işlemek için yapılandırılmış bir yol sağlar.
+- Thread yönetimini enkapsüle eder. <br>
+_Thread_'leri manuel olarak yönetmeden çok sayıda threadi işlemek için yapılandırılmış bir yol sağlar.
