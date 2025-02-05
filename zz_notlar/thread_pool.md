@@ -8,11 +8,11 @@ Dinamik olarak _thread_'leri oluşturmak ve yok etmek maliyetlidir. _Thread_ hav
 - Verimli Kaynak Kullanımı <br>
 Yüksek CPU kullanımına ve bellek yüküne neden olabilecek aşırı _thread_ oluşturulmasını önler.
 
-- Daha İyi Yük Dengeleme
+- Daha İyi Yük Dengeleme _(load balancing)_
 Görevleri birden fazla iş parçacığı arasında verimli bir şekilde dağıtarak çok çekirdekli sistemlerde verimi artırır.
 
 - Sistemin Aşırı Yüklenmesini Önler<br>
-Bir thread havuzu olmadan, fazla sayıda thread oluşturma CPU açlığına ve kaynakların tükenmesine neden olabilir.
+Bir _thread havuzu_ olmadan, fazla sayıda _thread_ oluşturma _CPU_ açlığına ve kaynakların tükenmesine neden olabilir.
 
 - Thread yönetimini enkapsüle eder. <br>
 _Thread_'leri manuel olarak yönetmeden çok sayıda threadi işlemek için yapılandırılmış bir yol sağlar.
