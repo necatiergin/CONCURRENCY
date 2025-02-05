@@ -19,12 +19,11 @@ void try_increase()
 
 int main()
 {
-	std::thread ar_t[10];
-	for (int i = 0; i < 10; ++i)
-		ar_t[i] = std::thread(try_increase);
-
-	for (auto& t : ar_t)
-		t.join();
+	{
+		std::jthread ar_t[10];
+		for (int i = 0; i < 10; ++i)
+			ar_t[i] = std::jthread(try_increase);
+	}
 
 	std::cout << counter << " times incremented.\n";
 }
