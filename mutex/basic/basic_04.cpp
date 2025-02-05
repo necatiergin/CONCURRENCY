@@ -15,6 +15,16 @@ public:
 		mtx.unlock();
 	}
 
+	size_t size() const
+	{
+		mtx.lock();
+		auto ret = mlist.size();
+		mtx.unlock();
+
+		return ret;
+	}
+
+
 	void print() const
 	{
 		mtx.lock();
@@ -38,22 +48,23 @@ private:
 void foo(List& ls, int val)
 {
 	using namespace std::literals;
+
 	for (int i = 0; i < 10; ++i) {
 		ls.push_back(val + i);
 		std::this_thread::sleep_for(50ms);
 	}
-	ls.print();
 }
 
 int main()
 {
 	List mylist;
 
-	std::thread t1{ foo, std::ref(mylist), 10 };
-	std::thread t2{ foo, std::ref(mylist), 30 };
-	std::thread t3{ foo, std::ref(mylist), 70 };
+	{
+		std::jthread t1{ foo, std::ref(mylist), 10 };
+		std::jthread t2{ foo, std::ref(mylist), 30 };
+		std::jthread t3{ foo, std::ref(mylist), 70 };
+	}
 
-	t1.join();
-	t2.join();
-	t3.join();
+	mylist.print();
+	std::cout << "size = " << mylist.size() << '\n';
 }
