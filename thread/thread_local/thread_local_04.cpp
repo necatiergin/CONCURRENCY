@@ -3,10 +3,9 @@
 #include <syncstream>
 #include <vector>
 
+thread_local std::string name("Necati ");
 
-thread_local std::string name("Necati");
-
-void func(const std::string & surname) {
+void func(const std::string& surname) {
 
 	name += surname;
 	std::osyncstream ocout{ std::cout };
@@ -17,13 +16,9 @@ int main()
 {
 	const char* const pa[] = { "Ergin", "Ozkan", "Ersoy", "Toptan", "Erdogan", "Demirkapi" };
 
-	std::vector<std::thread> tvec;
+	std::vector<std::jthread> tvec;
 
 	for (auto psurname : pa) {
 		tvec.emplace_back(func, psurname);
-	}
-
-	for (auto& t : tvec) {
-		t.join();
 	}
 }
