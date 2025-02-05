@@ -33,11 +33,8 @@ void foo()
 
 int main()
 {
-	std::vector<std::thread> tvec;
+	std::vector<std::jthread> tvec;
 
 	for (int i = 0; i < 20; ++i)
-		tvec.push_back(std::thread(foo));
-
-	for (auto& th : tvec)
-		th.join();
+		tvec.push_back(std::jthread(foo));
 }
