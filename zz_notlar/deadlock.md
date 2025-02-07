@@ -1,6 +1,16 @@
+#### Deadlock nedir?
 Çok _thread_'li _(multithreaded)_ bir programda _deadlock_, iki veya daha fazla _thread'in_, ihtiyaç duydukları kaynakları birbirlerinin serbest bırakmasını bekleyerek süresiz olarak bloke bloke olmaları durumudur.
 
-#### deadlock senaryoları
+#### Yaygın Deadlock Senaryoları:
+
+**Kaynak Sıralaması (Resource Ordering)<br>**
+_Thread_'ler, birden çok kaynağı farklı sıralarda edinirler. Bu en sık karşılaşılan senaryodur.<br>
+
+**İç İçe Kilitler (Nested Locks)<br>**
+Bir  _thread_ bir kilidi tutar ve ardından zaten tuttuğu (veya ilk kilidi tutan başka bir iş parçacığının beklediği) başka bir kilit edinmeye çalışır.
+
+**Dış Bağımlılıklar (External Dependencies)<br>**
+Bir _thread_, programın kontrolü dışındaki bir olayı veya kaynağı (örneğin, kullanıcı girişi, ağ G/Ç) bir kilit tutarken bekler. Olay asla gerçekleşmezse, iş parçacığı bloke kalır ve potansiyel olarak diğer iş parçacıklarının kilitlenmesine neden olabilir.
 
 Birden fazla kilit edinilmesi gerekiyorsa, kilitlerin her zaman aynı sırada edinilmesi kritiktir; aksi halde _deadlock_ oluşabilir.<br>
 Örneğin, bazı işlemleri gerçekleştirmeden önce iki _mutex_'in edinilmesi gereken bir durum olsun.
