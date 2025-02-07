@@ -1,0 +1,1 @@
+Çok _thread_'li _(multithreaded)_ bir programda _deadlock_, iki veya daha fazla _thread'in_, ihtiyaç duydukları kaynakları birbirlerinin serbest bırakmasını bekleyerek süresiz olarak bloke bloke olmaları durumudur.
