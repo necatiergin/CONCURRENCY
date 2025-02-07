@@ -23,7 +23,7 @@ Birden fazla kilit edinilmesi gerekiyorsa, kilitlerin her zaman aynı sırada ed
 bu durum _deadlock_'a neden olur. <br>
 Yukarıdaki örnekte, iki _mutex_ farklı _thread_'ler tarafından her zaman aynı sırada ediniliyor ise, bu tür bir _deadlock_ oluşmaz.
 
-Bu tür durumlarda deadlock'tan kaçınılması için şu seçeneklerden biri kullanılabilir:
+Bu tür durumlarda _deadlock_'tan kaçınılması için şu seçeneklerden biri kullanılabilir:
 + tüm _thread_'ler _mutex_'leri aynı sıra ile edinmeliler.
 + _std::lock_ fonksiyonu kullanılarak kilitler edinilmeli.
 + _std::scoped_lock_ _RAII_ sınıfı kullanılmalı.
