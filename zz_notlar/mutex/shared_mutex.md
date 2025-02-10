@@ -3,10 +3,11 @@ iki ayrı şekilde kilitlenebilir: <br>
 - _exclusive (write)_<br>
   - yalnızca tek bir _thread_ kilidi edinebilir.<br>
   - yalnızca tek bir _thread_ kritik bölgeye girebilir.<br>
+- _mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterlidir.
+
 - _paylaşımlı_ <br>
   - birden fazla _thread_ kilidi edinebilir. <br>
   - birden fazla _thread_ kritik bölgeye girebilir.  <br>
-_mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterlidir.
 
 ```cpp
 std::lock_guard<std::shared_mutex>
