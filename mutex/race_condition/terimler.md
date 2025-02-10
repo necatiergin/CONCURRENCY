@@ -1,3 +1,4 @@
+<!---
 + **race condition:** Öyle bir davranış ki bu davranıştan çıkan sonuç iki ya da ikiden fazla _thread_'in yürütülmesindeki görece sıraya göre değişebiliyor.
 _race condition_ bir sorun oluşturmak zorunda değil. (_benign_ olabilir). Ancak bu terim daha çok problemli durumlar için kullanılıyor. (_invariant_'lar bozuluyor ya da tanımsız davranış oluşuyor.)
 
@@ -10,3 +11,4 @@ Yazılım geliştirmede "data race" den kaçınmak zorunluluğu karmaşıklığ�
 + **livelock:** iki ya da daha fazla _thread_ (bloke olmadan) birbirlerinin tuttuğu kaynakları beklediklerinden ilerleme kaydedemiyorlar.
 
 + **critical section** Birden fazla _thread_ tarafından eş zamanlı olarak erişilmemesi gereken bir kaynak içeren bir kod parçası. _critical_section_ girişinden çıkışına kadar, birden fazla _thread_'in aynı zamanda bu kodları yürütmesini engelleyecek şekilde bir senkronizasyon mekanizması oluşturmak gerekiyor.
+--->
