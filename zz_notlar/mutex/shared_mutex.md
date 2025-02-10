@@ -4,15 +4,15 @@ iki ayrı şekilde kilitlenebilir: <br>
   - yalnızca tek bir _thread_ kilidi edinebilir.<br>
   - yalnızca tek bir _thread_ kritik bölgeye girebilir.<br>
 - _mutex_'i _exclusive_ olarak edinmek için _std::lock_guard_ ya da _std:unique_lock_ ile sarmalamak yeterlidir.
-
-- _paylaşımlı_ <br>
-  - birden fazla _thread_ kilidi edinebilir. <br>
-  - birden fazla _thread_ kritik bölgeye girebilir.  <br>
-
 ```cpp
 std::lock_guard<std::shared_mutex>
 std::unique_lock<std::shared_mutex>
 ```
+- _paylaşımlı_ <br>
+  - birden fazla _thread_ kilidi edinebilir. <br>
+  - birden fazla _thread_ kritik bölgeye girebilir.  <br>
+
+
 Bu durumda sadece _mutex_'i edinen _thread_ kritik bölgeye girebilir. Diğer _thread_'ler _mutex_ serbest bırakılıncaya kadar beklemek zorunda. <br>
 
 - _mutex_'in _exclusive_ olarak edinilebilmesi için _mutex_'in kilitli olmaması gerekir.
