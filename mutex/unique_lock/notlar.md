@@ -1,13 +1,13 @@
 #### std::unique_lock
 
-- _std::unique_lock_,  bir _mutex_'i sarmalayan başka bir _RAII_ sınıfı. Bildirimi şöyle:
+- _std::unique_lock_,  bir _mutex_'i sarmalayan başka bir _RAII_ sınıf şablonu. Bildirimi şöyle:
 
 ```
 template <class T> 
 class unique_lock;
 ```
 
-- template parametresi sarmalanacak _mutex_'in türü _(std::mutex, std::recursive_mutex)_. 
+- template parametresi sarmalanacak _mutex_'in türü _(std::mutex, std::timed_mutex, std::recursive_mutex, vs)_. 
 - _std::scoped_lock_ ya da _std::lock_guard_'dan farklı olarak _std::unique_lock_ nesneni tüm hayatı boyunca _mutex_'i tutmak zorunda değil.
 - _mutex_'in sınıfın kurucu işlevi tarafından edinilip edinilmemesi konusunda farklı seçenekler sağlar.
 - _std::unique_lock_ nesnesi sarmaladığı _mutex_'i (kendi hayatı boyunca) birden fazla kez edinip serbest bırakabilir.
