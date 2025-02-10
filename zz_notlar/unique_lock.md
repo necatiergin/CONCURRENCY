@@ -52,12 +52,25 @@ _unique_lock_ nesnesi zaten kilidi edinmiş bir _mutex_ ile hayata başlatılabi
 + sınıfın _owns_lock_ ya da _operator bool_ fonksiyonları ile _mutex_'in edinilmiş olup olmadığı sınanabilir. <br>
 
 ##### Sınıfın try_lock_for ve try_lock_until fonksiyonları
-_try_lock_for_ ve _try_lock_until_ fonksiyonları, _mutex_'in kilitlenmesini garanti etmezler. Bu fonksiyonlar sadece belirli bir süre veya zamana kadar _mutex_'i kilitlemeyi denerler. Mutex'in kilitlenmesinin garanti edilmesi gerekiyorsa,sınıfın _lock_ fonksiyonu kullanılmalıdır. Ancak, _lock_ fonksiyonu _mutex_ kilitlenene kadar ilgili _thread_'i bloke eder.
+_try_lock_for_ ve _try_lock_until_ fonksiyonları, _mutex_'in kilitlenmesini garanti etmezler. Bu fonksiyonlar sadece belirli bir süre veya zamana kadar _mutex_'i kilitlemeyi denerler. _mutex'_in kilitlenmesinin garanti edilmesi gerekiyorsa,sınıfın _lock_ fonksiyonu kullanılmalıdır. Ancak, _lock_ fonksiyonu _mutex_ kilitlenene kadar ilgili _thread_'i bloke eder.<br>
+
 **try_lock_for fonksiyonu**<br>
 ```cpp
 bool try_lock_for(const std::chrono::duration<Rep, Period>& rel_time);
 ```
-_mutex_'i belirli bir süre boyunca kilitlemeye çalışır. Verilen süre içinde _mutex_'i kilitleyebilirse _true_ değer döndürür. Başarısız olursa, yani verilen süre içinde _mutex_'i kilitleyemezse _false_ değer döndürür.
+_mutex_'i belirli bir süre boyunca kilitlemeye çalışır. Verilen süre içinde _mutex_'i kilitleyebilirse _true_ değer döndürür. Başarısız olursa, yani verilen süre içinde _mutex_'i kilitleyemezse _false_ değer döndürür.<br>
+
+**release fonksiyonu**<br>
+
+```
+mutex_type* release() noexcept;
+```
+_std::unique_lock_ nesnesinin kontrol ettiği _mutex_ üzerindeki sahipliğini bırakır ancak _mutex_'in kilidini serbest bırakmaz. Bu fonksiyon çağrıldığında:
+_unique_lock_ nesnesi artık _mutex_'in sahibi değildir. _mutex_ kilitli kalır ve _mutex_'in manuel olarak serbest bırakılması gerekir. Fonksiyon, kullanılan _mutex_'in adresini döndürür. _mutex_ kontrolünün başka bir yapıya devredilmesi ya da _manuel_ olarak kilidin yönetilmek istendiği durumlarda kullanılır. Özellikle bir _mutex_'in otomatik yönetiminden çıkarılması ve farklı bir senkronizasyon mantığına geçiş için tercih edilir. _release_ fonksiyonu yalnızca sahipliği bırakır, ancak _mutex_'in kilidini serbest bırakmaz _(unlock etmez)._Bu fonksiyon çağrıldıktan sonra manuel olarak _mutex_'in _unlock_ fonksiyonunun çağrılması gerekir.
+
+
+
+
 
 Sınıfın _mutex_'i edinmek ve serbest bırakmak için sunduğu üye fonksiyonlar şunlar:
 - ::lock()
