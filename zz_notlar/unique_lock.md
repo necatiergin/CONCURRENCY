@@ -3,7 +3,7 @@
 - _std::unique_lock_,  bir _mutex_'i sarmalayan başka bir _RAII_ sınıfı. Bildirimi şöyle:
 
 ```
-template <class T> 
+template <class Mutex> 
 class unique_lock;
 ```
 
