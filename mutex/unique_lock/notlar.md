@@ -12,7 +12,7 @@ class unique_lock;
 - _mutex_'in sınıfın kurucu işlevi tarafından edinilip edinilmemesi konusunda farklı seçenekler sağlar.
 - _std::unique_lock_ nesnesi sarmaladığı _mutex_'i (kendi hayatı boyunca) birden fazla kez edinip serbest bırakabilir.
 - sınıfın _destructor_'u çağrıldığında sarmalanan _mutex_ halen kilitli durumdaysa kilidi serbest bırakır.
-- _std::unix_lock_ nesneleri taşınabilir ama kopyalanamaz.
+- _std::unique_lock_ nesneleri taşınabilir ama kopyalanamaz.
 - _mutex_ nesnesinin serbest bırakılmama ihtimalini ortadan kaldırır..
 - mülkiyeti aynı türden başka bir nesneye devredebilir.
 - _std::unique_lock_ döndüren bir fabrika fonksiyonu yazılabilir.
