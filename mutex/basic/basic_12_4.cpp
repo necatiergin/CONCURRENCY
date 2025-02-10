@@ -15,7 +15,7 @@ void foo()
 	if (!gpa) {		
 		lazy_init_mtx.lock();
 		if (!gpa)
-			gpa = new A; //thread-safe since C++17 
+			gpa = new A; 
 		lazy_init_mtx.unlock();
 	}
 	//...
