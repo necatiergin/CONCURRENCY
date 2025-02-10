@@ -19,9 +19,9 @@ class unique_lock;
 
 
 _std::lock_guard_'a göre daha esnek kullanım olanakları sağlar. <br>
-_default_ olarak edindiği _mutex_'in _lock_ fonksiyonu çağırıe. <br>
-Sınıfın _constructor_'ına _mutex_ nesnesi dışında ikinci bir argüman verebiliyoruz.<br>
-istersek _mutex_'i edinmeden başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::defer_lock_ sabitini argüman olarak geçiyoruz.
+_default_ olarak edindiği _mutex_'in _lock_ fonksiyonu çağırır. <br>
+Sınıfın _constructor_'ına _mutex_ nesnesi dışında ikinci bir argüman geçilebilir.<br>
+istenirse _mutex_'i edinmeden bir _unique_lock_ nesnesi oluşturulabilir. Bunun için _constructor_'ın ikinci parametresine _std::defer_lock_ sabiti geçilmeşlidir.
 ```cpp
 {
 	std::mutex mtx;
@@ -34,9 +34,22 @@ istersek _mutex_'i edinmeden başlatabiliyoruz. Bunun için _constructor_'ın ik
 }
 ```
 
-İstersek edindiği _mutex_'in _try_lock_ fonksiyonunu çağırmasını sağlayabiliyoruz. Bunun için _ctor_'ın ikinci parametresine _std::try_lock_ sabitini argüman olarak geçiyoruz.<br>
-İstersek zaten kilidi edinmiş bir _mutex_ ile başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::adopt_lock_ sabitini argüman olarak geçiyoruz.<br>
-+ sınıfın _owns_lock_ ya da _operator bool_ fonksiyonları ile _mutex_'in edinilmiş olup olmadığını sınayabiliyoruz. <br>
+_unique_lock_ nesnesinin  edindiği _mutex_'in _try_lock_ fonksiyonunu çağırması sağlanabilir. Bunun için _ctor_'ın ikinci parametresine _std::try_lock_ sabiti geçilmelidir:
+```cpp
+{
+	std::mutex mtx;
+	std::unique_lock  lock(mtx, std::try_to_lock);
+	if (lock.owns_lock()) {
+		// ... korunan koda erişim ...
+	}
+	else {
+		// Mutex kilitlenemedi
+	}
+}
+```
+
+_unique_lock_ nesnesi zaten kilidi edinmiş bir _mutex_ ile hayata başlatılabilir. Bunun için _constructor_'ın ikinci parametresine _std::adopt_lock_ sabiti geçilmelidir.<br>
++ sınıfın _owns_lock_ ya da _operator bool_ fonksiyonları ile _mutex_'in edinilmiş olup olmadığı sınanabilir. <br>
 
 Sınıfın _mutex_'i edinmek ve serbest bırakmak için sunduğu üye fonksiyonlar şunlar:
 - ::lock()
