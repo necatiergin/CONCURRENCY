@@ -60,6 +60,14 @@ bool try_lock_for(const std::chrono::duration<Rep, Period>& rel_time);
 ```
 _mutex_'i belirli bir süre boyunca kilitlemeye çalışır. Verilen süre içinde _mutex_'i kilitleyebilirse _true_ değer döndürür. Başarısız olursa, yani verilen süre içinde _mutex_'i kilitleyemezse _false_ değer döndürür.<br>
 
+**try_lock_until fonksiyonu**<br>
+```cpp
+template <class Clock, class Duration>
+bool try_lock_until(const std::chrono::time_point<Clock, Duration>& timeout_time);
+```
+
+
+
 **release fonksiyonu**<br>
 
 ```
