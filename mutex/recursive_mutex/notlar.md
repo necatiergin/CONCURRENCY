@@ -4,9 +4,9 @@
 
 - Özyinelemeli _mutex_, bir _thread_'in aynı _mutex_'i birden fazla kez kilitleyebileceği yapıdadır.
 
-- Bir _mutex_ A iş parçacığı tarafından ilk kez kilitlendikten sonra, A iş parçacığı _mutex_ üzerinde ek kilitler edinebilir (hali hazırda sahip olduğu kilidi serbest bırakmadan).
+- Bir _mutex_ A thread'i tarafından ilk kez kilitlendikten sonra, A thread'i _mutex_ üzerinde ek kilitler edinebilir (hali hazırda sahip olduğu kilidi serbest bırakmadan).
 
-- A iş parçacığı mutex üzerindeki tüm kilitlerini serbest bırakana kadar _mutex_ diğer iş parçacıkları tarafından kullanılamaz.
+- A _thread'i mutex_ üzerindeki tüm kilitlerini serbest bırakana kadar _mutex_ diğer iş parçacıkları tarafından kullanılamaz.
 
 - Özyinelemeli _mutex_ genellikle bir _mutex_'i kilitleyen kodun aynı _mutex_'i kilitleyen başka bir kodu çağırması gerektiğinde kullanılır (kilitlenmeyi önlemek için).
 
