@@ -18,13 +18,25 @@ class unique_lock;
 - _std::unique_lock_ döndüren bir fabrika fonksiyonu yazılabilir.
 
 
-+ _std::lock_guard_'a göre daha esnek.
-+ ctor'a argüman verebiliyoruz.
-  - default olarak edindiği _mutex_'in _lock_ fonksiyonu çağırıyor.
-  - istersek edindiği mutex'in _try_lock_ fonksiyonunu çağırabiliyor. Bunun için _ctor_'ın ikinci parametresine _std::try_lock_ sabitini argüman olarak geçiyoruz.
-  - istersek _mutex_'i edinmeden başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::defer_lock_ sabitini argüman olarak geçiyoruz.
-  - istersek zaten kilidi edinmiş bir _mutex_ ile başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::adopt_lock_ sabitini argüman olarak geçiyoruz.
-+ sınıfın _owns_lock_ ya da _operator bool_ fonksiyonları ile _mutex_'in edinilmiş olup olmadığını sınayabiliyoruz. 
+_std::lock_guard_'a göre daha esnek kullanım olanakları sağlar. <br>
+_default_ olarak edindiği _mutex_'in _lock_ fonksiyonu çağırıe. <br>
+Sınıfın _constructor_'ına _mutex_ nesnesi dışında ikinci bir argüman verebiliyoruz.<br>
+istersek _mutex_'i edinmeden başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::defer_lock_ sabitini argüman olarak geçiyoruz.
+```cpp
+{
+	std::mutex mtx;
+	std::unique_lock lock(mtx, std::defer_lock);
+	// bazı kodlar
+	lock.lock(); // mutex'i şimdi kilitle
+	// krtitik bölge
+	lock.unlock(); // mutex'in kilidini aç
+	//bazı kodlar
+}
+```
+
+İstersek edindiği _mutex_'in _try_lock_ fonksiyonunu çağırmasını sağlayabiliyoruz. Bunun için _ctor_'ın ikinci parametresine _std::try_lock_ sabitini argüman olarak geçiyoruz.<br>
+İstersek zaten kilidi edinmiş bir _mutex_ ile başlatabiliyoruz. Bunun için _constructor_'ın ikinci parametresine _std::adopt_lock_ sabitini argüman olarak geçiyoruz.<br>
++ sınıfın _owns_lock_ ya da _operator bool_ fonksiyonları ile _mutex_'in edinilmiş olup olmadığını sınayabiliyoruz. <br>
 
 Sınıfın _mutex_'i edinmek ve serbest bırakmak için sunduğu üye fonksiyonlar şunlar:
 - ::lock()
