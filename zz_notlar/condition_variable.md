@@ -68,7 +68,7 @@ böyle bir sorgulama iyi bir çözüm olmayabilir:
   + kontroller arasındaki uyku süresi çok uzun olursa bekleyen _thread_ görev tamamlandığında bile uyumayı sürdürür ve gereksiz bir gecikmeye neden olur.
 
 + daha iyi bir yaklaşım, C++ standart kütüphanesinin _<condition_variable>_  başlık dosyasında sağladığı koşul değişkenlerini kullanmaktır. 
-+ koşul değişkeni, bekleyen bir ya da birden fazla _thread_'i uyandırabilek bir değişkendir.
++ koşul değişkeni, bekleyen bir ya da birden fazla _thread_'i uyandırabilecek bir değişkendir.
 
 ```
 {
