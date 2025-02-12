@@ -78,6 +78,7 @@ void process_data()
 
 	std::lock_guard data_lck(mtx_data);
 	std::cout << "Processing the data received: \n";
+	std::cout << "[" << str_data << "]\n";
 }
 
 int main()
