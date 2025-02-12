@@ -1,10 +1,10 @@
 + Eşzamanlı programlarda, genellikle bir _thread_'in belirli bir olay gerçekleşene kadar beklemesi gerekir (örneğin, bir giriş çıkış işlemi tamamlanana kadar ya da bir veri kullanılabilir duruma gelene kadar).
-+ Bir _thread_'in bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi verimsiz olabilir (yani işlemci kaynaklarını boşa harcayabilir).
-+ _thread_'in bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir.
-+ _condition variable_, _thread_'lerin belirli bir koşul gerçekleşene kadar beklemesine (bloke olarak) olanak tanıyan bir senkronizasyon aracıdır.
++ Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi verimsiz olabilir (yani işlemci kaynaklarını boşa harcayabilir).
++ _thread_'in bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir. Böylece bekleyen _thread_ kıymetli işlemci zamanını boş yere harcamamış olur.
++ _condition variable_, _thread_'lerin belirli bir koşul gerçekleşene kadar beklemesine (bloke olarak) olanak tanıyan temel bir senkronizasyon aracıdır.
 + Bir _conditional_variable_ (koşul değişkeni), ilgilenilen bazı olaylara karşılık gelir.
-+ Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi gerçekleştirir.
-+ Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinde bir sinyal işlemi gerçekleştirir.
++ Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi (wait) gerçekleştirir.
++ Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinden bir sinyal gönderir.
 + Bununla birlikte, sinyal verilen _thread_ çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir _thread_ koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
 
 #### _std::condition_variable_ sınıfı
@@ -33,13 +33,13 @@ fonksiyonları kullanılır.
 #### üye fonksiyonlar
 
 _notify_one_ : bekleyen bir _thread_'e sinyal gönderir. <br>
-_notify_all_ : bekleyen bütün thread'lere sinyal gönderir. <br>
+_notify_all_ : bekleyen bütün _thread_'lere sinyal gönderir. <br>
 _wait_ : thread'i sinyal gelene kadar bloke eder. <br>
 _wait_for_ : _thread_'i bildirim gelene kadar ya da belirli bir süre bloke eder.<br>
 _wait_until_ : hread_'i bildirim gelene kadar ya da belirli zaman gelinceye kadar blloke eder.<br>
 _native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ döndürür.<br>
 
-Bir _thread_'in bir başka thread tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
+Bir _thread_'in bir başka _thread_ tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
 
 ```cpp
 #include <mutex>
@@ -62,7 +62,7 @@ void func()
 ```
 böyle bir sorgulama iyi bir çözüm olmayabilir:
 
-+ bekleyen _thread_ bayrak değişkeni tekrar tekrar kontrol ederek değerli işlemci süresini alır ve _mutex_'i kilitlediğinde bayrak değişkeni set eden _thread_i bloke eder. 
++ bekleyen _thread_ bayrak değişkeni tekrar tekrar kontrol ederek değerli işlemci süresini alır ve _mutex_'i kilitlediğinde bayrak değişkeni set eden _thread_'i bloke eder. 
 + olay gerçekleşene kadar beklenecek süreyi _(uyku süresini)_ doğru olarak seçmek de zordur: 
   + kontroller arasındaki uyku süresi çok kısa olursa bekleyen _thread_ sürekli bayrak değişkeni kontrol ederek işlemci süresini boşa harcar.
   + kontroller arasındaki uyku süresi çok uzun olursa bekleyen _thread_ görev tamamlandığında bile uyumayı sürdürür ve gereksiz bir gecikmeye neden olur.
