@@ -2,8 +2,8 @@
 + Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi verimsiz olabilir (yani işlemci kaynaklarını boşa harcayabilir).
 + _thread_'in bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir. Böylece bekleyen _thread_ kıymetli işlemci zamanını boş yere harcamamış olur.
 + _condition variable_, _thread_'lerin belirli bir koşul gerçekleşene kadar beklemesine (bloke olarak) olanak tanıyan temel bir senkronizasyon aracıdır.
-+ Bir _conditional_variable_ (koşul değişkeni), ilgilenilen bazı olaylara karşılık gelir.
-+ Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi (wait) gerçekleştirir.
++ Bir _conditional_variable_ (koşul değişkeni), ilgilenilen (beklenen) bazı olaylara (_event_'lere) karşılık gelir.
++ Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi _(wait)_ gerçekleştirir.
 + Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinden bir sinyal gönderir.
 + Bununla birlikte, sinyal verilen _thread_ çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir _thread_ koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
 
