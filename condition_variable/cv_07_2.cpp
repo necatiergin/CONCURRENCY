@@ -63,18 +63,19 @@ void progress_bar()
 	}
 }
 
-void process_data() 
+void process_data()
 {
 	std::this_thread::sleep_for(200ms);
 	std::cout << "Processing thread waiting for data...\n";
 
-	std::unique_lock compl_lck(mtx_completed); 
+	std::unique_lock compl_lck(mtx_completed);
 
 	cv_completed.wait(compl_lck, [] { return is_completed; });
 	compl_lck.unlock();
 
 	std::lock_guard<std::mutex> data_lck(mtx_data);
-	std::cout << "Processing str_data: " << str_data << '\n';
+	std::cout << "Processing str_data:\n";
+	std::cout << "[" << str_data << "]\n";
 
 	// Process the data...
 }
