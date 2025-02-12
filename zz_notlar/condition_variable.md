@@ -27,17 +27,17 @@ fonksiyonları kullanılır.
 + _notify_one, notify_all, wait, wait_for, wait_until_ fonksiyonları eş zamanlı olarak çağrılabilir
 + _wait, wait_for, and wait_until_ fonksiyonları _mutex_'i atomik olarak serbest bırakırlar ve bloke olurlar.
 + _notify_one_ ve _notify_all_ fonksiyonları atomiktir.
-+ Bir condition_variable nesnesi oluşturulamıyor ise,sınıfın kurucu işlevi _std::system_error_exception_ türünden bir hata nesnesini _resource_unavailable_try_again_ hata kodu ile gönderir.
++ Bir _condition_variable_ nesnesi oluşturulamıyor ise, sınıfın kurucu işlevi _std::system_error_exception_ türünden bir hata nesnesini _resource_unavailable_try_again_ hata kodu ile gönderir.
 
 
 #### üye fonksiyonlar
 
 _notify_one_ : bekleyen bir _thread_'e sinyal gönderir. <br>
 _notify_all_ : bekleyen bütün thread'lere sinyal gönderir. <br>
-_wait_ : thread'i sinyal gelene kadar bloke eder <br>
-_wait_for_ : blocks current thread until notified or specified duration passed<br>
-_wait_until_ : blocks current thread until notified or specified time point reached<br>
-_native_handle_: get native handle associated with condition variable<br>
+_wait_ : thread'i sinyal gelene kadar bloke eder. <br>
+_wait_for_ : _thread_'i bildirim gelene kadar ya da belirli bir süre bloke eder.<br>
+_wait_until_ : hread_'i bildirim gelene kadar ya da belirli zaman gelinceye kadar blloke eder.<br>
+_native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ döndürür.<br>
 
 Bir _thread_'in bir başka thread tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
 
@@ -67,7 +67,7 @@ böyle bir sorgulama iyi bir çözüm olmayabilir:
   + kontroller arasındaki uyku süresi çok kısa olursa bekleyen _thread_ sürekli bayrak değişkeni kontrol ederek işlemci süresini boşa harcar.
   + kontroller arasındaki uyku süresi çok uzun olursa bekleyen _thread_ görev tamamlandığında bile uyumayı sürdürür ve gereksiz bir gecikmeye neden olur.
 
-+ daha iyi bir yaklaşım, C++ standart kütüphanesinin _<condition_variable>_  başlık dosyasında  sağladığı koşul değişkenlerini kullanmaktır. 
++ daha iyi bir yaklaşım, C++ standart kütüphanesinin _<condition_variable>_  başlık dosyasında sağladığı koşul değişkenlerini kullanmaktır. 
 + koşul değişkeni, bir iş parçacığının bir veya birden fazla bekleyen iş parçacığını uyandırabileceği bir değişkendir.
 
 ```
