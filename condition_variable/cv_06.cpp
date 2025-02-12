@@ -1,5 +1,5 @@
 /*
-    aşağıdaki kodda func işlevi bir başka thread'in oluşturduğu sonbucun hazır olup olmadığını sınamak için sürekli 
+    aşağıdaki kodda func işlevi bir başka thread'in oluşturduğu sonucun hazır olup olmadığını sınamak için sürekli 
     go_flag değişkenini test ediyor. Bu verimli bir yöntem değil.
 */
 
