@@ -85,6 +85,7 @@ kod karşılığı derleyicinin aşağıdaki gibi bir kod ürettiğini düşüne
 	}
 } // release lock
 ```
+Bekleyen _thread_'in _mutex_ sarmalayan _raii_ sınıflarından _unique_lock_ sınıfını kullanması gerekir. Çünkü _wait_ fonksiyonu arka planda bu sınıfın _lock_ ve _unlock_ fonksiyonlarını çağırır. Örneğin _lock_guard_ sınıfının _lock_ ve _unlock_ fonksiyonları yoktur.,
 
 #### spurious wakeup
 
