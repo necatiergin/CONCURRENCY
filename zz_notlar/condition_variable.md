@@ -106,4 +106,14 @@ Bekleyen _thread_'in _mutex_ sarmalayan _raii_ sınıflarından _unique_lock_ s�
 + bu durumda _reader thread_ hiçbir şekilde uyanamaz ve bloke olarak kalır.
 + bu duruma _lost-wakeup_ denir. (kod örneğine bakınız)
 
+_condition variable_ üzerinde bekleyen tüm _thread_'ler aynı _mutex_'i kullanmak zorundalar. Farklı _mutex_'lerin kullanılması tanımsız davranıştır. Bu _thread_'ler _condition variable_'ın _wait_ fonksiyonu çağrıldığında bu _mutex_'i kilitler. _condition_variable_'ı kullanan _thread_'ler işlemlerini her zaman _mutex_ kilitliyken gerçekleştirir. <br>
+Beklemeye ilişkin fonksiyonlar kilidi geçici olarak şu 3 aşamada otomatik olarak açarlar:
+
+1. _mutex_'in kilidini açarak bekleme sürecine girerler.
+2. bloke olmaktan çıkarlar.
+3. _mutex_'i tekrar kilitlerler.
+
+_wait_ fonksiyonuna geçilen _predicate_'ler (_bool döndüren fonksiyonlar_) her zaman _mutex_ kilitliyken çağrılır. Böylece koruma altındaki değişkenlere _mutex_ kilitliyken yani bir _data race_ riski söz konusu olmadan erişilir.
+
+
 #### condition_variable_any sınıfı
