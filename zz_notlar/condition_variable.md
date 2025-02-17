@@ -34,11 +34,18 @@ fonksiyonları kullanılır.
 
 _notify_one_ : bekleyen bir _thread_'e sinyal gönderir. <br>
 _notify_all_ : bekleyen bütün _thread_'lere sinyal gönderir. <br>
+
 _wait_ : _thread_'i sinyal gelene kadar bloke eder. <br>
 _wait_for_ : _thread_'i bildirim gelene kadar ya da belirli bir süre bloke eder.<br>
 _wait_until_ : _thread_'i bildirim gelene kadar ya da belirli zaman gelinceye kadar blloke eder.<br>
 _native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ döndürür.<br>
 
+#### global fonksiyonlar
+_notify_all_at_thread_exit(cv,ul)_ <br>
+Bu fonksiyon birinci parametresine geçilen _condition_variable_ nesnesini ve ikinci parametresine geçilen _unique_lock_ nesnesini kullanarak _condition_variable_ üzerinde bütün bekleyen _thread_'leri uyandırır.
+
+
+lock ul, at the end of the calling thread
 Bir _thread_'in bir başka _thread_ tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
 
 ```cpp
@@ -99,3 +106,5 @@ Bekleyen _thread_'in _mutex_ sarmalayan _raii_ sınıflarından _unique_lock_ s�
 + eğer _writer thread_'de _notify_ fonksiyonu _reader thread_'deki _wait_ çağrısından daha önce gerçekleştirilirse bir sinyal _(notification)_ gönderilmiş olmasına karşın henüz beklemekte olan bir _thread_ yoktur.
 + bu durumda _reader thread_ hiçbir şekilde uyanamaz ve bloke olarak kalır.
 + bu duruma _lost-wakeup_ denir. (kod örneğine bakınız)
+
+#### condition_variable_any sınıfı
