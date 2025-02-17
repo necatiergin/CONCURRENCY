@@ -72,13 +72,13 @@ hazırlanacak sonuçla ilişkilendirilen _future_ nesnesini döndürür.<br>
 ::set_value <br>
 sonuç olan değeri (iletilecek değeri) set eder. <br>
 
-set_value_at_thread_exit <br>
+::set_value_at_thread_exit <br>
 üretilen değeri _thread_ sonlandığında iletir.<br>
 
-set_exception <br>
+::set_exception <br>
 sonucu bir _exception_ olarak belirler. <br>
 
-set_exception_at_thread_exit <br>
+::set_exception_at_thread_exit <br>
 üretilen _exception_'u _thread_ sonlandığında iletir. <br>
 
 #### std::future_status
