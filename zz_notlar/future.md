@@ -70,13 +70,13 @@ iki _promise_ nesnesini takas eder.
 hazırlanacak sonuçla ilişkilendirilen _future_ nesnesini döndürür.<br>
 
 ::set_value <br>
-sonuc olan değeri set eder. <br>
+sonuç olan değeri (iletilecek değeri) set eder. <br>
 
 set_value_at_thread_exit <br>
 üretilen değeri _thread_ sonlandığında iletir.<br>
 
 set_exception <br>
-sonucu bir exception olarak belirler. <br>
+sonucu bir _exception_ olarak belirler. <br>
 
 set_exception_at_thread_exit <br>
 üretilen _exception_'u _thread_ sonlandığında iletir. <br>
@@ -104,6 +104,7 @@ Bu değerlerin anlamları şöyledir:
 - **ready**    : Sonuç hazır durumdadır. (Yani fonksiyon çalıştırılmış değer elde edilmiş ve _promise_ nesnesi set edilmiştir. Yani _future_ nesnesinin _get_ işleviyle bu değer hemen alınabilir.  
 - **timeout**  : verilen süre dolmuştur.
 
+#### shared_future
 - Bir _shared_future_ nesnesi bir _promise_ nesnesi ile ilişkilendirilmiştir. 
 - Ancak _std::shared_future_ nesnesi sonucu _(result)_ birden fazla kez sorgulayabilir.
 _shared_future_ sınıfı _future_ sınıfları aynı arayüze sahiptir.
