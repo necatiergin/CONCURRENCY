@@ -44,8 +44,7 @@ _native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ d�
 _notify_all_at_thread_exit(cv,ul)_ <br>
 Bu fonksiyon birinci parametresine geçilen _condition_variable_ nesnesini ve ikinci parametresine geçilen _unique_lock_ nesnesini kullanarak _condition_variable_ üzerinde bütün bekleyen _thread_'leri uyandırır.
 
-
-lock ul, at the end of the calling thread
+#### açıklamalar
 Bir _thread_'in bir başka _thread_ tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
 
 ```cpp
