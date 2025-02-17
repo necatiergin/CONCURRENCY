@@ -1,11 +1,11 @@
 + Eşzamanlı programlarda, genellikle bir _thread_'in belirli bir olay gerçekleşene kadar beklemesi gerekir (örneğin, bir giriş çıkış işlemi tamamlanana kadar ya da bir veri kullanılabilir duruma gelene kadar).
-+ Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi verimsiz olabilir (yani işlemci kaynaklarını boşa harcayabilir).
-+ _thread_'in bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir. Böylece bekleyen _thread_ kıymetli işlemci zamanını boş yere harcamamış olur.
++ Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi işlemci kaynaklarını boşa harcamasına yani verinmsizliğie neden olur.
++ _thread_'in bekleme süresince bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir. Böylece bekleyen _thread_ kıymetli işlemci zamanını boş yere harcamamış olur.
 + _condition variable_, _thread_'lerin belirli bir koşul gerçekleşene kadar beklemesine (bloke olarak) olanak tanıyan temel bir senkronizasyon aracıdır.
-+ Bir _conditional_variable_ (koşul değişkeni), ilgilenilen (beklenen) bazı olaylara (_event_'lere) karşılık gelir.
++ Bir _conditional_variable_ (koşul değişkeni), ilgilenilen (beklenen) bazı olaylara (_event_'lere) ilişkindir.
 + Bir olayı beklemek isteyen bir _thread_, _condition variable_ üzerinde bir bekleme işlemi _(wait)_ gerçekleştirir.
-+ Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinden bir sinyal gönderir.
-+ Bununla birlikte, sinyal verilen _thread_ çalışmaya tekrar başladığında, sinyal verilen koşulun doğru olduğu garanti edilmez (ve yeniden kontrol edilmesi gerekir), çünkü örneğin başka bir _thread_ koşulun değişmesine neden olmuş olabilir veya sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
++ Bir veya daha fazla bekleyen _thread_'i bir olaydan haberdar etmek isteyen bir _thread_, _condition variable_ üzerinden bir sinyal _(notification)_ gönderir.
++ Bununla birlikte, sinyal verilen _thread_ çalışmaya tekrar başladığında, sinyali veren tarafın hazır olduğu garantisi verilemez, bu durumun yeniden kontrol edilmesi gerekir. Çünkü örneğin başka bir _thread_ durumun değişmesine neden olmuş olabilir ya da sahte _(spurious)_ bir uyanma meydana gelmiş olabilir.
 
 #### _std::condition_variable_ sınıfı
 + _std::condition_variable_ sınıfı _condition variable_ sağlar.
