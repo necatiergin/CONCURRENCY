@@ -23,8 +23,8 @@ fonksiyonları kullanılır.
 
 + _thread_ uyandığında uyanan _thread_'in koşulun gerçekleşip gerçekleşmediğini tekrar kontrol etmesi gerekir, çünkü
   - sahte _(spurious)_ uyanışlara izin verilir
-  - uyanacak _thread_'e sinyal gönderildiği zaman ile uyandığı ve _mutex_'i kilitlediği zaman arasında, başka bir iş parçacığı durumun değişmesine neden olabilir.
-+ _notify_one, notify_all, wait, wait_for, wait_until_ fonksiyonları eş zamanlı olarak çağrılabilir
+  - uyanacak _thread_'e sinyal gönderildiği zaman ile uyandığı ve _mutex_'i kilitlediği zaman arasında, başka bir iş parçacığı durumun tekrar değişmesine neden olabilir.
++ _notify_one, notify_all, wait, wait_for, wait_until_ fonksiyonları eş zamanlı olarak çağrılabilir.
 + _wait, wait_for, and wait_until_ fonksiyonları _mutex_'i atomik olarak serbest bırakırlar ve bloke olurlar.
 + _notify_one_ ve _notify_all_ fonksiyonları atomiktir.
 + Bir _condition_variable_ nesnesi oluşturulamıyor ise, sınıfın kurucu işlevi _std::system_error_exception_ türünden bir hata nesnesini _resource_unavailable_try_again_ hata kodu ile gönderir.
@@ -34,9 +34,9 @@ fonksiyonları kullanılır.
 
 _notify_one_ : bekleyen bir _thread_'e sinyal gönderir. <br>
 _notify_all_ : bekleyen bütün _thread_'lere sinyal gönderir. <br>
-_wait_ : thread'i sinyal gelene kadar bloke eder. <br>
+_wait_ : _thread_'i sinyal gelene kadar bloke eder. <br>
 _wait_for_ : _thread_'i bildirim gelene kadar ya da belirli bir süre bloke eder.<br>
-_wait_until_ : hread_'i bildirim gelene kadar ya da belirli zaman gelinceye kadar blloke eder.<br>
+_wait_until_ : _thread_'i bildirim gelene kadar ya da belirli zaman gelinceye kadar blloke eder.<br>
 _native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ döndürür.<br>
 
 Bir _thread_'in bir başka _thread_ tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
@@ -85,7 +85,7 @@ kod karşılığı derleyicinin aşağıdaki gibi bir kod ürettiğini düşüne
 	}
 } // release lock
 ```
-Bekleyen _thread_'in _mutex_ sarmalayan _raii_ sınıflarından _unique_lock_ sınıfını kullanması gerekir. Çünkü _wait_ fonksiyonu arka planda bu sınıfın _lock_ ve _unlock_ fonksiyonlarını çağırır. Örneğin _lock_guard_ sınıfının _lock_ ve _unlock_ fonksiyonları yoktur.,
+Bekleyen _thread_'in _mutex_ sarmalayan _raii_ sınıflarından _unique_lock_ sınıfını kullanması gerekir. Çünkü _wait_ fonksiyonu arka planda bu sınıfın _lock_ ve _unlock_ fonksiyonlarını çağırır. Örneğin _lock_guard_ sınıfının _lock_ ve _unlock_ fonksiyonları yoktur.
 
 #### spurious wakeup
 
