@@ -43,6 +43,8 @@ _native_handle_: işletim sisteminin sistem fonksiyonları için bir _handle_ d�
 #### global fonksiyonlar
 _notify_all_at_thread_exit(cv,ul)_ <br>
 Bu fonksiyon birinci parametresine geçilen _condition_variable_ nesnesini ve ikinci parametresine geçilen _unique_lock_ nesnesini kullanarak _condition_variable_ üzerinde bütün bekleyen _thread_'leri uyandırır.
+bu fonksiyon, _bir thread_'in sonlanmasıyla birlikte bir _condition variable_ üzerinden bekleyen diğer tüm _thread_'lerin uyandırılmasını sağlayan bir mekanizmadır. Bu fonksiyon, özellikle _thread_local_ verilerin yok edilmesinden sonra, diğer _thread_'lerin bu bu _thread_'in tamamlandığını güvenli bir şekilde öğrenmesini sağlamak için kullanılır.<br>
+Bu fonksiyon, genellikle _detached thread_'lerde kullanılır.
 
 #### açıklamalar
 Bir _thread_'in bir başka _thread_ tarfından bir sonucun üretilmesini beklemek için aşağıdaki gibi bir sorgulama _(polling)_ gerçekleştirdiğini düşünelim.
