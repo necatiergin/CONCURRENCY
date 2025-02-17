@@ -1,4 +1,4 @@
-// from cpp.reference.colm
+// from cpp.reference.com
 
 #include <chrono>
 #include <future>
