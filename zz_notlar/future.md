@@ -4,9 +4,9 @@
 
 _promise_ ve _future_ iki farklı _thread_ arasında bir sonucu (bir değer ya da bir _exception_) iletmek üzere bir kez kullanılacak bir iletişim kanalı oluşturur:<br>
 
-- _promise_     : Üretilecek sonucu hazırlayacak üretici nesne
-- _future_      : sonucun iletilmesinde kulanılacak nesne
-- _shared state_: _future_ nesnesi tarafından erişilecek söz verilen değeri tutar. _promise_ ve _future_ nesneleri tatafından birlikte kullanılır.
+- _promise_     : Üretilecek sonucu hazırlayacak üretici nesne.
+- _future_      : sonucun iletilmesinde kulanılacak nesne.
+- _shared state_: _future_ nesnesi tarafından erişilecek söz verilen değeri tutar. _promise_ ve _future_ nesneleri tarafından birlikte kullanılır.
 - sonucu üreten kod _promise_ nesnesini kullanarak sonucu _shared state_'te tutar. Tüketici kod _shared state_'te tutulan sonucu _future_ nesnesini kullanarak alır.
 
 _çok thread_'li programlar, genellikle bazı hesaplamaları _asenkron_ olarak gerçekleştirir. Bu durumda sonucun bir _thread_ tarafından hazırlanıp diğer _thread_'in bu sonuca erişmesi gerekir. 
