@@ -1,7 +1,7 @@
 #include <future>
 #include <iostream>
 
-//we can call get fucntion of the future object only once
+//we can call get function of the future object only once
 
 int main()
 {
