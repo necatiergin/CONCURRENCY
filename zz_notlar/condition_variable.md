@@ -119,3 +119,4 @@ _wait_ fonksiyonuna geçilen _predicate_'ler (_bool döndüren fonksiyonlar_) he
 
 
 #### condition_variable_any sınıfı
+_condition_variable_any_, temel bir _mutex_ sarmalayıcısının _(lockable)_ koşullarını sağlayan (yani lock() ve unlock() fonksiyonlarını sağlayan) herhangi bir türle çalışabilen daha genel bir sınıftır. Ancak, bu sınıf daha fazla performans maliyetine ve işletim sistemi kaynaklarına ihtiyaç duyabilir. Bu nedenle, yalnızca sağladığı ek esneklik gerçekten gerekli olduğunda tercih edilmelidir.
