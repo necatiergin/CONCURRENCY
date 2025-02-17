@@ -1,5 +1,5 @@
 + Eşzamanlı programlarda, genellikle bir _thread_'in belirli bir olay gerçekleşene kadar beklemesi gerekir (örneğin, bir giriş çıkış işlemi tamamlanana kadar ya da bir veri kullanılabilir duruma gelene kadar).
-+ Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi işlemci kaynaklarını boşa harcamasına yani verinmsizliğie neden olur.
++ Bir _thread_'in beklediği bir olayın gerçekleşip gerçekleşmediğini tekrar tekrar kontrol etmesi işlemci kaynaklarını boşa harcamasına yani verimsizliğe neden olur.
 + _thread_'in bekleme süresince bloke edilmesi ve ancak ilgili olay gerçekleştikten sonra yürütülmesinin devam ettirilmesi genellikle daha iyidir. Böylece bekleyen _thread_ kıymetli işlemci zamanını boş yere harcamamış olur.
 + _condition variable_, _thread_'lerin belirli bir koşul gerçekleşene kadar beklemesine (bloke olarak) olanak tanıyan temel bir senkronizasyon aracıdır.
 + Bir _conditional_variable_ (koşul değişkeni), ilgilenilen (beklenen) bazı olaylara (_event_'lere) ilişkindir.
