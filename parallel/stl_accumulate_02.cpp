@@ -6,7 +6,7 @@
 
 int main()
 {
-	using namespace std;
+    using namespace std;
 
     vector<int> ivec{ 1, 3, 5, 7, 9 };
 
