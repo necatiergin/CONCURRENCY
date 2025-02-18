@@ -1,6 +1,6 @@
-+ _std::async_ fonksiyon şablonu bir "_callable_"ı asenkron olarak çalıştırmak için kullanılır.
++ _std::async_ fonksiyon şablonu bir "_callable_"ı asenkron olarak çalıştırmak için kullanılabilir.
 
-İki ayrı yükleme _(overload)_ var:
+İki ayrı _overload_ var:
 
 + varsayılan çalıştırma stratejisi _(default launch policy)_
 
