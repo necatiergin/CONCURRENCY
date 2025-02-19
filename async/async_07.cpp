@@ -13,8 +13,6 @@ double square_root(double x)
 	return std::sqrt(x);
 }
 
-
-
 int main() 
 {
 	
