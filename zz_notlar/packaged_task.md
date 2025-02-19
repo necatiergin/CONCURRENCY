@@ -1,6 +1,9 @@
 #### std::packaged_task
 
-+ _std::packaged_task_ sınıfı türünden bir nesne asenkron çağrı yapmak amaçlı bir _callable_ sarmalar.
+_std::packaged_task_, eşzamanlı programlama _(concurrent programming)_ için kullanılan bir sınıftır. Bu sınıf, bir fonksiyonu ya da  çağrılabilir bir nesneyi _(callable object)_ sarmalar ve bu fonksiyonun çalıştırılması sonucunda üretilen değeri ya da _exception_'ı bir _std::future_ nesnesi aracılığıyla kullanıma sunar. 
+_std::packaged_task_, genellikle _thread_'ler arasında görev tabanlı iletişim kurmak için kullanılır.
+
++ _std::packaged_task_ sınıfı türünden bir nesne senkron ya da asenkron çağrı yapmak amaçlı bir _callable_ sarmalar.
 + _std::packaged_task_ nesnesinin _get_future_ işlevi ile onunla ilişkilendirilmiş _std::future_ nesnesini elde ederiz.
 + sınıfın fonksiyon çağrı operatör fonksiyonu sarmalanan _callable_'ı çağırır.
 + _std::packaged_task_ sınıfının bildirimi şöyledir:
