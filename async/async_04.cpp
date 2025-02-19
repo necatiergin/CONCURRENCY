@@ -8,27 +8,15 @@ int foo()
 
 int main()
 {
-	auto ftr = std::async(foo);
-	if (ftr.valid())
-	{
-		std::cout << "future is valid, get function can be called\n";
-	}
-	else
-	{
-		std::cout << "future is invalid, get function cannot be called\n";
-	}
+	const char* const pvalid = "future is valid, get function can be called\n";
+	const char* const pinvalid = "future is invalid, get function cannot be called\n";
 
+	auto ftr = std::async(foo);
+	std::cout << (ftr.valid() ? pvalid : pinvalid);
 	auto ival = ftr.get();
 	std::cout << "ival = " << ival << '\n';
-	if (ftr.valid())
-	{
-		std::cout << "future is valid, get function can be called\n";
-	}
-	else
-	{
-		std::cout << "future is invalid, get function cannot be called\n";
-	}
-	
+	std::cout << (ftr.valid() ? pvalid : pinvalid);
+
 	try {
 		auto i = ftr.get();
 	}
