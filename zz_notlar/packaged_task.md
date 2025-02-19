@@ -15,6 +15,7 @@ class packaged_task<R(Args...)>;
 + _packaged_task_ sınıf nesneleri taşınabilir ama kopyalanamaz.
 + _get_future_ fonksiyonu ile _packaged_task_ ile ilişkilendirilen _std::future_ nesnesi elde edilir.
 + _get_future_ fonksiyonu yalnızca bir kez çağrılabilir.
+
 #### _std::packaged_task_ sınıfı senkron olarak kullanılabilir:
 + İş yükü olan _callable_ bir _std::packaged_task_ nesnesi ile sarmalanır:
 	
@@ -50,6 +51,6 @@ Oluşturulan _task_ bir _thread_'e iş yükü olarak da verilebilir:
 - **::swap**   : iki nesneyi takas eder.
 - **::get_future** : get future associated with promised result<
 - **::operator()** : invoke function
-- **::make_ready_at_thread_exit** : invoke function ensuring result ready only once current thread exits<br>
-- **::reset** : paylaşılan durumu reset eder., abandoning any previously stored result<br>
+- **::make_ready_at_thread_exit** : _thread_ sonlandığında değeri hazır hale getirir.<br>
+- **::reset** : paylaşılan durumu reset eder.<br>
 
