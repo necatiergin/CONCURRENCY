@@ -84,7 +84,7 @@ sonucu bir _exception_ olarak belirler. <br>
 #### std::future sınıfının üye fonksiyonları
 ```cpp
 void wait()const;
-``
+```
 Bu fonksiyon, _std::future_ nesnesinin ileteceği değerin hazır olmasını bekler. Değer ya da _exception_ hazırlandığında beklemeyi sonlandırır.
 Değer ya da exception hazır olana kadar çağrıldığı _thread_'i bloke eder.
 
