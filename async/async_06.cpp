@@ -3,7 +3,6 @@
 #include <iostream>
 #include <future>
 
-
 double get_power(double base, double exp)
 {
 	if (exp < 0.)
