@@ -2,19 +2,20 @@
 #include <string>
 #include <future>
 
-using namespace std;
+using namespace std::chrono_literals;
 
 int work()
 {
-	cout << "thread id = " << this_thread::get_id() << '\n';
-	this_thread::sleep_for(3s);
-	cout << "function work is returning...\n";
+
+	std::cout << "thread id = " << std::this_thread::get_id() << '\n';
+	std::this_thread::sleep_for(3s);
+	std::cout << "function work is returning...\n";
 	return 444;
 }
 
-void foo(const string& policy = "default policy")
+void foo(const std::string& policy = "default policy")
 {
-	future<int> result;
+	std::future<int> result;
 
 	if (policy == "async")
 		result = std::async(std::launch::async, work);
@@ -23,15 +24,15 @@ void foo(const string& policy = "default policy")
 	else
 		result = std::async(work);
 
-	cout << "async call policy is : " << policy;
-	this_thread::sleep_for(2s);
-	cout << "calling get() function\n";
-	cout << "work result: " << result.get() << '\n';
+	std::cout << "async call policy is : " << policy << '\n';
+	std::this_thread::sleep_for(2s);
+	std::cout << "calling get() function\n";
+	std::cout << "work result: " << result.get() << '\n';
 }
 
 int main()
 {
-	cout << "main thread id : " << this_thread::get_id() << '\n';
+	std::cout << "main thread id : " << std::this_thread::get_id() << '\n';
 
 	foo("deferred");
 	foo("async");
