@@ -14,7 +14,8 @@ int main()
 	auto ft_result = std::async(std::launch::async, fibo, 45);
 
 	while (ft_result.wait_for(300ms) != std::future_status::ready) {
-		std::cout << "Waiting for the ft_result...\n";
+		//do something else
+		std::cout << "Waiting for the result...\n";
 	}
 
 	std::cout << ft_result.get() << '\n';
