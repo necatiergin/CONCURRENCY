@@ -81,16 +81,18 @@ sonucu bir _exception_ olarak belirler. <br>
 ::set_exception_at_thread_exit <br>
 üretilen _exception_'u _thread_ sonlandığında iletir. <br>
 
-#### std::future_status
+#### std::future sınıfının üye fonksiyonları
+```cpp
+void wait()const;
+``
+Bu fonksiyon, _std::future_ nesnesinin ileteceği değerin hazır olmasını bekler. Değer ya da _exception_ hazırlandığında beklemeyi sonlandırır.
+Değer ya da exception hazır olana kadar çağrıldığı _thread_'i bloke eder.
 
-_std::future_status_ bir _enum class_ _(scoped enum)_. Bu tür _std::future_ sınıfının
-
-- wait_for
-- wait_until
-
-fonksiyonlarının geri dönüş türüdür. 
-Yani bir _std::future_ nesnesinin _wait_for_ ya da _wait_until_ fonksiyonlarını çağırırsak _std::future_ nesnesinin durum bilgisini elde ederiz. 
-
+```cpp
+std::future_status wait_for(const std::chrono::duration<Rep, Period>& timeout_duration) const;
+```
+Bu fonksiyon, parametresine geçilen süre boyunca _std::future_ nesnesinin değerinin hazır olmasını bekler. 
+Süre dolduğunda veya değer hazır olduğunda beklemeyi sonlandırır. Fonksiyonun geri dönüş türü _std::future enum_ türüdür.
 ```cpp
 enum class future_status {
   ready,
@@ -98,11 +100,13 @@ enum class future_status {
   deferred
 };
 ```
+
 Bu değerlerin anlamları şöyledir:
 
-- **deferred** : Fonksiyon henüz çalışmaya başlamamıştır.
-- **ready**    : Sonuç hazır durumdadır. (Yani fonksiyon çalıştırılmış değer elde edilmiş ve _promise_ nesnesi set edilmiştir. Yani _future_ nesnesinin _get_ işleviyle bu değer hemen alınabilir.  
-- **timeout**  : verilen süre dolmuştur.
+- **std::future_status::ready**    : Sonuç hazır durumdadır. (Yani fonksiyon çalıştırılmış değer elde edilmiş ve _promise_ değerini almıştır. Yani _future_ nesnesinin _get_ işleviyle bu değer hemen alınabilir.  
+- **std::future_status::deferred** : Değer henüz hesaplanmamış ve ertelenmiş durumdadır. Bu durum, _std::async_ ile _std::launch::deferred_ seçeneği kullanıldığında ortaya çıkar.
+- **std::future_status::timeout**  : Verilen süre dolmuştur, değer halen hazır değildir.
+
 
 #### shared_future
 - Bir _shared_future_ nesnesi bir _promise_ nesnesi ile ilişkilendirilmiştir. 
