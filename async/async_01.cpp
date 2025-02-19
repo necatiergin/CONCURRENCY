@@ -5,11 +5,12 @@
 int main()
 {
 	using namespace std::chrono_literals;
-	
+
 	std::chrono::time_point start = std::chrono::steady_clock::now();
 
-	auto eager = std::async(std::launch::async, [] {return std::chrono::steady_clock::now(); });
-	auto lazy = std::async(std::launch::deferred, [] {return std::chrono::steady_clock::now(); });
+	const auto fnow = [] {return std::chrono::steady_clock::now(); };
+	auto eager = std::async(std::launch::async, fnow);
+	auto lazy = std::async(std::launch::deferred, fnow );
 
 	std::this_thread::sleep_for(1s);
 
