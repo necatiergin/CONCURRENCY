@@ -14,8 +14,7 @@ Atomik işlemler kritik bölge _(critical section)_ oluşturma gereksinimini aza
 - C++ standart kütüphanesi atomik bellek işlemleri için aşağıdaki atomik türleri sunmaktadır:
     - _std::atomic_flag_
     - _std::atomic_\<>
-- Bu türler donanımın sağladığı atomik operasyonlar için uniform bir arayüz sunarlar.
-- 
+- Bu türler donanımın sağladığı atomik operasyonlar için uniform bir arayüz sunarlar. 
 
 Atomik bir tür aşağıdaki garantileri sağlar:
 - _atomicity_ (atomiklik - bölünmezlik)
