@@ -1,10 +1,16 @@
 ### atomic
 
 - _Thread_'ler arasında veriyi paylaşırken _"data race"_ oluşmaması için genellikle bir senkronizasyon mekanizması gereklidir. (örneğin _mutex_ kullanarak senkronizasyonu sağlamak).
-- Veriye senkronize edilmiş erişim sağlamanın başka bir yolu da atomik türleri kullanmaktır.
-- Bölünemeyecek _(indivisible)_ bir işleme "atomik işlem" denir. Atomik bir işlem arasına başka bir işlem giremez. Örneğin arttırma işlemi atomik ise bu işleme tabi tutulan bir değişken diğer _thread_'ler tarafından ya işlemden önceki ya da işlemden sonraki değeri ile görülebilir.
+- Veriye senkronize edilmiş erişim sağlamanın başka bir yolu da atomik işlemleri kullanmaktır.
+_multithreaded_ programlamada atomik işlem _(atomic operation)_, bölünemez _(indivisible)_ ve kesintiye uğratılamaz _(uninterruptible)_ bir işlem anlamına gelir. 
+
+Atomik işlemler aşağıdaki özelliklere sahiptir:
+Kesintiye uğramaz _(Uninterruptible)_: İşlem tamamlanmadan başka bir işlem parçacığı _(thread)_ araya giremez. Örneğin arttırma işlemi atomik ise bu işleme tabi tutulan bir değişken diğer _thread_'ler tarafından ya işlemden önceki ya da işlemden sonraki değeri ile görülebilir.
+Kesinlik _(Certainty)_: Bir atomik işlem ya tamamen gerçekleşir ya da hiç gerçekleşmez. atomik bellek işlemleri _"torn read"_ ya da _"torn write"_ durumu oluşturmazlar.
+Bağımsızlık _(Independence)_: İşlem, başka işlem parçacıklarından bağımsızdır ve herhangi bir ara durumda görünmez.
+Atomik işlemler kritik bölge _(critical section)_ oluşturma gereksinimini azaltarak, senkronizasyon mekanizmalarının performans yükünü hafifletir.
  İşlemcilerin çoğunda atomik bellek işlemleri özel makine komutları ile gerçekleştirilir.
-- atomik bellek işlemleri _"torn read"_ ya da _"torn write"_ durumu oluşturmazlar.
+
 - C++ standart kütüphanesi atomik bellek işlemleri için aşağıdaki atomik türleri sunmaktadır:
     - _std::atomic_flag_
     - _std::atomic_\<>
