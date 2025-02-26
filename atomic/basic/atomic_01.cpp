@@ -1,11 +1,13 @@
+// std::atomic<bool>
+
 #include <atomic>
 #include <iostream>
 
 int main()
 {
-	using namespace std;
+	using std::cout, std::atomic;
 
-	cout << boolalpha;
+	cout << std::boolalpha;
 	atomic<bool> flag_1;
 	atomic<bool> flag_2; //indetermined value before before C++20. false value since C++20
 	cout << "flag_1 = " << flag_1 << '\n';
