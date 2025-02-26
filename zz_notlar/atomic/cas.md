@@ -26,4 +26,5 @@ bool compare_exchange_strong(T& expected, T desired, std::memory_order success =
 **_compare_exchange_strong_ ve _compare_exchange_weak_ fonksiyonları arasındaki fark** <br>
 _std::atomic_ sınıfının _compare_exchange_weak_ adlı bir başka üye fonksiyonu da vardır. 
 _compare_exchange_strong_ ve _compare_exchange_weak_ arasındaki temel fark, _compare_exchange_weak_ fonksiyonunun başarısız olabileceği durumların daha fazla olmasıdır. <br>
-_compare_exchange_weak_ fonksiyonunu değişkenin değeri beklenen eşit olsa bile gerçekleşebilir. Bu tür başarısızlıklar, _spurious failures_ ("sahte başarısızlıklar") olarak adlandırılır. Genel olarak, _compare_exchange_strong_ kullanmak daha güvenlidir. Ancak, bazı durumlarda _compare_exchange_weak_ daha yüksek performans sağlayabilir.
+_compare_exchange_weak_ fonksiyonunu değişkenin değeri beklenen eşit olsa bile gerçekleşebilir. Bu tür başarısızlıklar, _spurious failures_ ("sahte başarısızlıklar") olarak adlandırılır.<br>
+Genel olarak, _compare_exchange_strong_ kullanmak daha güvenlidir. Ancak, bazı durumlarda _compare_exchange_weak_ daha yüksek performans sağlayabilir.
