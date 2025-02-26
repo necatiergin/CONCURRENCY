@@ -3,9 +3,7 @@
 
 int main()
 {
-	using namespace std;
-
-	cout << boolalpha;
+	using std::cout, std::boolalpha, std::atomic;
 
 	int a[] = { 1, 3, 5, 7 };
 	atomic<int*> p = a;
@@ -22,5 +20,4 @@ int main()
 	cout << "*p = " << *p << '\n';
 	cout << "*q = " << *q << '\n';
 }
-
 
