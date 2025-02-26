@@ -1,5 +1,3 @@
-### atomic
-
 - _Thread_'ler arasında veriyi paylaşırken _"data race"_ oluşmaması için genellikle bir senkronizasyon mekanizması gereklidir. (örneğin _mutex_ kullanarak senkronizasyonu sağlamak).
 - Veriye senkronize edilmiş erişim sağlamanın başka bir yolu da atomik işlemleri kullanmaktır.
 _multithreaded_ programlamada atomik işlem _(atomic operation)_, bölünemez _(indivisible)_ ve kesintiye uğratılamaz _(uninterruptible)_ bir işlem anlamına gelir. 
