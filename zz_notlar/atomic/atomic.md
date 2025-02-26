@@ -5,9 +5,9 @@
 _multithreaded_ programlamada atomik işlem _(atomic operation)_, bölünemez _(indivisible)_ ve kesintiye uğratılamaz _(uninterruptible)_ bir işlem anlamına gelir. 
 
 Atomik işlemler aşağıdaki özelliklere sahiptir:
-Kesintiye uğramaz _(Uninterruptible)_: İşlem tamamlanmadan başka bir işlem parçacığı _(thread)_ araya giremez. Örneğin arttırma işlemi atomik ise bu işleme tabi tutulan bir değişken diğer _thread_'ler tarafından ya işlemden önceki ya da işlemden sonraki değeri ile görülebilir.
-Kesinlik _(Certainty)_: Bir atomik işlem ya tamamen gerçekleşir ya da hiç gerçekleşmez. atomik bellek işlemleri _"torn read"_ ya da _"torn write"_ durumu oluşturmazlar.
-Bağımsızlık _(Independence)_: İşlem, başka işlem parçacıklarından bağımsızdır ve herhangi bir ara durumda görünmez.
+Kesintiye uğramaz _(Uninterruptible)_: İşlem tamamlanmadan başka bir işlem parçacığı _(thread)_ araya giremez. Örneğin arttırma işlemi atomik ise bu işleme tabi tutulan bir değişken diğer _thread_'ler tarafından ya işlemden önceki ya da işlemden sonraki değeri ile görülebilir.<br>
+Kesinlik _(Certainty)_: Bir atomik işlem ya tamamen gerçekleşir ya da hiç gerçekleşmez. atomik bellek işlemleri _"torn read"_ ya da _"torn write"_ durumu oluşturmazlar. <br>
+Bağımsızlık _(Independence)_: İşlem, başka işlem parçacıklarından bağımsızdır ve herhangi bir ara durumda görünmez.<br>
 Atomik işlemler kritik bölge _(critical section)_ oluşturma gereksinimini azaltarak, senkronizasyon mekanizmalarının performans yükünü hafifletir.
  İşlemcilerin çoğunda atomik bellek işlemleri özel makine komutları ile gerçekleştirilir.
 
