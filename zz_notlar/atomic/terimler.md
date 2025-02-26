@@ -1,5 +1,5 @@
 _multi-thread_ programlamada, birden fazla _thread_ aynı anda aynı bellek konumlarına erişebilir. Bu, veri yarışlarına _(data races)_ ve tanımsız davranışlara yol açabilir. 
-sequence-before, happens-before, inter-thread happens-before terimleri _thread_'ler arasındaki işlemlerin sırasını ve görünürlüğünü tanımlayarak bu sorunları önlemeye yardımcı olur.
+**sequence-before, happens-before, inter-thread happens-before** terimleri _thread_'ler arasındaki işlemlerin sırasını ve görünürlüğünü tanımlayarak bu sorunları önlemeye yardımcı olur.
 
 #### sequenced-before (sıralı öncelik garantisi)
 **sequenced-before**, aynı _thread_ içindeki işlemlerin sırasını tanımlar. Eğer bir işlem A, başka bir işlem B'den _"sequenced-before"_ ise, A, B'den önce gerçekleşir.
