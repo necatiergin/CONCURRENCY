@@ -47,13 +47,12 @@ int main()
  }
 ```
 
-Bu örnekte, writer iş parçacığındaki ready.store işlemi, reader iş parçacığındaki ready.load işleminden "happens-before" olur. 
-Bu, reader thread'inin x değişkeninin değerini okuduğunda, writer thread'ini x'e yazdığı değeri göreceği anlamına gelir.
+Bu örnekte, _writer_ thread'indeki _ready.store_ işlemi, _reader_ thread'inde _ready.load_ işleminden **happens-before** olur. <br>
+Bu, _reader thread_'inin x değişkeninin değerini okuduğunda, _writer thread_'ini x'e yazdığı değeri göreceği anlamına gelir.
 
-inter-thread happens-before (threadler arası önce gerçekleşme garantisi)
-Tanım: "Inter-thread happens-before", farklı thread'ler arasındaki "happens-before" ilişkisini tanımlar.
-Senkronizasyon: Bu ilişki, atomik işlemler, mutex'ler, condition variable'lar gibi senkronizasyon araçları kullanılarak kurulur.
-Örnek
-Yukarıdaki writer ve reader örneği, "inter-thread happens-before" ilişkisini gösterir. 
-ready.store ve ready.load işlemleri arasındaki "happens-before" ilişkisi, iş parçacıkları arasında gerçekleştiği için "inter-thread happens-before" olarak adlandırılır.
+#### inter-thread happens-before (threadler arası önce gerçekleşme garantisi)
+**Inter-thread happens-before**, farklı _thread_'ler arasındaki **happens-before** ilişkisini tanımlar. <br>
+**Senkronizasyon:** Bu ilişki, atomik işlemler, **mutex**'ler, _condition variable_'lar gibi senkronizasyon araçları kullanılarak kurulur.<br>
+Yukarıdaki writer ve reader örneği, "inter-thread happens-before" ilişkisini gösterir. <br>
+_ready.store_ ve _ready.load_ işlemleri arasındaki "happens-before" ilişkisi, _thread_'ler arasında gerçekleştiği için **inter-thread happens-before** olarak adlandırılır.
 
