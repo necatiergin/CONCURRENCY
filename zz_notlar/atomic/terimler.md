@@ -26,25 +26,23 @@ görünürlük: **happens-before** ilişkisi, bir _thread_'in diğer diğer bir 
 std::atomic<int> x = 0;
 std::atomic<bool> ready = false;
 
-void writer() {
+void writer() 
+{
     x.store(42, std::memory_order_release);
     ready.store(true, std::memory_order_release);
 }
 
-void reader() {
+void reader() 
+{
     while (!ready.load(std::memory_order_acquire));
-    std::cout << x.load(std::memory_order_acquire) << std::endl;
+    std::cout << x.load(std::memory_order_acquire) << '\n'
 }
 
-int main() 
+int main()
 {
-    std::thread t1(writer);
-    std::thread t2(reader);
-
-    t1.join();
-    t2.join();
-
- }
+    std::jthread t1(writer);
+    std::jthread t2(reader);
+}
 ```
 
 Bu örnekte, _writer_ thread'indeki _ready.store_ işlemi, _reader_ thread'inde _ready.load_ işleminden **happens-before** olur. <br>
