@@ -3,7 +3,7 @@
 
 int main()
 {
-	using namespace std;
+	using std::cout, std::boolalpha, std::atomic;
 
 	cout << boolalpha;
 	atomic<int> a;
