@@ -2,23 +2,23 @@ _multi-thread_ programlamada, birden fazla _thread_ aynı anda aynı bellek konu
 sequence-before, happens-before, inter-thread happens-before terimleri _thread_'ler arasındaki işlemlerin sırasını ve görünürlüğünü tanımlayarak bu sorunları önlemeye yardımcı olur.
 
 #### sequenced-before (sıralı öncelik garantisi)
-"Sequenced-before", aynı _thread_ içindeki işlemlerin sırasını tanımlar. 
-Eğer bir işlem A, başka bir işlem B'den "sequenced-before" ise, A, B'den önce gerçekleşir.
-tek thread bağlamında: Tek thread'li programlarda, kodun yazıldığı sıraya göre işlemler "sequenced-before" ilişkisine sahiptir.
-Çok thread'li bağlamda: "Sequenced-before", her thread için geçerlidir, ancak thread'lerarasındaki işlemleri tanımlamaz.
+**sequenced-before**__, aynı _thread_ içindeki işlemlerin sırasını tanımlar. Eğer bir işlem A, başka bir işlem B'den _"sequenced-before"_ ise, A, B'den önce gerçekleşir.
+- tek _thread_ bağlamında: Tek thread'li programlarda, kodun yazıldığı sıraya göre işlemler **_sequenced-before_** ilişkisine sahiptir.
+- Çok _thread_'li bağlamda: **sequenced-before**__, her _thread_ için geçerlidir, ancak _thread_'ler arasındaki işlemleri tanımlamaz.
 
+```cpp
 int x = 10; // A
 int y = x + 5; // B
-
+```
 Bu örnekte, A işlemi (x'e 10 atanması), B işleminden (y'ye x + 5 atanması) "sequenced-before" olur.
 
 #### happens-before (önce-gerçekleşme-garantisi)
-"Happens-before", işlemlerin görünürlüğünü tanımlar. 
-Eğer bir işlem A, başka bir işlem B'den "happens-before" ise, A'nın etkileri B'den önce görünür hale gelir.
-"Sequenced-before", "happens-before" ilişkisini içerir.
-thread'ler arası senkronizasyon işlemleri de "happens-before" ilişkisi kurar.
-Görünürlük: "Happens-before" ilişkisi, bir thread'in diğer diğer bir thread'in yaptığı değişiklikleri ne zaman göreceğini belirler.
+_happens-before_, işlemlerin görünürlüğünü tanımlar. Eğer bir işlem A, başka bir işlem B'den **"happens-before"** ise, A'nın etkileri B'den önce görünür hale gelir.
+**sequenced-before**, _happens-before_ ilişkisini içerir.<br>
+_thread_'ler arası senkronizasyon işlemleri de **happens-before** ilişkisi kurar.<br>
+görünürlük: **happens-before** ilişkisi, bir _thread_'in diğer diğer bir _thread_'in yaptığı değişiklikleri ne zaman göreceğini belirler.
 
+```cpp
 #include <iostream>
 #include <thread>
 #include <atomic>
@@ -44,8 +44,8 @@ int main()
     t1.join();
     t2.join();
 
-    return 0;
-}
+ }
+```
 
 Bu örnekte, writer iş parçacığındaki ready.store işlemi, reader iş parçacığındaki ready.load işleminden "happens-before" olur. 
 Bu, reader thread'inin x değişkeninin değerini okuduğunda, writer thread'ini x'e yazdığı değeri göreceği anlamına gelir.
