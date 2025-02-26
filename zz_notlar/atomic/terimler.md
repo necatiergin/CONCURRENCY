@@ -4,13 +4,13 @@ sequence-before, happens-before, inter-thread happens-before terimleri _thread_'
 #### sequenced-before (sıralı öncelik garantisi)
 **sequenced-before**, aynı _thread_ içindeki işlemlerin sırasını tanımlar. Eğer bir işlem A, başka bir işlem B'den _"sequenced-before"_ ise, A, B'den önce gerçekleşir.
 - tek _thread_ bağlamında: Tek thread'li programlarda, kodun yazıldığı sıraya göre işlemler **_sequenced-before_** ilişkisine sahiptir.
-- Çok _thread_'li bağlamda: **sequenced-before**__, her _thread_ için geçerlidir, ancak _thread_'ler arasındaki işlemleri tanımlamaz.
+- Çok _thread_'li bağlamda: **sequenced-before**, her _thread_ için geçerlidir, ancak _thread_'ler arasındaki işlemleri tanımlamaz.
 
 ```cpp
 int x = 10; // A
 int y = x + 5; // B
 ```
-Bu örnekte, A işlemi (x'e 10 atanması), B işleminden (y'ye x + 5 atanması) "sequenced-before" olur.
+Bu örnekte, A işlemi (x'e 10 atanması), B işleminden (y'ye x + 5 atanması) **sequenced-before** olur.
 
 #### happens-before (önce-gerçekleşme-garantisi)
 _happens-before_, işlemlerin görünürlüğünü tanımlar. Eğer bir işlem A, başka bir işlem B'den **"happens-before"** ise, A'nın etkileri B'den önce görünür hale gelir.
