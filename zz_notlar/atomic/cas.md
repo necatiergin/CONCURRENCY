@@ -1,12 +1,4 @@
-std::atomic sınıfının compare_exchange_strong üye fonksiyonu, atomik bir değişkenin değerini belirli bir koşul altında güncellemek için kullanılır. Bu fonksiyon, karşılaştırma ve değiştirme (Compare-and-Swap, CAS) işlemini gerçekleştirir. CAS işlemi, çoklu iş parçacığı (multi-thread) programlamada senkronizasyon ve veri yarışlarını (data races) önlemek için temel bir araçtır.
-
-compare_exchange_strong Ne İşe Yarar?
-compare_exchange_strong fonksiyonu, aşağıdaki adımları gerçekleştirir:
-
-Atomik değişkenin mevcut değerini belirtilen bir beklenen değer (expected) ile karşılaştırır.
-
-Eğer değerler eşleşirse, atomik değişkenin değerini yeni bir değer (desired) ile günceller.
-
-Eğer değerler eşleşmezse, atomik değişkenin mevcut değerini expected değişkenine yazar.
-
-Bu işlem, atomik olarak gerçekleştirilir, yani başka bir iş parçacığı tarafından kesintiye uğramaz.
+_std::atomic_ sınıfının _compare_exchange_strong_ üye fonksiyonu, atomik bir değişkenin değerini belirli bir koşul altında güncellemek için kullanılır.
+Bu fonksiyon, karşılaştırma ve değiştirme _(Compare-and-Swap, CAS)_ işlemini atomik olarak gerçekleştirir. _CAS_ işlemi, _multi-thread_ programlamada senkronizasyon için kullanılır ve veri yarışlarını _(data races)_ önlemek için temel bir araçtır.<br>
+_compare_exchange_strong_ fonksiyonu, aşağıdaki adımları yürütür: <br>
+Atomik değişkenin var olan değerini belirtilen bir beklenen değer _(expected)_ ile karşılaştırır. Eğer değerler birbirine eşit ise, atomik değişkenin değerini yeni bir değer _(desired)_ ile günceller. Eğer değerler eşit değilse, atomik değişkenin var olan değerini _expected_ değişkenine yazar. Bu işlem, atomik olarak gerçekleştirilir, yani başka bir iş parçacığı tarafından kesintiye uğramaz.
