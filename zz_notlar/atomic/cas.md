@@ -17,3 +17,8 @@ bool compare_exchange_strong(T& expected, T desired, std::memory_order success =
 - **success:** İşlem başarılı olduğunda kullanılacak bellek sıralama _(memory ordering)_ modeli.
 - **failure:** İşlem başarısız olduğunda kullanılacak bellek sıralama modeli.
 - **dönüş değeri:** İşlem başarılı olduysa **true**, aksi takdirde **false**.
+
+neden kullanılır? <br>
+- kilitsiz (_lock-free)_ veri yapıları oluşturmak: _std::mutex_ gibi kilitleme mekanizmalarına başvurmadan güvenli güncellemeler yapmak için kullanılır.
+- yarış koşullarını _(data race)_ önlemek: paylaşılan bir değişkeni, yalnızca belirli bir koşul sağlandığında güncellemek için uygundur.
+- beklenmeyen değişiklikleri algılamak: Eğer başka bir _thread_ aynı değişkeni değiştirmişse, işlem başarısız olur ve tekrar denenebilir.
