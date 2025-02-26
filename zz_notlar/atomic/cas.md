@@ -16,4 +16,4 @@ bool compare_exchange_strong(T& expected, T desired, std::memory_order success =
 - **desired:** Eğer _expected_ değeri atomik değişkenin değerine eşit ise, bu değer atanır.
 - **success:** İşlem başarılı olduğunda kullanılacak bellek sıralama _(memory ordering)_ modeli.
 - **failure:** İşlem başarısız olduğunda kullanılacak bellek sıralama modeli.
-- **Dönüş değeri:** İşlem başarılı olduysa **true**, aksi takdirde **false**.
+- **dönüş değeri:** İşlem başarılı olduysa **true**, aksi takdirde **false**.
