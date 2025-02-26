@@ -6,7 +6,7 @@ Atomik değişkenin var olan değerini belirtilen bir beklenen değer _(expected
 Eğer değerler birbirine eşit ise, atomik değişkenin değerini yeni bir değer _(desired)_ ile günceller.<br>
 Eğer değerler eşit değilse, atomik değişkenin var olan değerini _expected_ değişkenine yazar. Bu işlem, atomik olarak gerçekleştirilir, yani başka bir iş parçacığı tarafından kesintiye uğramaz.
 
-fonksiyonun Prototipi
+fonksiyonun prototipi
 ```cpp
 bool compare_exchange_strong(T& expected, T desired, std::memory_order success = std::memory_order_seq_cst, 
                              std::memory_order failure = std::memory_order_seq_cst);
