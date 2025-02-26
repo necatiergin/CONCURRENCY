@@ -60,6 +60,6 @@ std::atomic_flag f = ATOMIC_FLAG_INIT;
 ```
 - Bir kilit mekanizmasının kullanılmadığı garanti edilmektedir.
 - Diğer atomik türlerde olan _is_lock_free_ üye fonksiyonuna sahip değildir (zaten _lock-free_ olmak zorunda).
-- _std::atomic_flag_, _spinlock mutex_ gibi daha yüksek seviyeli senkronizsayon mekanizmalarında araç olarak kullanılır.
+- _std::atomic_flag_, _spinlock mutex_ gibi daha yüksek seviyeli senkronizasyon mekanizmalarında araç olarak kullanılır.
 
 
