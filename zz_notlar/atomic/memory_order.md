@@ -11,3 +11,7 @@ En zayıf bellek sıralama kısıtlamasıdır. Sadece atomiklik garantisi verir,
 **std::memory_order_acquire:** <br>
 Bir thread'in bir atomik değişkeni okuduktan sonra, bu okuma işleminden önce gerçekleşen tüm bellek erişimlerinin, okuma işleminden önce gerçekleşmesini garanti eder.
 Diğer thread'lerin bu okuma işleminden sonra bellek erişimlerini yeniden sıralamasına izin verir. Kilit edinme _(lock acquisition)_ ve koşul değişkeni bekleme _(condition variable wait)_ gibi senkronizasyon mekanizmalarında kullanılır.
+
+**std::memory_order_release:** <br>
+Bir thread'in bir atomik değişkene yazdıktan sonra, bu yazma işleminden sonra gerçekleşen tüm bellek erişimlerinin, yazma işleminden sonra gerçekleşmesini garanti eder.
+Diğer thread'lerin bu yazma işleminden önce bellek erişimlerini yeniden sıralamasına izin verir. Kilit serbest bırakma (lock release) ve koşul değişkeni sinyal (condition variable signal) gibi senkronizasyon mekanizmalarında kullanılır.
