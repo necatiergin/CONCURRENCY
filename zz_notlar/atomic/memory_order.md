@@ -15,3 +15,12 @@ Diğer _thread_'lerin bu okuma işleminden sonra bellek erişimlerini yeniden s�
 **std::memory_order_release:** <br>
 Bir _thread_'in bir atomik değişkene yazdıktan sonra, bu yazma işleminden sonra gerçekleşen tüm bellek erişimlerinin, yazma işleminden sonra gerçekleşmesini garanti eder.
 Diğer _thread_'lerin bu yazma işleminden önce bellek erişimlerini yeniden sıralamasına izin verir. Kilit serbest bırakma _(lock release)_ ve koşul değişkeni sinyali _(condition variable signal)_ gibi senkronizasyon mekanizmalarında kullanılır.
+
+**std::memory_order_acq_rel:** <br>
+
+Hem _acquire_ hem de _release_ sıralama kısıtlamalarını birleştirir. Bir atomik değişken üzerinde hem okuma hem de yazma işlemleri yapan durumlarda kullanılır.
+Örneğin, bir atomik değişkeni artırmak veya azaltmak gibi işlemlerde kullanılabilir.
+
+**std::memory_order_seq_cst:** <br>
+En güçlü bellek sıralama kısıtlamasıdır. Tüm _thread_'lerin atomik işlemlerin aynı sırayla gerçekleştiğini görmesini garanti eder. Varsayılan bellek sıralama kısıtlamasıdır.
+Performans açısından en yavaş seçenektir. Karmaşık senkronizasyon senaryolarında ve hata ayıklama amaçlı kullanılabilir.
