@@ -9,9 +9,9 @@ Bellek sıralama kısıtlamaları, bu yeniden sıralamayı kontrol ederek iş _t
 En zayıf bellek sıralama kısıtlamasıdır. Sadece atomiklik garantisi verir, herhangi bir sıralama garantisi vermez. İş parçacıkları arasında herhangi bir senkronizasyon sağlamaz. Performans açısından en hızlı seçenektir. Sayaçlar gibi basit atomik işlemlerde kullanılabilir.
 
 **std::memory_order_acquire:** <br>
-Bir thread'in bir atomik değişkeni okuduktan sonra, bu okuma işleminden önce gerçekleşen tüm bellek erişimlerinin, okuma işleminden önce gerçekleşmesini garanti eder.
-Diğer thread'lerin bu okuma işleminden sonra bellek erişimlerini yeniden sıralamasına izin verir. Kilit edinme _(lock acquisition)_ ve koşul değişkeni bekleme _(condition variable wait)_ gibi senkronizasyon mekanizmalarında kullanılır.
+Bir _thread_'in bir atomik değişkeni okuduktan sonra, bu okuma işleminden önce gerçekleşen tüm bellek erişimlerinin, okuma işleminden önce gerçekleşmesini garanti eder.
+Diğer _thread_'lerin bu okuma işleminden sonra bellek erişimlerini yeniden sıralamasına izin verir. Kilit edinme _(lock acquisition)_ ve koşul değişkeni bekleme _(condition variable wait)_ gibi senkronizasyon mekanizmalarında kullanılır.
 
 **std::memory_order_release:** <br>
-Bir thread'in bir atomik değişkene yazdıktan sonra, bu yazma işleminden sonra gerçekleşen tüm bellek erişimlerinin, yazma işleminden sonra gerçekleşmesini garanti eder.
-Diğer thread'lerin bu yazma işleminden önce bellek erişimlerini yeniden sıralamasına izin verir. Kilit serbest bırakma (lock release) ve koşul değişkeni sinyal (condition variable signal) gibi senkronizasyon mekanizmalarında kullanılır.
+Bir _thread_'in bir atomik değişkene yazdıktan sonra, bu yazma işleminden sonra gerçekleşen tüm bellek erişimlerinin, yazma işleminden sonra gerçekleşmesini garanti eder.
+Diğer _thread_'lerin bu yazma işleminden önce bellek erişimlerini yeniden sıralamasına izin verir. Kilit serbest bırakma _(lock release)_ ve koşul değişkeni sinyali _(condition variable signal)_ gibi senkronizasyon mekanizmalarında kullanılır.
