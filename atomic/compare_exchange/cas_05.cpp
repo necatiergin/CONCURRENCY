@@ -20,7 +20,7 @@ void lottery(std::string name)
 	{
 
 	}
-	
+
 	bool expected{ false };
 
 	if (is_done.compare_exchange_strong(expected, true)) {
@@ -30,14 +30,12 @@ void lottery(std::string name)
 
 int main()
 {
-	using namespace std;
-
 	const char* pnames[] = { "necati", "akif", "ahmet", "harun", "mehmet", "dogukan" };
-	mt19937 eng{ random_device{}() };
-	
-	std::shuffle(begin(pnames), end(pnames), eng);
-	
-	vector<jthread> tvec;
+	std::mt19937 eng{ std::random_device{}() };
+
+	std::shuffle(std::begin(pnames), std::end(pnames), eng);
+
+	std::vector<std::thread> tvec;
 	for (auto p : pnames) {
 		tvec.emplace_back(lottery, p);
 	}
