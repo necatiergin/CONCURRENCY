@@ -17,6 +17,7 @@ T fetch_add(T val, std::memory_order order = std::memory_order_seq_cst) noexcept
 - **geri dönüş değeri**: İşlemden önceki atomik nesnenin eski değeri _(T türünde)_.
 işlem atomiktir; yani kesintiye uğramaz ve diğer _thread_'ler ile çakışma olmadan tamamlanır.<br>
 _noexcept_ olarak nitelenmiştir yani bu fonksiyon _exception_ göndermez. <br>
-_std::atomic<T>_  sınıf şablonunun yalnızca tam sayı türleri _(örneğin int, long, char)_ ve _pointer_ türleri için açılımlarında _(specialization) fetch_add_ fonksiyonunu vardır. Gerçek sayı türleri _(float, doublei long double)_ için bu fonksiyon tanımlı değildir.
-- **bellek sıralama (memory order)**: Bellek sıralama, _thread_'ler arasındaki operasyonların nasıl senkronize edileceğini belirler. Varsayılan argüman _std::memory_order_seq_cst_, en katı sıralamayı sağlar ve tüm _thread_'lerde tutarlı bir yürütme sırası garanti eder. 
+_std::atomic<T>_  sınıf şablonunun yalnızca tam sayı türleri _(örneğin int, long, char)_ ve _pointer_ türleri için açılımlarında _(specialization) fetch_add_ fonksiyonunu vardır. Gerçek sayı türleri _(float, double, long double)_ için bu fonksiyon tanımlı değildir.
+- **bellek sıralama (memory order)**: Bellek sıralama, _thread_'ler arasındaki operasyonların nasıl senkronize edileceğini belirler. 
+Varsayılan argüman _std::memory_order_seq_cst_, en katı sıralamayı sağlar ve tüm _thread_'lerde tutarlı bir yürütme sırası garanti eder. 
 Daha gevşek sıralamalar _(örneğin std::memory_order_acquire veya std::memory_order_relaxed)_ ise performansı artırabilir, ancak dikkatli kullanılmalıdır.
