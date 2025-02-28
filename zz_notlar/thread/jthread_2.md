@@ -20,9 +20,15 @@ _thread_'in çalışmasını durdurmak isteyen kod, bu fonksiyonu çağırır. D
 #### std::stop_token
 _std::stop_token_, _C++20_ ile standartlaştırılmış bir türdür ve platformdan bağımsızdır. <br>
 _std::stop_token_, durdurma isteğinin durumunu kontrol etmek için kullanılan bir türdür. _std::stop_source_ nesnesinden elde edilen bu token, _thread_'in durdurma isteğine yanıt vermesini sağlar.
-bool döndüren _stop_requested()_ üye fonksiyonu ile durdurma isteğinin gelip gelmediği kontrol edilir. <br>
+_std::stop_token_, _thread_'in dışarıdan gelen bir durdurma isteğini fark etmesini sağlar.<br>
+ _stop_requested()_ üye fonksiyonu ile durdurma isteğinin gelip gelmediği kontrol edilir. Bu fonksiyon, durdurma isteği gelip gelmediğini kontrol eder. Eğer durdurma isteği gelmemişse false gelmişse true döndürür.
+
 _std::stop_callback_ ile, durdurma isteği geldiğinde çağrılacak fonksiyonu _(callback)_ kaydedilebilir.<br>
 _stop_token_ nesneleri küçüktür ve kopyalanabilir. (kopyalanma maliyeti düşüktür)
+
+_std::stop_token_, _std::jthread_ tarafından otomatik olarak sağlanır. Yani, biz _std::jthread_ nesnesini oluşturduğunuzda ve ona bir fonksiyon verdiğimizde, _std::jthread_ bu fonksiyona bir _std::stop_token_ nesnesi geçirir. Bu, _thread_'in durdurma isteğini kontrol edebilmesi için bir nevi "iletişim kanalı"dır.
+Thrad'in çalıştıracağı fonksiyon _std::stop_token_ tründen bir parametre değişkenine sahip ise bu parametreye std::jthread jt tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
+
 
 
 
