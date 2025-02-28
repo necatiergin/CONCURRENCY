@@ -3,22 +3,20 @@
 #include <iostream>
 #include <cassert>
 
-using namespace std;
-
 std::atomic<bool> x, y, z;
 
 
-void func_1() 
+void foo()
 {
     x.store(true, std::memory_order_relaxed);
 }
 
-void func_2()
+void bar()
 {
     y.store(true, std::memory_order_relaxed);
 }
 
-void func_3()
+void baz()
 {
 
     while (!y.load(std::memory_order_relaxed))
@@ -37,9 +35,8 @@ int main()
         x = false;
         y = false;
         z = false;
-        std::jthread thread_1(func_1);
-        std::jthread thread_2(func_2);
-        std::jthread thread_3(func_3);
+        std::jthread thread_1(foo);
+        std::jthread thread_2(bar);
+        std::jthread thread_3(baz);
     }
-
 }
