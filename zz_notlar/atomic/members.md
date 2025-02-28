@@ -1,10 +1,7 @@
-<!---
-Tabii ki! C++ standart kütüphanesindeki std::atomic sınıf şablonu, çoklu iş parçacığı (multithreading) programlamada atomik operasyonlar sağlamak için kullanılır. 
 
+#### fetch_add üye fonksiyonu
 
-fetch_add bir atomik işlenmdir.
-veri yarışlarını (data races) önlemek ve iş parçacıkları arasında güvenli bir şekilde paylaşılan verilere erişim veya değişiklik yapmak için oldukça önemlidir. 
-fetch_add ise std::atomic sınıf şablonunun bir üye fonksiyonudur ve atomik bir şekilde bir değere ekleme yapar.
+fetch_add, std::atomic sınıf şablonunun bir üye fonksiyonudur ve atomik bir şekilde bir değere ekleme yapar.
 fetch_add, bir atomik nesnenin mevcut değerine, verilen bir artırma miktarını ekler ve işlemin atomik olmasını sağlar. 
 Yani, bu işlem sırasında başka bir iş parçacığı aynı değişken üzerinde çakışan bir işlem yapamaz. 
 Fonksiyon, ekleme işlemini gerçekleştirmeden önceki eski değeri döndürür.
@@ -15,19 +12,14 @@ std::atomic<T>::fetch_add fonksiyonunun genel prototipi şöyledir:
 T fetch_add(T val, std::memory_order order = std::memory_order_seq_cst) noexcept;
 ```
 
-val     : Atomik nesneye eklenecek değer (artırma miktarı).
-order: Bellek sıralama düzeni (memory order). 
-Varsayılan olarak std::memory_order_seq_cst (sequential consistency) kullanılır, 
-ancak performans için daha gevşek sıralama düzenleri (örneğin std::memory_order_relaxed) de belirtilebilir.
-
-geri dönüş değeri
-İşlemden önceki atomik nesnenin eski değeri (T türünde).
+- val     : Atomik nesneye eklenecek değer (artırma miktarı).
+- order: bellek sıralama düzeni _(memory order)_. Varsayılan olarak _std::memory_order_seq_cst (sequential consistency)_ kullanılır, ancak performans için daha gevşek sıralama düzenleri de (örneğin _std::memory_order_relaxed_) kullanılabilir.
+- geri dönüş değeri: İşlemden önceki atomik nesnenin eski değeri _(T türünde)_.
 
 
-şlem atomiktir; yani kesintiye uğramaz ve diğer iş parçacıklarıyla çakışma olmadan tamamlanır.
-
-noexcept olarak işaretlenmiştir, yani bu fonksiyon istisna (exception) fırlatmaz.
-
+işlem atomiktir; yani kesintiye uğramaz ve diğer iş parçacıklarıyla çakışma olmadan tamamlanır.
+noexcept olarak nitelenmiştir yani bu fonksiyon _exception_ göndermez
+<!---
 Desteklenen Türler:
 std::atomic<T> yalnızca integral türler (örneğin int, long, char) ve işaretçi türleri (pointers) için fetch_add fonksiyonunu destekler. 
 Kayan nokta türleri (float, double) için bu fonksiyon tanımlı değildir.
