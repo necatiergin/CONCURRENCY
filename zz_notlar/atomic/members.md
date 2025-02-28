@@ -1,24 +1,22 @@
 
 #### fetch_add üye fonksiyonu
 
-fetch_add, std::atomic sınıf şablonunun bir üye fonksiyonudur ve atomik bir şekilde bir değere ekleme yapar.
-fetch_add, bir atomik nesnenin mevcut değerine, verilen bir artırma miktarını ekler ve işlemin atomik olmasını sağlar. 
+_fetch_add_, _std::atomic_ sınıf şablonunun bir üye fonksiyonudur ve atomik bir şekilde bir değere ekleme yapar.
+_fetch_add_, bir atomik nesnenin mevcut değerine, verilen bir artırma miktarını ekler ve işlemin atomik olmasını sağlar. 
 Yani, bu işlem sırasında başka bir iş parçacığı aynı değişken üzerinde çakışan bir işlem yapamaz. 
 Fonksiyon, ekleme işlemini gerçekleştirmeden önceki eski değeri döndürür.
 
-std::atomic<T>::fetch_add fonksiyonunun genel prototipi şöyledir:
+_std::atomic<T>::fetch_add_ fonksiyonunun genel prototipi şöyledir:
 
 ```cpp
 T fetch_add(T val, std::memory_order order = std::memory_order_seq_cst) noexcept;
 ```
 
-- val     : Atomik nesneye eklenecek değer (artırma miktarı).
-- order: bellek sıralama düzeni _(memory order)_. Varsayılan olarak _std::memory_order_seq_cst (sequential consistency)_ kullanılır, ancak performans için daha gevşek sıralama düzenleri de (örneğin _std::memory_order_relaxed_) kullanılabilir.
-- geri dönüş değeri: İşlemden önceki atomik nesnenin eski değeri _(T türünde)_.
-
-
-işlem atomiktir; yani kesintiye uğramaz ve diğer iş parçacıklarıyla çakışma olmadan tamamlanır.
-noexcept olarak nitelenmiştir yani bu fonksiyon _exception_ göndermez
+- **val**: Atomik nesneye eklenecek değer (artırma miktarı).
+- **order**: bellek sıralama düzeni _(memory order)_. Varsayılan olarak _std::memory_order_seq_cst (sequential consistency)_ kullanılır, ancak performans için daha gevşek sıralama düzenleri de (örneğin _std::memory_order_relaxed_) kullanılabilir.<br>
+- **geri dönüş değeri**: İşlemden önceki atomik nesnenin eski değeri _(T türünde)_.
+işlem atomiktir; yani kesintiye uğramaz ve diğer iş parçacıklarıyla çakışma olmadan tamamlanır.<br>
+_noexcept_ olarak nitelenmiştir yani bu fonksiyon _exception_ göndermez. <br>
 <!---
 Desteklenen Türler:
 std::atomic<T> yalnızca integral türler (örneğin int, long, char) ve işaretçi türleri (pointers) için fetch_add fonksiyonunu destekler. 
