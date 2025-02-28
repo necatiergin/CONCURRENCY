@@ -3,8 +3,9 @@ Bu fonksiyon, karşılaştırma ve değiştirme _(Compare-and-Swap, CAS)_ işlem
 
 _compare_exchange_strong_ fonksiyonu, aşağıdaki adımları yürütür: <br>
 Atomik değişkenin var olan değerini belirtilen bir beklenen değer _(expected)_ ile karşılaştırır.<br>
-Eğer değerler birbirine eşit ise, atomik değişkenin değerini yeni bir değer _(desired)_ ile günceller.<br>
-Eğer değerler eşit değilse, atomik değişkenin var olan değerini _expected_ değişkenine yazar. Bu işlem, atomik olarak gerçekleştirilir, yani başka bir _thread_ tarafından kesintiye uğramaz.
+Eğer değerler birbirine eşit ise, atomik değişkenin değerini yeni bir değer _(desired)_ ile günceller, ve _true_ değer döndürür<br>
+Eğer değerler eşit değilse, atomik değişkenin var olan değerini _expected_ değişkenine yazar ve _false_ değer döndürür. <br>
+ Bu işlem, atomik olarak gerçekleştirilir, yani başka bir _thread_ tarafından kesintiye uğramaz.
 
 fonksiyonun prototipi
 ```cpp
