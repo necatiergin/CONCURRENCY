@@ -26,8 +26,9 @@ _std::stop_token_, _thread_'in dışarıdan gelen bir durdurma isteğini fark et
 _std::stop_callback_ ile, durdurma isteği geldiğinde çağrılacak fonksiyonu _(callback)_ kaydedilebilir.<br>
 _stop_token_ nesneleri küçüktür ve kopyalanabilir. (kopyalanma maliyeti düşüktür)
 
-_std::stop_token_, _std::jthread_ tarafından otomatik olarak sağlanır. Yani, biz _std::jthread_ nesnesini oluşturduğunuzda ve ona bir fonksiyon verdiğimizde, _std::jthread_ bu fonksiyona bir _std::stop_token_ nesnesi geçirir. Bu, _thread_'in durdurma isteğini kontrol edebilmesi için bir nevi "iletişim kanalı"dır.
-Thrad'in çalıştıracağı fonksiyon _std::stop_token_ tründen bir parametre değişkenine sahip ise bu parametreye std::jthread jt tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
+_std::stop_token_, _std::jthread_ tarafından otomatik olarak sağlanır. 
+Yani, biz _std::jthread_ nesnesini oluşturduğunuzda ve ona bir fonksiyon verdiğimizde, _std::jthread_ bu fonksiyona bir _std::stop_token_ nesnesi geçirir. Bu, _thread_'in durdurma isteğini kontrol edebilmesi için bir nevi "iletişim kanalı"dır.
+_thread_'in çalıştıracağı fonksiyon _std::stop_token_ türünden bir parametre değişkenine sahip ise bu parametreye std::jthread jt tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
 
 
 
