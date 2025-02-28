@@ -3,34 +3,22 @@ _JThread_ sınıfı, _thread_'in güvenli bir şekilde durdurulmasını sağlaya
 ```
 std::stop_source get_stop_source() noexcept;
 ```
-Bu fonksiyon _std::jthread_ nesnesine bağlı bir _std::stop_source_ nesnesini döndürür. _std::stop_source_, durdurma isteği göndermek için kullanılan bir nesnedir. Bu nesne, _thread_'in çalışmasını durdurmak isteyen başka bir kod parçası (örneğin ana thread) tarafından kullanılabilir.
-Ana thread ya da başka bir kontrol mekanizması, _std::jthread_ nesnesinin çalışmasını durdurmak istediğinde, bu fonksiyondan std::stop_source nesnesini alır ve durdurma isteğini gönderir.
+Bu fonksiyon _std::jthread_ nesnesine bağlı bir _std::stop_source_ nesnesini döndürür. _std::stop_source_, durdurma isteği göndermek için kullanılan bir nesnedir. Bu nesne, _thread_'in çalışmasını durdurmak isteyen başka bir kod parçası (örneğin ana thread) tarafından kullanılabilir. Ana _thread_ ya da başka bir kontrol mekanizması, _std::jthread_ nesnesinin çalışmasını durdurmak istediğinde, bu fonksiyondan _std::stop_source_ nesnesini alır ve durdurma isteğini gönderir.
+
+```
+std::stop_token get_stop_token() const noexcept;
+```
+_std::jthread_ nesnesine bağlı bir _std::stop_token_ nesnesini döndürür. _std::stop_token_, _thread_ tarafından durdurma isteğinin gelip gelmediğini kontrol etmek için kullanılır. _thread_, bu fonksiyonla elde edilen _std::stop_token_ nesnesini kullanarak durdurma isteğini sorgulayabilir ve buna göre davranabilir (örneğin, bir döngüden çıkabilir).
+
+```
+bool request_stop() noexcept;
+```
+
+_std::jthread_ nesnesine bağlı _std::stop_source_ üzerinden durdurma isteği gönderir. Eğer durdurma isteği daha önce gönderilmemişse _true_, aksi takdirde _false_ döner.
+_thread_'in çalışmasını durdurmak isteyen kod, bu fonksiyonu çağırır. Durdurma isteği gönderildiğinde, iş parçacığı bunu _std::stop_token_ üzerinden algılayabilir ve sonlandırma işlemini yapabilir.
+
+_std::stop_token_, durdurma isteğinin durumunu kontrol etmek için kullanılan bir türdür. _std::stop_source_ nesnesinden elde edilen bu token, _thread_'in durdurma isteğine yanıt vermesini sağlar.
+bool döndüren _stop_requested()_ üye fonksiyonu ile durdurma isteğinin gelip gelmediği kontrol edilir.
+_std::stop_callback_ ile, durdurma isteği geldiğinde çağrılacak fonksiyonu _(callback)_ kaydedilebilir.
 
 
-
-<!---
-
-
-2. get_stop_token
-Tanım: std::stop_token get_stop_token() const noexcept;
-
-Ne İşe Yarar: std::jthread nesnesine bağlı bir std::stop_token nesnesini döndürür. std::stop_token, iş parçacığı tarafından durdurma isteğinin gelip gelmediğini kontrol etmek için kullanılır.
-
-Kullanım Amacı: İş parçacığı, bu fonksiyonla elde edilen std::stop_token nesnesini kullanarak durdurma isteğini sorgulayabilir ve buna göre davranabilir (örneğin, bir döngüden çıkabilir).
-
-3. request_stop
-Tanım: bool request_stop() noexcept;
-
-Ne İşe Yarar: std::jthread nesnesine bağlı std::stop_source üzerinden durdurma isteği gönderir. Eğer durdurma isteği daha önce gönderilmemişse true, aksi takdirde false döner.
-
-Kullanım Amacı: İş parçacığının çalışmasını durdurmak isteyen kod, bu fonksiyonu çağırır. Durdurma isteği gönderildiğinde, iş parçacığı bunu std::stop_token üzerinden algılayabilir ve sonlanma işlemini gerçekleştirebilir.
-
-std::stop_token Türü
-Tanım: std::stop_token, durdurma isteğinin durumunu kontrol etmek için kullanılan bir türdür. std::stop_source nesnesinden türetilen bu token, iş parçacığının durdurma isteğine yanıt vermesini sağlar.
-
-Kullanım: 
-stop_requested() üye fonksiyonu ile durdurma isteğinin gelip gelmediği kontrol edilir (bool döner).
-
-std::stop_callback ile, durdurma isteği geldiğinde çağrılacak bir geri çağırma (callback) fonksiyonu kaydedilebilir.
-
---->
