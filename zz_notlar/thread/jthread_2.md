@@ -1,14 +1,15 @@
 _JThread_ sınıfı, _thread_'in güvenli bir şekilde durdurulmasını sağlayan bir mekanizma sunar. Bu mekanizma, _thread_'e durdurma isteği göndermek ve _thread_'in durdurulup durdurulmadığını kontrol etmek için aşağıdaki üye fonksiyonları ve _std::stop_token_ türünü kullanır.
+#### üye fonksiyonlar
+```
+std::stop_source get_stop_source() noexcept;
+```
+Bu fonksiyon _std::jthread_ nesnesine bağlı bir _std::stop_source_ nesnesini döndürür. _std::stop_source_, durdurma isteği göndermek için kullanılan bir nesnedir. Bu nesne, _thread_'in çalışmasını durdurmak isteyen başka bir kod parçası (örneğin ana thread) tarafından kullanılabilir.
+Ana thread ya da başka bir kontrol mekanizması, _std::jthread_ nesnesinin çalışmasını durdurmak istediğinde, bu fonksiyondan std::stop_source nesnesini alır ve durdurma isteğini gönderir.
+
+
 
 <!---
-Üye Fonksiyonlar
-1. get_stop_source
-Tanım: std::stop_source get_stop_source() noexcept;
 
-Ne İşe Yarar: std::jthread nesnesine bağlı bir std::stop_source nesnesini döndürür. std::stop_source, durdurma isteği göndermek için kullanılan bir nesnedir. 
-Bu nesne, iş parçacığının çalışmasını durdurmak isteyen başka bir kod parçası (örneğin ana iş parçacığı) tarafından kullanılabilir.
-
-Kullanım Amacı: Ana iş parçacığı veya başka bir kontrol mekanizması, std::jthread nesnesinin çalışmasını durdurmak istediğinde, bu fonksiyonla std::stop_source nesnesine erişir ve durdurma isteği gönderir.
 
 2. get_stop_token
 Tanım: std::stop_token get_stop_token() const noexcept;
