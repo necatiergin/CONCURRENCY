@@ -15,7 +15,7 @@ T fetch_add(T val, std::memory_order order = std::memory_order_seq_cst) noexcept
 - **val**: Atomik nesneye eklenecek değer (artırma miktarı).
 - **order**: bellek sıralama düzeni _(memory order)_. Varsayılan olarak _std::memory_order_seq_cst (sequential consistency)_ kullanılır, ancak performans için daha gevşek sıralama düzenleri de (örneğin _std::memory_order_relaxed_) kullanılabilir.<br>
 - **geri dönüş değeri**: İşlemden önceki atomik nesnenin eski değeri _(T türünde)_.
-işlem atomiktir; yani kesintiye uğramaz ve diğer iş parçacıklarıyla çakışma olmadan tamamlanır.<br>
+işlem atomiktir; yani kesintiye uğramaz ve diğer thresd'ler ile çakışma olmadan tamamlanır.<br>
 _noexcept_ olarak nitelenmiştir yani bu fonksiyon _exception_ göndermez. <br>
 <!---
 Desteklenen Türler:
