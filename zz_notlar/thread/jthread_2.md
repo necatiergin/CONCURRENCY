@@ -28,7 +28,7 @@ _stop_token_ nesneleri küçüktür ve kopyalanabilir. (kopyalanma maliyeti dü�
 
 _std::stop_token_, _std::jthread_ tarafından otomatik olarak sağlanır. 
 Yani, biz _std::jthread_ nesnesini oluşturduğunuzda ve ona bir fonksiyon verdiğimizde, _std::jthread_ bu fonksiyona bir _std::stop_token_ nesnesi geçirir. Bu, _thread_'in durdurma isteğini kontrol edebilmesi için bir nevi "iletişim kanalı"dır.
-_thread_'in çalıştıracağı fonksiyon _std::stop_token_ türünden bir parametre değişkenine sahip ise bu parametreye std::jthread jt tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
+_thread_'in çalıştıracağı fonksiyon _std::stop_token_ türünden bir parametre değişkenine sahip ise bu parametreye _std::jthread_ tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
 
 
 
