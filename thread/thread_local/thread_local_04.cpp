@@ -8,8 +8,7 @@ thread_local std::string name("Necati ");
 void func(const std::string& surname) {
 
 	name += surname;
-	std::osyncstream ocout{ std::cout };
-	ocout << name << " &name: " << &name << std::endl;
+	std::osyncstream { std::cout } << name << " &name: " << &name << std::endl;
 }
 
 int main()
