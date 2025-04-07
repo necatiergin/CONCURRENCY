@@ -1,6 +1,8 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <chrono>
+
 
 std::once_flag once_flag;
 
@@ -9,7 +11,7 @@ using namespace std::literals;
 void foo()
 {
 	std::this_thread::sleep_for(100ms);
-	std::call_once(once_flag, []() { std::cout << "registered in foo\n"});
+	std::call_once(once_flag, []() { std::cout << "registered in foo\n"; });
 }
 
 void bar()
