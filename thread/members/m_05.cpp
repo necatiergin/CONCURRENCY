@@ -14,8 +14,10 @@ int main()
 	try {
 		tx.join(); // throws exception
 	}
-	catch (const std::exception& ex)
+	catch (const std::system_error& ex) 
+		//catch (const std::runtime_error& ex) 
+		//catch (const std::exception& ex) 
 	{
-		std::cout << "exception cauhgt : " << ex.what() << '\n';
+		std::cout << "exception caught : " << ex.what() << '\n';
 	}
 }
