@@ -5,7 +5,6 @@
 #include <chrono>
 #include <syncstream>
 
-
 using namespace std::literals;
 
 class DatabaseConnection {
@@ -40,9 +39,7 @@ void worker(int thread_id)
 int main() 
 {
     constexpr int num_threads = 4;
-
     std::vector<std::jthread> tvec;
-
 
     for (int i = 0; i < num_threads; ++i) {
         tvec.emplace_back(worker, i);
