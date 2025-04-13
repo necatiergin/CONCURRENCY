@@ -15,9 +15,9 @@ void foo(int n, char digit)
 			std::cout.put(digit).flush();
 		}
 	}
-	
+
 	catch (const std::exception& e) {
-		std::osyncstream{ std::cerr } << "exception caught (thread " << 
+		std::osyncstream{ std::cerr } << "exception caught (thread " <<
 			std::this_thread::get_id() << "): " << e.what() << '\n';
 	}
 	catch (...) {
@@ -31,19 +31,19 @@ int main()
 {
 	std::osyncstream oscout{ std::cout };
 	try {
-		std::thread tx(foo, 10, '*'); 
+		std::thread tx(foo, 10, '*');
 		oscout << "- started forground thread " << tx.get_id() << '\n';
-		
+
 		for (int i = 0; i < 8; ++i) {
-			std::thread th(foo, 10, '1' + i); 
+			std::thread th(foo, 10, '1' + i);
 			oscout << "- detach started bg thread " << th.get_id() << '\n';
-			th.detach(); 
+			th.detach();
 		}
-		std::cin.get(); 
+		std::cin.get();
 		oscout << "- join fg thread " << tx.get_id() << '\n';
-		tx.join(); 
+		tx.join();
 	}
 	catch (const std::exception& e) {
-		std::cerr << "EXCEPTION: " << e.what() << std::endl;
+		std::cerr << "exception caught: " << e.what() << '\n';
 	}
 }
