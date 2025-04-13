@@ -5,11 +5,11 @@
 #include <iostream>
 #include <thread>
 
-void foo() 
+void foo()
 {
 	//...
 }
- 
+
 int main()
 {
 	std::thread tx{ foo };
@@ -18,7 +18,10 @@ int main()
 	try {
 		tx.join();
 	}
-	catch (const std::exception& ex) {
+	catch (const std::system_error& ex) {
+	//catch (const std::runtime_error& ex) {
+	//catch (const std::exception& ex) {
 		std::cout << "exception caught: " << ex.what() << '\n';
 	}
+	ty.join();
 }
