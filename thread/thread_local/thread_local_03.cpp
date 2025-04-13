@@ -20,11 +20,9 @@ void func(int id)
 
 int main()
 {
-	using namespace std;
-
-	thread tx{ func, 0 };
-	thread ty{ func, 1 };
-	thread tz{ func, 2 };
+	std::thread tx{ func, 0 };
+	std::thread ty{ func, 1 };
+	std::thread tz{ func, 2 };
 
 	tx.join();
 	ty.join();
