@@ -15,6 +15,11 @@ public:
 	}
 };
 
+/*
+ a local object may be thread-local.
+its life ends when the thread terminates
+*/
+
 void foo()
 {
 	std::osyncstream{ std::cout } << "foo called\n";
@@ -38,7 +43,3 @@ int main()
 	t.join();
 }
 
-/*
- a local object may be thread-local.
-its life ends when the thread terminates
-*/
