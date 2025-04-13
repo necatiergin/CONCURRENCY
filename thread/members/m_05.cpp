@@ -1,3 +1,5 @@
+// if a thread is joined it is not joinable.
+
 #include <thread>
 #include <iostream>
 
