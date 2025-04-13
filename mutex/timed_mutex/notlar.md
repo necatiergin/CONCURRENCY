@@ -8,7 +8,7 @@ _std::timed_mutex_ nesneleri kopyalanamaz ve taşınamaz _(non-copyable non move
 - **try_lock():** mutex'i kilitlemeye çalışır. Kilitlerse _true_ kilitleyemez ise _false_ değer döndürür.
 - **unlock():** mutexin kilidini serbest bırakır.
 - **try_lock_for():** Belirli bir süre boyunca kilidi almaya çalışır.
-- **try_lock_until(): **Belirli bir zamana _(timepoint)_ kadar kilidi almaya çalışır.
+- **try_lock_until():** Belirli bir zamana _(timepoint)_ kadar kilidi almaya çalışır.
 
 
-Kopyalanamaz ve Taşınamaz:
+Kopyalanamaz ve Taşınamaz.
