@@ -1,4 +1,4 @@
-//foo işlevi içindeki yerel değişken ival'in ömrü bitmesine karşılık 
+// foo işlevi içindeki yerel değişken ival'in ömrü bitmesine karşılık 
 // oluşturulan thread'in çalışması devam ediyor olabilir
 
 #include <thread>
