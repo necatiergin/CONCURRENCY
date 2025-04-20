@@ -13,8 +13,7 @@ int main()
 
 	auto ftr = std::async(foo);
 	std::cout << (ftr.valid() ? pvalid : pinvalid);
-	auto ival = ftr.get();
-	std::cout << "ival = " << ival << '\n';
+	std::cout << "return value is : " << ftr.get() << '\n';
 	std::cout << (ftr.valid() ? pvalid : pinvalid);
 
 	try {
