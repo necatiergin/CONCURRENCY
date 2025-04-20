@@ -18,6 +18,5 @@ int main()
 		std::cout << "Waiting for the result...\n";
 	}
 
-	std::cout << ft_result.get() << '\n';
-	//...
+	std::cout << "value is ready : " << ft_result.get() << '\n';
 }
