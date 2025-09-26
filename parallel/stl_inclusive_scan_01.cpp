@@ -5,13 +5,14 @@
 
 int main()
 {
-	using namespace std;
+	std::vector ivec{ 1, 3, 5, 7, 9, 11, 13, 15 };
+	std::vector<int> dest(ivec.size());
 
-	vector svec{ 1, 3, 5, 7, 9, 11, 13, 15 };
-	vector<int> dvec(svec.size());
+	//inclusive_scan(std::execution::seq, ivec.begin(), ivec.end(), dest.begin());
+	inclusive_scan(std::execution::par, ivec.begin(), ivec.end(), dest.begin());
+	//inclusive_scan(std::execution::par_unseq, ivec.begin(), ivec.end(), dest.begin());
+	//inclusive_scan(std::execution::unseq, ivec.begin(), ivec.end(), dest.begin());
 
-	inclusive_scan(std::execution::par, svec.begin(), svec.end(), dvec.begin());
-
-	for (auto i : dvec)
-		cout << i << ' ';
+	for (auto i : dest)
+		std::cout << i << ' ';
 }
