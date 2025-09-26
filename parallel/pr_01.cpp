@@ -1,3 +1,5 @@
+// accumulate vs. reduce
+
 #include <vector>
 #include <numeric>
 #include <iostream>
