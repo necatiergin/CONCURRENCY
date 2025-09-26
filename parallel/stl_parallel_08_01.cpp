@@ -8,10 +8,10 @@ int main()
 {
     using namespace std;
 
-    vector svec{ 1, 2, 4, 3, 2, 5, 10 };
-    
-    partial_sum(svec.begin(), svec.end(), ostream_iterator<int>{cout, " "});
+    vector ivec{ 1, 2, 4, 3, 2, 5, 10 };
+
+    partial_sum(ivec.begin(), ivec.end(), ostream_iterator<int>{cout, " "});
     cout.put('\n');
-    partial_sum(svec.begin(), svec.end(), ostream_iterator<int>{cout, " "}, multiplies{});
+    partial_sum(ivec.begin(), ivec.end(), ostream_iterator<int>{cout, " "}, multiplies{});
     cout.put('\n');
 }
