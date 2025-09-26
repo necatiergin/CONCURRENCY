@@ -1,5 +1,4 @@
-
-//from cppreference.com
+// quoted from cppreference.com
 
 #include <algorithm>
 #include <chrono>
