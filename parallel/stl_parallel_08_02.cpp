@@ -3,23 +3,22 @@
 #include <vector>
 #include <algorithm>
 #include <execution>
+#include <print>
 
-namespace ex = std::execution;
 int main()
 {
+	namespace ex = std::execution;
 	using namespace std;
 
-	vector<int> src_vec(100);
-	iota(src_vec.begin(), src_vec.end(), 0);
-	copy(src_vec.begin(), src_vec.end(), ostream_iterator<int>{cout, " "});
-	cout << "\n\n";
-	vector<int> dest_vec(src_vec.size());
-
-	//partial_sum(src_vec.begin(), src_vec.end(), dest_vec.begin());
-	//inclusive_scan(ex::par, src_vec.begin(), src_vec.end(), dest_vec.begin());
-	//inclusive_scan(ex::unseq, src_vec.begin(), src_vec.end(), dest_vec.begin());
-	//inclusive_scan(ex::par_unseq, src_vec.begin(), src_vec.end(), dest_vec.begin());
+	vector<int> source(10);
+	iota(source.begin(), source.end(), 0);
+	print("{}\n", source);
 	
-	copy(dest_vec.begin(), dest_vec.end(), ostream_iterator<int>{cout, " "});
-	cout << "\n\n";
+	vector<int> dest(source.size());
+
+	//partial_sum(source.begin(), source.end(), dest.begin());
+	//inclusive_scan(ex::par, source.begin(), source.end(), dest.begin());
+	//inclusive_scan(ex::unseq, source.begin(), source.end(), dest.begin());
+	//inclusive_scan(ex::par_unseq, source.begin(), source.end(), dest.begin());
+	print("{}\n", dest);
 }
