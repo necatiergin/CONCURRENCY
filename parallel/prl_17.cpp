@@ -6,12 +6,10 @@
 
 int main()
 {
-    using namespace std;
+    std::vector<double> target{ 0.12, 0.17, 0.25, 0.39, 0.43, 0.70 };
+    std::vector<double> source{ 0.08, 0.11, 0.23, 0.36, 0.42, 0.74 };
 
-    vector<double> target { 0.12, 0.17, 0.25, 0.39, 0.43, 0.70 };
-    vector<double> source { 0.08, 0.11, 0.23, 0.36, 0.42, 0.74 };
-
-    auto max_dev = transform_reduce(execution::par,
+    auto max_dev = transform_reduce(std::execution::par,
         target.begin(), target.end(),
         source.begin(),
         0.0,
@@ -21,5 +19,5 @@ int main()
         [](auto trg, auto src) { return std::abs(src - trg); }
     );
 
-    cout << "Max devistion is: " << max_dev << '\n';
+    std::cout << "Max deviation is: " << max_dev << '\n';
 }
