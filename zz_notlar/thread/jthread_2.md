@@ -30,6 +30,30 @@ _std::stop_token_, _std::jthread_ tarafından otomatik olarak sağlanır.
 Yani, biz _std::jthread_ nesnesini oluşturduğunuzda ve ona bir fonksiyon verdiğimizde, _std::jthread_ bu fonksiyona bir _std::stop_token_ nesnesi geçirir. Bu, _thread_'in durdurma isteğini kontrol edebilmesi için bir nevi "iletişim kanalı"dır.
 _thread_'in çalıştıracağı fonksiyon _std::stop_token_ türünden bir parametre değişkenine sahip ise bu parametreye _std::jthread_ tarafından otomatik olarak argüman gönderilir. Biz bu parametreye argüman göndermeyiz; _std::jthread_ sınıf nesnesi bunu bizim için yapar.
 
+_C++20_ standardına göre, _std::jthread_’in bu biçimdeki _ctor_’u şöyle tanımlanmıştır (kabaca, sadeleştirilmiş olarak):
+
+```
+template <class F, class... Args>
+explicit jthread(F&& f, Args&&... args);
+```
+
+Bu _constructor_ içinde şu işlemler yapılır:
+
+- _jthread_ bir _std::stop_source_ üyesi oluşturur (örneğin _Stop_source).
+
+- Bu stop_source’tan bir stop_token elde edilir:
+```
+auto token = _Stop_source.get_token();
+```
+Eğer I türündeki callable nesnesinin ilk parametresi _std::stop_token_ ile uyumluysa,
+_jthread_ bu _token_’ı otomatik olarak argüman listesine ilk sıraya ekler.
+
+Böylece çağrı gerçekte şu hale gelir:
+
+```
+std::thread([, token, args...]() mutable { f(token, std::forward<Args>(args)...); });
+```
+Yani _jthread_ sizin yerinize _std::stop_token_’ı fonksiyonunuza geçirir.
 
 
 
