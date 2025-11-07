@@ -1,12 +1,12 @@
-MUTEX SARMALAYAN RAII SINIFLARI
--------------------------------
+MUTEX WRAPPING RAII CLASSES
+---------------------------
 1 - lock_guard
 2 - unique_lock
 3 - scoped_lock
 4 - shared_lock
 
 
-MUTEX SINIFLARI
+MUTEX CLASSES
 ---------------
 1 - std::mutex  
 2 - std::timed_mutex 
