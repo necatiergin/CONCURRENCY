@@ -3,30 +3,29 @@
 #include <mutex>
 #include <chrono>
 
-using namespace std;
-using namespace literals;
 
+using namespace std::literals;
 std::mutex mtx;
 
 void foo()
 {
-	cout << "foo is trying to lock the mutex\n";
+	std::cout << "foo is trying to lock the mutex\n";
 	mtx.lock();
 	std::cout << "foo has locked the mutex\n";
-	this_thread::sleep_for(800ms);
-	cout << "foo is unlocking the mutex\n";
+	std::this_thread::sleep_for(800ms);
+	std::cout << "foo is unlocking the mutex\n";
 	mtx.unlock();
 }
 
 void bar()
 {
-	this_thread::sleep_for(100ms);
-	cout << "bar trying to lock the mutex\n";
+	std::this_thread::sleep_for(100ms);
+	std::cout << "bar trying to lock the mutex\n";
 	while (!mtx.try_lock()) {
-		cout << "bar could not lock the mutex\n";
-		this_thread::sleep_for(100ms);
+		std::cout << "bar could not lock the mutex\n";
+		std::this_thread::sleep_for(100ms);
 	}
-	cout << "bar has locked the mutex\n";
+	std::cout << "bar has locked the mutex\n";
 	mtx.unlock();
 }
 
