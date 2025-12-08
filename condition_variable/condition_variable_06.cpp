@@ -4,7 +4,6 @@
 #include <string>
 #include <iomanip>
 
-
 std::string	shared_data;
 std::mutex	mtx;
 std::condition_variable cv;
@@ -29,7 +28,6 @@ void reader()
 
 void writer()
 {
-
 	{
 		std::cout << "WRITER thread is locking the mutex\n";
 
