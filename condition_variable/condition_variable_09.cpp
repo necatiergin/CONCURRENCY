@@ -37,7 +37,6 @@ int main()
 {
     std::vector<std::thread> threads;
 
-    // 3 iş parçacığı başlat
     for (int i = 0; i < 8; ++i) {
         threads.emplace_back(worker, i + 1);
     }
