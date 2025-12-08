@@ -1,8 +1,8 @@
 /*
-    aşağıdaki kodda func işlevi bir başka thread'in oluşturduğu sonucun hazır olup olmadığını sınamak için sürekli 
-    go_flag değişkenini test ediyor. Bu verimli bir yöntem değil.
+    In the code below, the function `func` repeatedly checks the shared
+    variable `go_flag` to see whether another thread has produced a result.
+    This is essentially busy-waiting and is not an efficient approach.
 */
-
 
 #include <mutex>
 #include <chrono>
