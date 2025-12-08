@@ -1,28 +1,23 @@
-//notify_all
-
 #include <iostream>
 #include <thread>
 #include <condition_variable>
 #include <string>
 #include <iomanip>
-
-using namespace std::chrono;
-
+#include <chrono>
 
 std::string shared_data;
 std::mutex mtx;
 std::condition_variable cv;
 bool ready_flag{ false };
 
-
 void reader()
 {
 	auto id = std::this_thread::get_id();
 	std::cout << "reader thread " << id << " is locking the mutex\n";
 	std::unique_lock ulock(mtx);
-	std::cout << "reader thread " << id  << " has locked the mutex\n";
-	std::cout << "reader thread " << id  << " has locked the mutex\n";
-	
+	std::cout << "reader thread " << id << " has locked the mutex\n";
+	std::cout << "reader thread " << id << " has locked the mutex\n";
+
 	std::cout << "Reader thread start sleeping...\n";
 	cv.wait(ulock, [] {return ready_flag; });
 	std::cout << "Reader thread " << id << " wakes up\n";
@@ -33,6 +28,7 @@ void reader()
 void writer()
 {
 	{
+		using namespace std::chrono_literals;
 		std::cout << "Writer thread locking mutex\n";
 		std::lock_guard lock(mtx);
 		std::cout << "Writer thread has locked the mutex\n";
@@ -50,6 +46,8 @@ void writer()
 
 int main()
 {
+	using namespace std::chrono_literals;
+
 	shared_data = "not ready";
 	std::cout << "data is " << std::quoted(shared_data) << '\n';
 
