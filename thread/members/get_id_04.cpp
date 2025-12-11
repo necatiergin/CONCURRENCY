@@ -3,13 +3,15 @@
 
 int main()
 {
-	boolalpha(std::cout);
+	std::thread t;
+	std::cout << std::boolalpha;
 
-	std::thread tx;
-
-	std::cout << (tx.get_id() == std::thread::id{}) << '\n';
-	tx = std::thread{ []() {} };
-	std::cout << (tx.get_id() == std::thread::id{}) << '\n';
-	tx.join();
-	std::cout << (tx.get_id() == std::thread::id{}) << '\n';
+	std::cout << (t.get_id() == std::thread::id()) << '\n';
+	t = std::thread([] {});
+	std::cout << (t.get_id() == std::thread::id()) << '\n';
+	auto th = std::move(t);
+	std::cout << (t.get_id() == std::thread::id()) << '\n';
+	std::cout << (th.get_id() == std::thread::id()) << '\n';
+	th.join();
+	std::cout << (th.get_id() == std::thread::id()) << '\n';
 }
