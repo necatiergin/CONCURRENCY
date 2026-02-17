@@ -8,7 +8,7 @@ int main()
 	std::packaged_task<ftype> pt_x;
 	std::packaged_task<ftype> pt_y([](int x, int y) {return x * x + y * y; });
 
-	// pt_x = pt_y; Syntax error
+	// pt_x = pt_y; // error
 
 	pt_x = std::move(pt_y);
 	std::future<int> ftr = pt_x.get_future();
