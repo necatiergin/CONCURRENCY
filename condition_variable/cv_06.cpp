@@ -3,6 +3,7 @@
 #include <condition_variable>
 #include <string>
 #include <iomanip>
+#include <chrono>
 
 std::string	shared_data;
 std::mutex	mtx;
