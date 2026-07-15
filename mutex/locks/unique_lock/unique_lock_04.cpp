@@ -2,10 +2,11 @@
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include <syncstream>
 
 std::timed_mutex mtx;
 
-void f() 
+void f()
 {
     using namespace std::literals;
     constexpr auto dur = 5us;
@@ -15,11 +16,11 @@ void f()
         // ... korunan koda erişim ...
     }
     else {
-        std::cout << "mutex kilitlenemedi thread_id : " << std::this_thread::get_id() << '\n';
+        std::osyncstream{ std::cout } << "mutex kilitlenemedi thread_id : " << std::this_thread::get_id() << '\n';
     }
 }
 
-int main() 
+int main()
 {
     constexpr std::size_t num_of_threads{ 16 };
     std::vector<std::jthread> tvec{ num_of_threads };
