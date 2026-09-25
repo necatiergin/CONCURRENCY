@@ -20,7 +20,7 @@ void func(int x)
 	std::cout << "func(int x) ends\n";
 }
 
-void func(int x)
+void func2(int x)
 {
 	std::cout << "func(int x) called x = " << x << '\n';
 	if (x % 2 == 0)
