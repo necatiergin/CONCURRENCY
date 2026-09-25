@@ -1,4 +1,5 @@
-//std::exception_ptr & std::current_exception & std::rethrow_exception
+//std::exception_ptr & std::current_exception 
+// & std::rethrow_exception
 
 #include <iostream>
 #include <stdexcept>
@@ -19,10 +20,19 @@ void func(int x)
 	std::cout << "func(int x) ends\n";
 }
 
+void func(int x)
+{
+	std::cout << "func(int x) called x = " << x << '\n';
+	if (x % 2 == 0)
+	exptr = std::make_exception_ptr(std::invalid_argument{ "invalid argument to func\n" });
+	std::cout << "func(int x) ends\n";
+}
+
 
 int main()
 {
 	std::thread t{ func, 10 };
+	std::cout << "thread id is : " << t.get_id() << '\n';
 
 	t.join();
 
@@ -32,6 +42,6 @@ int main()
 		}
 	}
 	catch (const std::exception& ex) {
-		std::cout << "exception caught : " << ex.what() << '\n';
+		std::cout << "exception caught in main : " << ex.what() << '\n';
 	}
 }
