@@ -1,4 +1,6 @@
 //double checked locking
+// this implementation is still not-thread-safe. Why?
+
 
 #include <mutex>
 
